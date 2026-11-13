@@ -1,64 +1,68 @@
 import requests
 from bs4 import BeautifulSoup
 import json
+import time
 
-# Enlace directo a tu Yupoo
-YUPOO_URL = "https://minkang.x.yupoo.com/albums"
+# Enlace base de tus álbumes en Yupoo
+BASE_URL = "https://minkang.x.yupoo.com/albums"
 
 headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
 }
 
-def obtener_productos():
+def extraer_todo_yupoo():
     productos = []
     page = 1
-    
-    while True:
-        url_pag = f"{YUPOO_URL}?page={page}" if page == 1 else f"{YUPOO_URL}?page={page}"
-        print(f"Buscando en: {url_pag}")
+    max_paginas = 120  # Límite ampliado a 120 páginas
+
+    print(f"Iniciando extracción automática de Yupoo (hasta {max_paginas} páginas)...")
+
+    while page <= max_paginas:
+        url_actual = f"{BASE_URL}?page={page}"
+        print(f"Leyendo página {page} de {max_paginas}...")
         
         try:
-            response = requests.get(url_pag, headers=headers)
+            response = requests.get(url_actual, headers=headers, timeout=15)
             if response.status_code != 200:
+                print(f"La página {page} no devolvió código 200 (Código: {response.status_code}). Fin del catálogo.")
                 break
 
             soup = BeautifulSoup(response.text, 'html.parser')
             
-            # Selectores habituales para los álbumes de Yupoo
+            # Buscar todos los contenedores de álbumes en la página actual
             albums = soup.find_all('div', class_='album__main') or soup.find_all('a', class_='album__item')
-            
             if not albums:
-                # Intento alternativo de búsqueda por etiquetas si cambia el diseño
                 albums = soup.select('a.album')
-                if not albums:
-                    break
+            
+            # Si una página no devuelve ningún álbum, hemos llegado al final real del catálogo
+            if not albums:
+                print(f"No hay más álbumes en la página {page}. ¡Catálogo completamente descargado!")
+                break
 
-            contador_pagina = 0
+            productos_en_pagina = 0
             for album in albums:
-                # Extraer título
+                # Extraer título del álbum de forma segura
                 title_elem = album.find('div', class_='album__title') or album.find('span', class_='album__title') or album.find('img')
-                if title_elem and title_elem.has_attr('alt'):
-                    title = title_elem['alt'].strip()
-                elif title_elem:
-                    title = title_elem.text.strip()
-                else:
-                    title = "Camiseta de Fútbol"
+                title = "Camiseta de Fútbol"
+                if title_elem:
+                    if title_elem.has_attr('alt') and title_elem['alt'].strip():
+                        title = title_elem['alt'].strip()
+                    elif title_elem.text.strip():
+                        title = title_elem.text.strip()
 
-                if not title or title == "":
-                    title = "Camiseta de Fútbol"
-
-                # Extraer imagen de portada
+                # Extraer la imagen de portada
                 img_elem = album.find('img')
                 img_url = ""
                 if img_elem:
                     img_url = img_elem.get('data-src') or img_elem.get('src') or img_elem.get('data-original')
-                    if img_url and img_url.startswith('//'):
-                        img_url = "https:" + img_url
-                    elif img_url and img_url.startswith('/'):
-                        img_url = "https://minkang.x.yupoo.com" + img_url
+                    if img_url:
+                        if img_url.startswith('//'):
+                            img_url = "https:" + img_url
+                        elif img_url.startswith('/'):
+                            img_url = "https://minkang.x.yupoo.com" + img_url
 
                 if img_url:
-                    # Categorización automática inteligente por palabras clave
+                    # Categorización automática inteligente por palabras clave en el título
                     category = "Otros"
                     t_lower = title.lower()
                     if any(k in t_lower for k in ['madrid', 'barcelona', 'atlético', 'valencia', 'sevilla', 'betis', 'laliga', 'real madrid', 'fc barcelona']):
@@ -67,38 +71,36 @@ def obtener_productos():
                         category = "Premier League"
                     elif any(k in t_lower for k in ['retro', 'vintage', 'classic', '90', '80', 'historic', 'remake']):
                         category = "Retro"
-                    elif any(k in t_lower for k in ['españa', 'argentina', 'brasil', 'francia', 'selección', 'world cup', 'italy', 'germany', 'portugal']):
+                    elif any(k in t_lower for k in ['españa', 'argentina', 'brasil', 'francia', 'selección', 'world cup', 'italy', 'germany', 'portugal', 'mexico']):
                         category = "Selecciones"
 
-                    # Evitar duplicados
+                    # Evitar duplicados exactos en la lista
                     if not any(p['img'] == img_url for p in productos):
                         productos.append({
                             "title": title,
                             "img": img_url,
                             "category": category
                         })
-                        contador_pagina += 1
+                        productos_en_pagina += 1
 
-            # Si en esta página no encontró productos nuevos, salimos del bucle
-            if contador_pagina == 0 and page > 1:
-                break
-                
+            print(f"-> Añadidas {productos_en_pagina} camisetas de la página {page}.")
+            
+            # Pausa de cortesía para no saturar el servidor
+            time.sleep(0.4)
             page += 1
-            if page > 15: # Límite de seguridad de páginas
-                break
-                
+
         except Exception as e:
             print(f"Error procesando la página {page}: {e}")
             break
 
-    print(f"Total de productos extraídos: {len(productos)}")
+    print(f"¡Proceso finalizado con éxito! Total de camisetas recopiladas: {len(productos)}")
     return productos
 
 if __name__ == "__main__":
-    datos = obtener_productos()
+    datos = extraer_todo_yupoo()
     if datos:
         with open("productos.json", "w", encoding="utf-8") as f:
             json.dump(datos, f, ensure_ascii=False, indent=4)
-        print("Archivo productos.json guardado con éxito.")
+        print("Archivo productos.json actualizado con éxito.")
     else:
-        print("No se encontraron productos.")
+        print("No se pudieron extraer productos.")
