@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>El Armario del Gol</title>
-    <!-- Favicon con tu logo corporativo -->
     <link rel="icon" type="image/jpeg" href="imagenes/logo.jpg">
     <style>
         :root {
@@ -21,7 +20,6 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
         body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
 
-        /* Header Corporativo */
         header {
             background-color: rgba(7, 13, 9, 0.95);
             backdrop-filter: blur(12px);
@@ -52,7 +50,6 @@
         }
         .search-bar input:focus { border-color: var(--accent-bright); box-shadow: 0 0 15px var(--accent-glow); }
 
-        /* Filtros de Categorías */
         .filters {
             padding: 1.5rem 5% 0.5rem;
             display: flex; gap: 0.8rem; overflow-x: auto; justify-content: center; max-width: 1200px; margin: 0 auto; width: 100%;
@@ -64,7 +61,6 @@
         .filter-btn:hover { border-color: var(--text-muted); color: var(--text-main); }
         .filter-btn.active { background: var(--accent-bright); color: #000; font-weight: 700; border-color: var(--accent-bright); box-shadow: 0 0 15px var(--accent-glow); }
 
-        /* Grid de Productos */
         .catalog {
             padding: 2rem 5%;
             display: grid;
@@ -90,7 +86,6 @@
         .card-tag { font-size: 0.7rem; color: var(--accent-bright); text-transform: uppercase; font-weight: 800; letter-spacing: 1px; }
         .card-title { font-size: 1rem; font-weight: 600; color: var(--text-main); line-height: 1.4; }
 
-        /* Estilo de Paginación idéntico al de Yupoo */
         .pagination-container {
             display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
             gap: 1rem; padding: 2rem 1rem; max-width: 1200px; margin: 0 auto; color: var(--text-muted); font-size: 0.95rem;
@@ -108,9 +103,7 @@
         .page-btn.active { background: var(--accent-bright); color: #000; font-weight: 700; }
         .page-btn:disabled { color: var(--border); cursor: not-allowed; }
 
-        .jump-container {
-            display: flex; align-items: center; gap: 0.5rem;
-        }
+        .jump-container { display: flex; align-items: center; gap: 0.5rem; }
         .jump-input {
             width: 55px; padding: 0.4rem; background: var(--bg-card); border: 1px solid var(--border);
             color: white; text-align: center; border-radius: 4px; outline: none;
@@ -122,13 +115,11 @@
         }
         .jump-btn:hover { background: var(--accent-bright); color: #000; border-color: var(--accent-bright); }
 
-        /* Footer */
         footer {
             text-align: center; padding: 2rem; border-top: 1px solid var(--border);
             color: var(--text-muted); font-size: 0.85rem; margin-top: auto;
         }
 
-        /* Modal */
         .modal {
             display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85);
             z-index: 200; justify-content: center; align-items: center; padding: 1.5rem; backdrop-filter: blur(8px);
@@ -161,25 +152,18 @@
         </div>
     </header>
 
-    <div class="filters" id="categoryFilters">
-        <button class="filter-btn active" onclick="filterCategory('Todos', this)">Todos</button>
-        <button class="filter-btn" onclick="filterCategory('LaLiga', this)">LaLiga</button>
-        <button class="filter-btn" onclick="filterCategory('Premier League', this)">Premier League</button>
-        <button class="filter-btn" onclick="filterCategory('Selecciones', this)">Selecciones</button>
-        <button class="filter-btn" onclick="filterCategory('Retro', this)">Retro</button>
-        <button class="filter-btn" onclick="filterCategory('Otros', this)">Otros</button>
-    </div>
+    <!-- Filtros de Categorías Generados Automáticamente -->
+    <div class="filters" id="categoryFilters"></div>
 
     <main class="catalog" id="catalogGrid"></main>
 
-    <!-- Barra de Paginación Estilo Yupoo -->
+    <!-- Paginador Estilo Yupoo -->
     <div class="pagination-container" id="paginationContainer"></div>
 
     <footer>
         <p>© 2026 El Armario del Gol • Catálogo Exclusivo</p>
     </footer>
 
-    <!-- Modal -->
     <div class="modal" id="productModal" onclick="closeModal()">
         <div class="modal-content" onclick="event.stopPropagation()">
             <button class="close-btn" onclick="closeModal()">×</button>
@@ -195,15 +179,32 @@
         let productos = [];
         let currentCategory = "Todos";
         let currentPage = 1;
-        const itemsPerPage = 30; // Cantidad de camisetas por página
+        const itemsPerPage = 32;
 
         fetch('productos.json')
             .then(response => response.json())
             .then(data => {
                 productos = data;
+                initCategories();
                 renderCatalog();
             })
             .catch(err => console.error("Error cargando el catálogo:", err));
+
+        function initCategories() {
+            // Extrae dinámicamente las categorías reales que traiga el Yupoo
+            const uniqueCats = [...new Set(productos.map(p => p.category))].filter(Boolean);
+            const cats = ["Todos", ...uniqueCats];
+            const filtersContainer = document.getElementById("categoryFilters");
+            filtersContainer.innerHTML = "";
+
+            cats.forEach(cat => {
+                const btn = document.createElement("button");
+                btn.className = `filter-btn ${cat === currentCategory ? 'active' : ''}`;
+                btn.innerText = cat;
+                btn.onclick = (e) => filterCategory(cat, e.target);
+                filtersContainer.appendChild(btn);
+            });
+        }
 
         function renderCatalog() {
             const query = document.getElementById("searchInput").value.toLowerCase();
@@ -255,11 +256,8 @@
             }
 
             let html = `<div class="pagination">`;
-            
-            // Botón Anterior
             html += `<button class="page-btn" onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}><</button>`;
 
-            // Números de página visibles
             let startPage = Math.max(1, currentPage - 2);
             let endPage = Math.min(totalPages, startPage + 4);
             if (endPage - startPage < 4) {
@@ -270,11 +268,9 @@
                 html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="changePage(${i})">${i}</button>`;
             }
 
-            // Botón Siguiente
             html += `<button class="page-btn" onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>></button>`;
             html += `</div>`;
 
-            // Texto y selector para saltar a página
             html += `<span>in total ${totalPages} pages</span>`;
             html += `<div class="jump-container">`;
             html += `to <input type="number" id="jumpInput" class="jump-input" min="1" max="${totalPages}" value="${currentPage}"> page`;
