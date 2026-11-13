@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>El Armario del Gol</title>
     <!-- Favicon con tu logo corporativo -->
-    <link rel="icon" type="image/jpeg" href="imagenes/LOGO.BLA.jpg">
+    <link rel="icon" type="image/jpeg" href="imagenes/logo.jpg">
     <style>
         :root {
             --bg-dark: #070d09;
@@ -90,33 +90,60 @@
         .card-tag { font-size: 0.7rem; color: var(--accent-bright); text-transform: uppercase; font-weight: 800; letter-spacing: 1px; }
         .card-title { font-size: 1rem; font-weight: 600; color: var(--text-main); line-height: 1.4; }
 
-        /* Footer limpio */
+        /* Estilo de Paginación idéntico al de Yupoo */
+        .pagination-container {
+            display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+            gap: 1rem; padding: 2rem 1rem; max-width: 1200px; margin: 0 auto; color: var(--text-muted); font-size: 0.95rem;
+        }
+        .pagination {
+            display: flex; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; background: var(--bg-card);
+        }
+        .page-btn {
+            background: transparent; border: none; border-right: 1px solid var(--border);
+            color: var(--text-main); padding: 0.5rem 0.8rem; cursor: pointer; font-size: 0.9rem;
+            display: flex; align-items: center; justify-content: center; min-width: 38px; transition: background 0.2s;
+        }
+        .page-btn:last-child { border-right: none; }
+        .page-btn:hover:not(:disabled) { background: rgba(76, 175, 80, 0.1); color: var(--accent-bright); }
+        .page-btn.active { background: var(--accent-bright); color: #000; font-weight: 700; }
+        .page-btn:disabled { color: var(--border); cursor: not-allowed; }
+
+        .jump-container {
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .jump-input {
+            width: 55px; padding: 0.4rem; background: var(--bg-card); border: 1px solid var(--border);
+            color: white; text-align: center; border-radius: 4px; outline: none;
+        }
+        .jump-input:focus { border-color: var(--accent-bright); }
+        .jump-btn {
+            background: var(--bg-card); border: 1px solid var(--border); color: var(--text-main);
+            padding: 0.4rem 0.8rem; border-radius: 4px; cursor: pointer; transition: all 0.2s;
+        }
+        .jump-btn:hover { background: var(--accent-bright); color: #000; border-color: var(--accent-bright); }
+
+        /* Footer */
         footer {
             text-align: center; padding: 2rem; border-top: 1px solid var(--border);
             color: var(--text-muted); font-size: 0.85rem; margin-top: auto;
         }
 
-        /* Modal para Ver Imagen Grande */
+        /* Modal */
         .modal {
             display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85);
-            z-index: 200; justify-content: center; align-items: center; padding: 1.5rem;
-            backdrop-filter: blur(8px);
+            z-index: 200; justify-content: center; align-items: center; padding: 1.5rem; backdrop-filter: blur(8px);
         }
         .modal.open { display: flex; }
         .modal-content {
             background: var(--bg-card); border-radius: 20px; max-width: 500px; width: 100%;
             overflow: hidden; border: 1px solid var(--border); position: relative;
-            animation: scaleUp 0.3s ease;
         }
-        @keyframes scaleUp { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-        
         .close-btn {
             position: absolute; top: 1rem; right: 1rem; background: rgba(0,0,0,0.6); border: none;
             color: white; width: 35px; height: 35px; border-radius: 50%; font-size: 1.2rem; cursor: pointer;
-            z-index: 10; display: flex; align-items: center; justify-content: center; transition: background 0.2s;
+            z-index: 10; display: flex; align-items: center; justify-content: center;
         }
         .close-btn:hover { background: var(--accent-bright); color: #000; }
-        
         .modal-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; background: #000; }
         .modal-info { padding: 1.5rem; text-align: center; }
         .modal-title { font-size: 1.2rem; font-weight: 700; margin-top: 0.5rem; }
@@ -126,12 +153,11 @@
 
     <header>
         <a href="#" class="brand">
-            <!-- Si tu archivo de logo se llama de otra forma en la carpeta imagenes, cambia aqui el nombre exacto -->
-            <img src="imagenes/logo.jpg" alt="Logo El Armario del Gol" onerror="this.src='imagenes/LOGO.BLA.jpg'">
+            <img src="imagenes/logo.jpg" alt="Logo" onerror="this.src='imagenes/LOGO.BLA.jpg'">
             <div>EL ARMARIO DEL <span>GOL</span></div>
         </a>
         <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="Buscar equipo, temporada...">
+            <input type="text" id="searchInput" placeholder="Buscar equipo, temporada..." oninput="currentPage=1; renderCatalog()">
         </div>
     </header>
 
@@ -146,11 +172,14 @@
 
     <main class="catalog" id="catalogGrid"></main>
 
+    <!-- Barra de Paginación Estilo Yupoo -->
+    <div class="pagination-container" id="paginationContainer"></div>
+
     <footer>
         <p>© 2026 El Armario del Gol • Catálogo Exclusivo</p>
     </footer>
 
-    <!-- Modal para inspeccionar camiseta -->
+    <!-- Modal -->
     <div class="modal" id="productModal" onclick="closeModal()">
         <div class="modal-content" onclick="event.stopPropagation()">
             <button class="close-btn" onclick="closeModal()">×</button>
@@ -165,6 +194,8 @@
     <script>
         let productos = [];
         let currentCategory = "Todos";
+        let currentPage = 1;
+        const itemsPerPage = 30; // Cantidad de camisetas por página
 
         fetch('productos.json')
             .then(response => response.json())
@@ -185,12 +216,19 @@
                 return matchCat && matchSearch;
             });
 
-            if (filtered.length === 0) {
+            const totalPages = Math.ceil(filtered.length / itemsPerPage) || 1;
+            if (currentPage > totalPages) currentPage = totalPages;
+
+            const start = (currentPage - 1) * itemsPerPage;
+            const paginatedItems = filtered.slice(start, start + itemsPerPage);
+
+            if (paginatedItems.length === 0) {
                 grid.innerHTML = `<p style="grid-column: 1/-1; text-align:center; color:var(--text-muted); padding:3rem;">No se encontraron equipaciones.</p>`;
+                document.getElementById("paginationContainer").innerHTML = "";
                 return;
             }
 
-            filtered.forEach(p => {
+            paginatedItems.forEach(p => {
                 grid.innerHTML += `
                     <div class="card" onclick="openModal('${p.img}', '${p.title}', '${p.category}')">
                         <div class="card-img-container">
@@ -205,16 +243,70 @@
                     </div>
                 `;
             });
+
+            renderPagination(totalPages);
+        }
+
+        function renderPagination(totalPages) {
+            const container = document.getElementById("paginationContainer");
+            if (totalPages <= 1) {
+                container.innerHTML = "";
+                return;
+            }
+
+            let html = `<div class="pagination">`;
+            
+            // Botón Anterior
+            html += `<button class="page-btn" onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}><</button>`;
+
+            // Números de página visibles
+            let startPage = Math.max(1, currentPage - 2);
+            let endPage = Math.min(totalPages, startPage + 4);
+            if (endPage - startPage < 4) {
+                startPage = Math.max(1, endPage - 4);
+            }
+
+            for (let i = startPage; i <= endPage; i++) {
+                html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="changePage(${i})">${i}</button>`;
+            }
+
+            // Botón Siguiente
+            html += `<button class="page-btn" onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>></button>`;
+            html += `</div>`;
+
+            // Texto y selector para saltar a página
+            html += `<span>in total ${totalPages} pages</span>`;
+            html += `<div class="jump-container">`;
+            html += `to <input type="number" id="jumpInput" class="jump-input" min="1" max="${totalPages}" value="${currentPage}"> page`;
+            html += `<button class="jump-btn" onclick="jumpToPage(${totalPages})">Confirm</button>`;
+            html += `</div>`;
+
+            container.innerHTML = html;
+        }
+
+        function changePage(page) {
+            currentPage = page;
+            renderCatalog();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function jumpToPage(totalPages) {
+            const input = document.getElementById("jumpInput");
+            let val = parseInt(input.value);
+            if (val >= 1 && val <= totalPages) {
+                currentPage = val;
+                renderCatalog();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
         }
 
         function filterCategory(cat, btn) {
             currentCategory = cat;
+            currentPage = 1;
             document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
             btn.classList.add("active");
             renderCatalog();
         }
-
-        document.getElementById("searchInput").addEventListener("input", renderCatalog);
 
         function openModal(img, title, category) {
             document.getElementById("mImg").src = img;
