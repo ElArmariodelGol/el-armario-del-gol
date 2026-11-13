@@ -12,7 +12,7 @@
     {
         "title": "Retro shirt",
         "img": "https://photo.yupoo.com/minkang/9c6af50054/small.png",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Windbreaker/Training Top",
@@ -102,12 +102,12 @@
     {
         "title": "Brasileiro Série A",
         "img": "https://photo.yupoo.com/minkang/363da9f6/small.jpg",
-        "category": "Selecciones"
+        "category": "Catálogo General"
     },
     {
         "title": "Premier League",
         "img": "https://photo.yupoo.com/minkang/9569708e/small.jpg",
-        "category": "Premier League"
+        "category": "Catálogo General"
     },
     {
         "title": "La Liga",
@@ -177,17 +177,17 @@
     {
         "title": "Real Betis 26/27 Windproof Hooded Jacket S-XXL",
         "img": "https://photo.yupoo.com/minkang/cdfc9e6e70/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Real Madrid x Y-3 Black Special Edition Jersey S-4XL",
         "img": "https://photo.yupoo.com/minkang/2f3e6c8c78/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "France 2002 Away Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/5cf2787d6a/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Inter Milan 26/27 Black Training Kit Jersey S-4XL",
@@ -198,11 +198,6 @@
         "title": "Inter Milan 26/27 Third Away Long-Sleeve Jersey S-4XL",
         "img": "https://photo.yupoo.com/minkang/aaa8fd1409/small.jpg",
         "category": "Catálogo General"
-    },
-    {
-        "title": "LFC 02/03 Black and Grey Long-Sleeved Retro Jersey S-XXL",
-        "img": "https://photo.yupoo.com/minkang/916358c7e4/small.jpg",
-        "category": "Retro"
     },
     {
         "title": "Malaga 26/27 Tan Training Jersey S-3XL",
@@ -227,27 +222,22 @@
     {
         "title": "Real Madrid 26/27 White Commemorative Edition POLO Jersey S-4XL",
         "img": "https://photo.yupoo.com/minkang/b5dddf7ff6/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Sevilla 06/07 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/a3aa0d8198/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Sevilla 41/42 Home Long-Sleeve Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/61997eaf92/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Sport Recife 26/27 Third Away Jersey S-4XL",
         "img": "https://photo.yupoo.com/minkang/bbea848889/small.jpg",
         "category": "Catálogo General"
-    },
-    {
-        "title": "LFC 26/27 Red Retro Culture Jersey S-4XL",
-        "img": "https://photo.yupoo.com/minkang/8f9a78c430/small.jpg",
-        "category": "Retro"
     },
     {
         "title": "Sporting CP 26/27 120th Anniversary Jersey S-XXL",
@@ -257,7 +247,7 @@
     {
         "title": "Stade Rennais 96/97 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/6a07321eeb/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Torreense 26/27 Home Jersey S-XXL",
@@ -267,107 +257,107 @@
     {
         "title": "Peñarol 98/99 Home Long-Sleeve Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/55c9674443/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Peñarol 94/95 Home Long-Sleeve Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/019463403a/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Peñarol 96/97 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/c46fb8ec05/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Real Betis 26/27 Windproof Hooded Jacket S-XXL",
         "img": "https://photo.yupoo.com/minkang/cdfc9e6e70/medium.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Sevilla 26/27 White Training Suit Set S-XXL",
         "img": "https://photo.yupoo.com/minkang/03ee5c0b24/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Barcelona x GOLF WANG 26/27 Cyan Collaboration Jersey S-4XL",
         "img": "https://photo.yupoo.com/minkang/8e1de0c795/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Real Madrid 26/27 White Full Zipper Hooded Windbreaker Set S-XXL",
         "img": "https://photo.yupoo.com/minkang/4f541f6584/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Real Madrid 26/27 White Full Zip Hooded Windbreaker Set S-XXL",
         "img": "https://photo.yupoo.com/minkang/06371d56c1/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Real Madrid 26/27 White and Green Full Zipper Hooded Windbreaker Set S-XXL",
         "img": "https://photo.yupoo.com/minkang/01c9927cc4/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Real Madrid 26/27 Royal Blue Full Zipper Hooded Windbreaker Set S-XXL",
         "img": "https://photo.yupoo.com/minkang/dc61e8e8a5/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Real Madrid 26/27 Light Green Full Zipper Hooded Windbreaker Set S-XXL",
         "img": "https://photo.yupoo.com/minkang/83b17a9acb/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Real Madrid 26/27 Green Full Zipper Hooded Windbreaker Set S-XXL",
         "img": "https://photo.yupoo.com/minkang/8f95a2f737/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Real Madrid 26/27 Fluorescent Green Full Zipper Hooded Windbreaker Set S-XXL",
         "img": "https://photo.yupoo.com/minkang/c187b2ad26/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Real Madrid 26/27 Black Full Zipper Hooded Windbreaker Set S-XXL",
         "img": "https://photo.yupoo.com/minkang/0e78fd6f86/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Barcelona 26/27 Royal Blue Full Zipper Windbreaker Set S-XXL",
         "img": "https://photo.yupoo.com/minkang/2edc483efa/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Barcelona 26/27 Royal Blue Full Zipper Stand Collar Windbreaker Set S-XXL",
         "img": "https://photo.yupoo.com/minkang/6913fdc05f/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Barcelona 26/27 Red Full Zipper Windbreaker Set S-XXL",
         "img": "https://photo.yupoo.com/minkang/829f359dc0/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Barcelona 26/27 Red Full Zipper Hooded Windbreaker Set S-XXL",
         "img": "https://photo.yupoo.com/minkang/cc246253fb/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Barcelona 26/27 Dark Cyan Full Zipper Hooded Windbreaker Set S-XXL",
         "img": "https://photo.yupoo.com/minkang/91fd6cfaf0/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Barcelona 26/27 Blue Full Zipper Stand Collar Windbreaker Set S-XXL",
         "img": "https://photo.yupoo.com/minkang/3b2655882c/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Barcelona 26/27 Blue Full Zipper Hooded Windbreaker Set S-XXL",
         "img": "https://photo.yupoo.com/minkang/63809ebb93/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Spain 2026 2 Stars Special Edition Jersey - Blue S-4XL",
@@ -492,7 +482,7 @@
     {
         "title": "Cruzeiro 2003 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/4742a812da/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Recife 26/27 Away Women's Jersey S-XXL",
@@ -552,7 +542,7 @@
     {
         "title": "Flamengo 26/27 EQT Red Player Version Retro Jersey S-3XL",
         "img": "https://photo.yupoo.com/minkang/3518ca57e5/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Bahia 26/27 Third Away Women's Away S-XXL",
@@ -562,7 +552,7 @@
     {
         "title": "Atlético Mineiro 26/27 Women's Third Away S-XXL",
         "img": "https://photo.yupoo.com/minkang/86117e216e/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Santos 26/27 Third Away Player Edition Jersey S-3XL",
@@ -572,17 +562,17 @@
     {
         "title": "Flamengo 26/27 EQT red Retro Jersey S-4XL",
         "img": "https://photo.yupoo.com/minkang/d583c52224/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Flamengo 26/27 EQT White Retro Jersey S-4XL",
         "img": "https://photo.yupoo.com/minkang/480c5d716c/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Flamengo 26/27 EQT White Player Version Retro Jersey S-3XL",
         "img": "https://photo.yupoo.com/minkang/afe5776d3b/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Cruzeiro 26/27 Women's Originals Blue T-shirt S-XXL",
@@ -612,12 +602,12 @@
     {
         "title": "Portugal 26/27 Red Full Zipper Hooded Windbreaker Set S-XXL",
         "img": "https://photo.yupoo.com/minkang/b115acfc6c/small.jpg",
-        "category": "Selecciones"
+        "category": "Catálogo General"
     },
     {
         "title": "Mexico 26/27 Black Full Zipper Hooded Windbreaker Set S-XXL",
         "img": "https://photo.yupoo.com/minkang/0a7c875bc6/small.jpg",
-        "category": "Selecciones"
+        "category": "Catálogo General"
     },
     {
         "title": "Brazil 26/27 Royal Blue Full Zipper Windbreaker Set S-XXL",
@@ -627,42 +617,42 @@
     {
         "title": "Italy 26/27 White Full Zipper Hooded Windbreaker Set S-XXL",
         "img": "https://photo.yupoo.com/minkang/c693a4072c/small.jpg",
-        "category": "Selecciones"
+        "category": "Catálogo General"
     },
     {
         "title": "Italy 26/27 Green Full-Zip Windbreaker Set S-XXL",
         "img": "https://photo.yupoo.com/minkang/b5faada288/small.jpg",
-        "category": "Selecciones"
+        "category": "Catálogo General"
     },
     {
         "title": "Italy 26/27 Green Full Zipper Hooded Windbreaker Set S-XXL",
         "img": "https://photo.yupoo.com/minkang/914a2fccbb/small.jpg",
-        "category": "Selecciones"
+        "category": "Catálogo General"
     },
     {
         "title": "Italy 26/27 Dark Blue Full Zipper Windbreaker Set S-XXL",
         "img": "https://photo.yupoo.com/minkang/3370e4c277/small.jpg",
-        "category": "Selecciones"
+        "category": "Catálogo General"
     },
     {
         "title": "Germany 26/27 White Full Zipper Stand Collar Windbreaker Set S-XXL",
         "img": "https://photo.yupoo.com/minkang/38d56ffd81/small.jpg",
-        "category": "Selecciones"
+        "category": "Catálogo General"
     },
     {
         "title": "Germany 26/27 Red Full Zipper Hooded Windbreaker Set S-XXL",
         "img": "https://photo.yupoo.com/minkang/244d84cab3/small.jpg",
-        "category": "Selecciones"
+        "category": "Catálogo General"
     },
     {
         "title": "Germany 26/27 Black Full Zipper Windbreaker Set S-XXL",
         "img": "https://photo.yupoo.com/minkang/9431878a23/small.jpg",
-        "category": "Selecciones"
+        "category": "Catálogo General"
     },
     {
         "title": "Germany 26/27 Black Full Zipper Hooded Windbreaker Set S-XXL",
         "img": "https://photo.yupoo.com/minkang/eaf922bab0/small.jpg",
-        "category": "Selecciones"
+        "category": "Catálogo General"
     },
     {
         "title": "France Two-Stars 26/27 Navy Blue Full-Zip Hooded Windbreaker Set S-XXL",
@@ -712,7 +702,7 @@
     {
         "title": "NRL New Zealand Warriors 2026 Retro Polo S-7XL",
         "img": "https://photo.yupoo.com/minkang/7aaf1f09a8/medium.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "NRL Newcastle Knights 2026 Mens ANZAC Round Jersey S-5XL",
@@ -727,7 +717,7 @@
     {
         "title": "NRL Brisbane Broncos 2026 Men's Club World Cup Challenge Jersey S-7XL",
         "img": "https://photo.yupoo.com/minkang/8766a4840d/small.jpg",
-        "category": "Selecciones"
+        "category": "Catálogo General"
     },
     {
         "title": "NRL 2026 Sydney Roosters Home Jersey S-5XL",
@@ -997,12 +987,12 @@
     {
         "title": "Brazil 1995 Home Corteiz Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/9b34348a7f/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Brazil 1995 Away Corteiz Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/3873da78c3/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Brazil 26/27 Black Special Edition Jersey S-4XL",
@@ -1072,7 +1062,7 @@
     {
         "title": "K/SOCKS#0090",
         "img": "https://photo.yupoo.com/minkang/f6ed2ead/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "K/SOCKS#0089",
@@ -1122,7 +1112,7 @@
     {
         "title": "K/SOCKS#0080",
         "img": "https://photo.yupoo.com/minkang/0941583c/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "K/SOCKS#0079",
@@ -1177,7 +1167,7 @@
     {
         "title": "2022 Mexico NFL Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/d58e6805/small.jpg",
-        "category": "Selecciones"
+        "category": "Catálogo General"
     },
     {
         "title": "2022 All-Star NFL Jersey S-XXL",
@@ -1287,7 +1277,7 @@
     {
         "title": "F1 Ferrari Retro Racing Full-Zip Jacket - Red S-XXL",
         "img": "https://photo.yupoo.com/minkang/807928725f/medium.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Y-3 x Mercedes-AMG Petronas Formula 1 Team Driver S-5XL",
@@ -1402,32 +1392,32 @@
     {
         "title": "Real Madrid 26/27 White Commemorative Edition POLO Jersey S-4XL",
         "img": "https://photo.yupoo.com/minkang/b5dddf7ff6/medium.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Villarreal CF 2026 Yellow Special Edition Retro Polo Jersey S-4XL",
         "img": "https://photo.yupoo.com/minkang/ce28a8efcc/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Spain 26/27 Red Special Edition Retro Polo Jersey S-4XL",
         "img": "https://photo.yupoo.com/minkang/ede0b4286c/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Espanyol 26/27 Blue Special Edition Retro Polo Jersey S-4XL",
         "img": "https://photo.yupoo.com/minkang/3cf4401a51/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Real Madrid 26/27 White Polo Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/8763730f8d/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Real Madrid 26/27 Black Polo Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/10a4fc526d/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "M-U 26/27 Blue Flame Polo Jersey S-XXL",
@@ -1437,7 +1427,7 @@
     {
         "title": "Argentina 2026 Blue Commemorative Edition Baseball Version Player Version Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/b7f5775064/small.jpg",
-        "category": "Selecciones"
+        "category": "Catálogo General"
     },
     {
         "title": "Spain 26/27 Yellow and Red Special Edition Polo Jersey S-XXL",
@@ -1452,22 +1442,22 @@
     {
         "title": "Germany 26/27 Gold Special Edition Retro Polo Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/a04bc86d80/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Barcelona 26/27 Off-White Special Edition Polo Jersey S-4XL",
         "img": "https://photo.yupoo.com/minkang/d47ea069db/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Barcelona 26/27 Off-White Special Edition Player Version Polo Jersey S-3XL",
         "img": "https://photo.yupoo.com/minkang/2d36bbf3a6/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Real Betis 26/27 Special Edition Jersey S-4XL",
         "img": "https://photo.yupoo.com/minkang/21654f31a9/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Deportivo La Coruna 26/27 Polo Jersey S-4XL",
@@ -1532,42 +1522,42 @@
     {
         "title": "Argentina 2026 Black Player Version Shorts S-XXL",
         "img": "https://photo.yupoo.com/minkang/637f62ff1c/small.jpg",
-        "category": "Selecciones"
+        "category": "Catálogo General"
     },
     {
         "title": "Real Madrid 26/27 Third Away Shorts S-XXL",
         "img": "https://photo.yupoo.com/minkang/ae04e4a338/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Barcelona 26/27 Third Away Shorts S-4XL",
         "img": "https://photo.yupoo.com/minkang/bcf444aff7/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Barcelona 26/27 Away Shorts S-4XL",
         "img": "https://photo.yupoo.com/minkang/6ec6622d6a/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Real Madrid 26/27 Away Shorts S-XXL",
         "img": "https://photo.yupoo.com/minkang/1b5549414f/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Atletico Madrid 26/27 Away Shorts S-4XL",
         "img": "https://photo.yupoo.com/minkang/d8ce2c9281/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Barcelona 26/27 Home Shorts S-4XL",
         "img": "https://photo.yupoo.com/minkang/60c0a8d7aa/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Atletico Madrid 26/27 Home Shorts S-XXL",
         "img": "https://photo.yupoo.com/minkang/f4ab2caccb/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Santos 25/26 Home Shorts S-XXL",
@@ -1582,7 +1572,7 @@
     {
         "title": "Germany 2026 OG Player Version Training Shorts - Black S-3XL",
         "img": "https://photo.yupoo.com/minkang/fd5fc3e230/small.jpg",
-        "category": "Selecciones"
+        "category": "Catálogo General"
     },
     {
         "title": "Brazil 2026 Player Version Training Zipper Shorts S-3XL",
@@ -1592,12 +1582,12 @@
     {
         "title": "Germany 2026 Player Version Training Shorts S-3XL",
         "img": "https://photo.yupoo.com/minkang/1b2664d797/small.jpg",
-        "category": "Selecciones"
+        "category": "Catálogo General"
     },
     {
         "title": "Argentina 2026 Player Version Training Shorts S-3XL",
         "img": "https://photo.yupoo.com/minkang/55a57864f3/small.jpg",
-        "category": "Selecciones"
+        "category": "Catálogo General"
     },
     {
         "title": "Spain 2026 Player Version Training Shorts S-3XL",
@@ -1607,7 +1597,7 @@
     {
         "title": "Italy 2026 OG Player Version Training Shorts - Green S-3XL",
         "img": "https://photo.yupoo.com/minkang/27257c8716/small.jpg",
-        "category": "Selecciones"
+        "category": "Catálogo General"
     },
     {
         "title": "Spain 2026 OG Player Version Training Shorts - Royal Blue S-3XL",
@@ -1617,7 +1607,7 @@
     {
         "title": "Mexico 2026 OG Player Version Training Shorts - Black S-3XL",
         "img": "https://photo.yupoo.com/minkang/67972c1675/small.jpg",
-        "category": "Selecciones"
+        "category": "Catálogo General"
     },
     {
         "title": "Inter Milan 26/27 Home Shorts S-XXL",
@@ -1632,42 +1622,42 @@
     {
         "title": "Peñarol 98/99 Home Long-Sleeve Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/55c9674443/medium.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Peñarol 96/97 Away Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/ab6f4d2bbf/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Peñarol 94/95 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/e109bf0efa/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Peñarol 2002 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/13bd7b8f32/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Peñarol 1987 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/7bc99519e3/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Peñarol 1982 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/f83bc3f227/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Peñarol 98/99 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/7a1b60790f/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Cobreloa 89/91 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/418d9f9468/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Besiktas 26/27 Third Away Jersey S-4XL",
@@ -1682,17 +1672,17 @@
     {
         "title": "Penarol 02/03 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/714b1975e0/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Peñarol 98/99 Away Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/1ea2a241db/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Olimpia 100th Anniversary Edition Long-Sleeve Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/b26e465f33/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "MC Alger 26/27 Home Player Version Jersey S-XXL",
@@ -1702,7 +1692,7 @@
     {
         "title": "Originals Classic Three Stripes Jersey Dark Blue S-4XL",
         "img": "https://photo.yupoo.com/minkang/7f0965daf9/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Oasis Live '25 Originals White Blue 3-Stripes Football Shirt S-4XL",
@@ -1737,27 +1727,27 @@
     {
         "title": "France 2002 Away Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/5cf2787d6a/medium.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Arsenal 05/06 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/8906b5f2e5/small.jpg",
-        "category": "Premier League"
+        "category": "Catálogo General"
     },
     {
         "title": "Argentina 76/77 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/b3e9b30f98/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Argentina 1986 White Goalkeeper Long-Sleeved Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/4b752e690a/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Sevilla 26/27 White Training Suit Set S-XXL",
         "img": "https://photo.yupoo.com/minkang/03ee5c0b24/medium.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Spain Two-Stars 26/27 Off-white Full Zipper Hooded Windbreaker Set S-XXL",
@@ -1802,7 +1792,7 @@
     {
         "title": "Chelsea 26/27 Black Full Zipper Hooded Windbreaker Set S-XXL",
         "img": "https://photo.yupoo.com/minkang/458fbcd99a/small.jpg",
-        "category": "Premier League"
+        "category": "Catálogo General"
     },
     {
         "title": "Marseille 26/27 Blue Full Zip Hooded Windbreaker Set S-XXL",
@@ -1817,62 +1807,62 @@
     {
         "title": "Valencia 26/27 Home Player Version Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/dacfaf509f/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Real Madrid 26/27 White Special Edition Player Version Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/79430587a0/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Real Madrid 26/27 Green Training Kit Player Version Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/7b1954900b/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Real Madrid 26/27 Green Pre-Match Training Kit Player Version Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/0cf5210ffd/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Real Madrid 26/27 Black Special Edition Player Version Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/b81423e7fb/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Real Madrid 26/27 Black Goalkeeper Player Version Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/80563ae270/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Barcelona 26/27 Third Away Player Version Long-Sleeve Jersey S-4XL",
         "img": "https://photo.yupoo.com/minkang/1b5bbeb846/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Barcelona 26/27 Yellow Goalkeeper Player Version Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/43f1530d74/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Barcelona 26/27 Green Training Kit Player Version Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/03e63b54b9/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Barcelona 26/27 Dark Blue and Red Special Edition Player Version Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/242ea090dc/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Barcelona 26/27 Cyan Commemorative Edition Player Version Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/f833105142/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Argentina 2026 Dark Green Anniversary Edition Player Version Jersey S-4XL",
         "img": "https://photo.yupoo.com/minkang/ace4529946/small.jpg",
-        "category": "Selecciones"
+        "category": "Catálogo General"
     },
     {
         "title": "Club America 26/27 Blue 110th Anniversary Edition Player Version Jersey S-XXL",
@@ -1887,12 +1877,12 @@
     {
         "title": "Real Madrid 26/27 Black Special Edition Player Version Retro Jersey S-3XL",
         "img": "https://photo.yupoo.com/minkang/0a27701ce5/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Japan 2026 EQT White Player Version Retro Jersey S-3XL",
         "img": "https://photo.yupoo.com/minkang/6020a55452/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Hellas Verona 26/27 Away Player Version Jersey S-XXL",
@@ -1907,7 +1897,7 @@
     {
         "title": "M-U 26/27 Black Special Edition Player Version Retro Jersey S-3XL",
         "img": "https://photo.yupoo.com/minkang/cfe39530d7/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Chivas de Guadalajara 26/27 Third Away Women's Jersey S-XXL",
@@ -1932,37 +1922,37 @@
     {
         "title": "Argentina 2026 Pink Commemorative Edition Short Women's Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/78b57492ab/small.jpg",
-        "category": "Selecciones"
+        "category": "Catálogo General"
     },
     {
         "title": "Argentina 2026 Navy Blue Commemorative Edition Short Women's Jersey S-4XL",
         "img": "https://photo.yupoo.com/minkang/8952facc02/small.jpg",
-        "category": "Selecciones"
+        "category": "Catálogo General"
     },
     {
         "title": "Argentina 2026 Navy Blue Commemorative Edition Women's Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/d1b00786db/small.jpg",
-        "category": "Selecciones"
+        "category": "Catálogo General"
     },
     {
         "title": "Argentina 2026 Blue and White Commemorative Edition Women's Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/40491a918e/small.jpg",
-        "category": "Selecciones"
+        "category": "Catálogo General"
     },
     {
         "title": "Argentina 2026 Blue Commemorative Edition Short Women's Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/74dc17b040/small.jpg",
-        "category": "Selecciones"
+        "category": "Catálogo General"
     },
     {
         "title": "Argentina 2026 Blue and White Commemorative Edition Short Women's Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/fea4a40637/small.jpg",
-        "category": "Selecciones"
+        "category": "Catálogo General"
     },
     {
         "title": "Manchester City 26/27 Away Women's Jersey S-2XL",
         "img": "https://photo.yupoo.com/minkang/4fd4aa64d1/small.jpg",
-        "category": "Premier League"
+        "category": "Catálogo General"
     },
     {
         "title": "Inter Miami 26/27 Home Women's Jersey  S-XXL",
@@ -1992,17 +1982,17 @@
     {
         "title": "Argentina 1994 Blue Crew Neck Long Sleeve Retro Sweatshirt S-XXL",
         "img": "https://photo.yupoo.com/minkang/963f6e014a/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Brazil Yellow 1994 Reissue Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/9657a982e3/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Belgrano 99/00 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/f79798358a/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Dinamo Bucarest 26/27 Third  Away Jersey S-4XL",
@@ -2017,32 +2007,32 @@
     {
         "title": "Al Ahli 26/27 Green Special Edition Player Version Retro Jersey S-4XL",
         "img": "https://photo.yupoo.com/minkang/c1befa006e/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Aris Thessaloniki 98/99 Third Away Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/edf2940d14/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Vélez Sarsfield 98/99 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/e78424d727/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Vélez Sarsfield 97/98 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/e36dcc76ea/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Vélez Sarsfield 96/97 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/242a7d3da1/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Vélez Sársfield 98/99 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/04f7038966/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Vélez Sarsfield 26/27 Home Jersey S-4XL",
@@ -2052,32 +2042,32 @@
     {
         "title": "Trabzonspor 98/99 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/76020f9940/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Trabzonspor 94/95 Third Away Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/69e82cb3b3/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Travis Scott Cactus Jack x NK USA Total 90 Retro Jersey S-4XL",
         "img": "https://photo.yupoo.com/minkang/52fc695860/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Travis Scott Cactus Jack x NK USA Gradient Blue and Red Total 90 Retro Jersey S-4X",
         "img": "https://photo.yupoo.com/minkang/94c5a07177/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Travis Scott Cactus Jack x NK Senegal Total 90 Retro Jersey S-4XL",
         "img": "https://photo.yupoo.com/minkang/3639d5cd5b/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Travis Scott Cactus Jack x NK for Canada Total 90 Retro Jersey S-4XL",
         "img": "https://photo.yupoo.com/minkang/79eac49c3a/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "France 26/27 Special Edition Jersey S-XXL",
@@ -2100,11 +2090,6 @@
         "category": "Catálogo General"
     },
     {
-        "title": "Roma 26/27 Third Away Kids Kit Jersey Size 16-28",
-        "img": "https://photo.yupoo.com/minkang/4a9cc2e547/small.jpg",
-        "category": "Catálogo General"
-    },
-    {
         "title": "PSV Eindhoven 26/27 Red 120th Anniversary Edition Kids Kit Jersey Size 16-28",
         "img": "https://photo.yupoo.com/minkang/c05a6e1432/small.jpg",
         "category": "Catálogo General"
@@ -2117,32 +2102,32 @@
     {
         "title": "Barcelona × GOLF WANG 26/27 Blue Kids Kit Jersey Size 16-28",
         "img": "https://photo.yupoo.com/minkang/2e609d8d8f/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Argentina 26/27 Dark Blue Commemorative Edition Kids Kit Jersey Size 16-28",
         "img": "https://photo.yupoo.com/minkang/b94b7c8965/small.jpg",
-        "category": "Selecciones"
+        "category": "Catálogo General"
     },
     {
         "title": "Real Betis 26/27 Away Long-Sleeve Kids Kit Jersey Size 16-28",
         "img": "https://photo.yupoo.com/minkang/c1947cd43a/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Real Betis 26/27 Home Long-sleeved Kids Kit Jersey Size 16-28",
         "img": "https://photo.yupoo.com/minkang/b22f2cc248/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Germany 2026 Third Away Kids Kit Jersey Size 16-28",
         "img": "https://photo.yupoo.com/minkang/6c837ea0a3/small.jpg",
-        "category": "Selecciones"
+        "category": "Catálogo General"
     },
     {
         "title": "Argentina 2026 Green Commemorative Edition Kids Kit Jersey Size 16-28",
         "img": "https://photo.yupoo.com/minkang/974b630a83/small.jpg",
-        "category": "Selecciones"
+        "category": "Catálogo General"
     },
     {
         "title": "Inter Milan 26/27 Third Away Kids Kit Jersey Size 16-28",
@@ -2157,7 +2142,7 @@
     {
         "title": "Tottenham Hotspur 26/27 Third Away Kids Kit Jersey Size 16-28",
         "img": "https://photo.yupoo.com/minkang/379c5e0e9c/small.jpg",
-        "category": "Premier League"
+        "category": "Catálogo General"
     },
     {
         "title": "Sporting CP 26/27 October Pink Kids Kit Jersey Size 16-28",
@@ -2172,7 +2157,7 @@
     {
         "title": "Manchester City 26/27 Third Kids Kit Size 16-28",
         "img": "https://photo.yupoo.com/minkang/2aadd936e1/small.jpg",
-        "category": "Premier League"
+        "category": "Catálogo General"
     },
     {
         "title": "CD Tenerife 26/27 Home Kids Kit Size 16-28",
@@ -2187,7 +2172,7 @@
     {
         "title": "Leicester City 26/27 Third Away Kids Kit Size 16-28",
         "img": "https://photo.yupoo.com/minkang/c700b1ad81/small.jpg",
-        "category": "Premier League"
+        "category": "Catálogo General"
     },
     {
         "title": "Inter Miami 26/27 Home Kids Kit Size 16-28",
@@ -2197,12 +2182,12 @@
     {
         "title": "Germany 26/27 Third Away Kids Kit Size 16-28",
         "img": "https://photo.yupoo.com/minkang/ee871d6cda/small.jpg",
-        "category": "Selecciones"
+        "category": "Catálogo General"
     },
     {
         "title": "Chelsea 26/27 Third Away Kids Kit Size 16-28",
         "img": "https://photo.yupoo.com/minkang/f55fde1902/small.jpg",
-        "category": "Premier League"
+        "category": "Catálogo General"
     },
     {
         "title": "Sao Paulo 25/26 Home Baby Jersey Size 9-12",
@@ -2217,32 +2202,32 @@
     {
         "title": "Argentina 2026 Messi Special Edition Baby Jersey SIZE 9-12",
         "img": "https://photo.yupoo.com/minkang/d7d784de55/small.jpg",
-        "category": "Selecciones"
+        "category": "Catálogo General"
     },
     {
         "title": "Barcelona 26/27 Away  Baby Jersey SIZE 9/12",
         "img": "https://photo.yupoo.com/minkang/47bbd4740b/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Real Madrid 26/27 Third Away Baby Jersey SIZE 9/12",
         "img": "https://photo.yupoo.com/minkang/1d53383c60/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Real Madrid 26/27 Away Baby Jersey SIZE 9/12",
         "img": "https://photo.yupoo.com/minkang/5832f86b0d/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Real Betis 26/27 Third Away  Baby Jersey Size 9/12",
         "img": "https://photo.yupoo.com/minkang/93fd1c3392/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Barcelona 26/27 Third Away  Baby Jersey SIZE 9/12",
         "img": "https://photo.yupoo.com/minkang/b215a4284a/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "USA 2026 Away Baby Jersey Size 9/12",
@@ -2252,12 +2237,12 @@
     {
         "title": "Real Madrid 26/27 Home Baby Jersey SIZE 9/12",
         "img": "https://photo.yupoo.com/minkang/fdde2f37eb/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Mexico 2026 Third Away Baby Jersey Size 9/12",
         "img": "https://photo.yupoo.com/minkang/7c7723edd8/small.jpg",
-        "category": "Selecciones"
+        "category": "Catálogo General"
     },
     {
         "title": "M-U 25/26 Originals Stone Roses Baby Jersey Size 912",
@@ -2267,7 +2252,7 @@
     {
         "title": "Manchester City 26/27 Home Baby Jersey Size 9/12",
         "img": "https://photo.yupoo.com/minkang/fb8e736ae3/small.jpg",
-        "category": "Premier League"
+        "category": "Catálogo General"
     },
     {
         "title": "Ivory Coast 2026 Home Baby Jersey Size 9/12",
@@ -2292,12 +2277,12 @@
     {
         "title": "Barcelona 26/27 Home Baby Jersey SIZE 912",
         "img": "https://photo.yupoo.com/minkang/4a1607d9e1/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Argentina 2026 Away Baby Jersey Size 9/12",
         "img": "https://photo.yupoo.com/minkang/9a7fe5e1a3/small.jpg",
-        "category": "Selecciones"
+        "category": "Catálogo General"
     },
     {
         "title": "Sweden 2026 Away Kids Kit Jersey SIZE 16-28",
@@ -2332,12 +2317,12 @@
     {
         "title": "Real Betis Black Retro Crew Neck Long Sleeve Sweatshirt S-4XL",
         "img": "https://photo.yupoo.com/minkang/892e171d6e/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Real Madrid 26/27 Black Crew Neck Sweatshirt S-4XL",
         "img": "https://photo.yupoo.com/minkang/fac76ea23d/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "M-U 26/27 EQT Red Crew Neck Sweatshirt S-4XL",
@@ -2345,19 +2330,9 @@
         "category": "Catálogo General"
     },
     {
-        "title": "LFC 93/95 Red Crew Neck Long Sleeve Retro Sweatshirt S-4XL",
-        "img": "https://photo.yupoo.com/minkang/48dfeb899c/small.jpg",
-        "category": "Retro"
-    },
-    {
-        "title": "LFC 26/27 EQT Green Crew Neck Sweatshirt S-4XL",
-        "img": "https://photo.yupoo.com/minkang/d81f16222e/small.jpg",
-        "category": "Catálogo General"
-    },
-    {
         "title": "Manchester City 26/27 Away Long-Sleeve Jersey S-4XL",
         "img": "https://photo.yupoo.com/minkang/4f02a1d038/small.jpg",
-        "category": "Premier League"
+        "category": "Catálogo General"
     },
     {
         "title": "Club America 26/27 Blue Long-Sleeve Training Jersey S-4XL",
@@ -2377,12 +2352,7 @@
     {
         "title": "Japan 2026 EQT White Crew Neck Sweatshirt Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/01e07f7fff/small.jpg",
-        "category": "Retro"
-    },
-    {
-        "title": "LFC 02/03 Black and Grey Long-Sleeved Retro Jersey S-XXL",
-        "img": "https://photo.yupoo.com/minkang/916358c7e4/medium.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "M-U 26/27 Red Full Zipper Hooded Windbreaker Set S-XXL",
@@ -2407,57 +2377,42 @@
     {
         "title": "Manchester City 26/27 Royal Blue Full Zipper Hooded Windbreaker Set S-XXL",
         "img": "https://photo.yupoo.com/minkang/6a616e13d8/small.jpg",
-        "category": "Premier League"
-    },
-    {
-        "title": "LFC 26/27 Green Full Zipper Stand Collar Windbreaker Set S-XXL",
-        "img": "https://photo.yupoo.com/minkang/5e02539e83/small.jpg",
-        "category": "Catálogo General"
-    },
-    {
-        "title": "LFC 26/27 Black Full Zip Hooded Windbreaker Set S-XXL",
-        "img": "https://photo.yupoo.com/minkang/cd333b346f/small.jpg",
-        "category": "Catálogo General"
-    },
-    {
-        "title": "LFC 26/27 Black and Red Full Zipper Hooded Windbreaker Set S-XXL",
-        "img": "https://photo.yupoo.com/minkang/04b2e97ced/small.jpg",
         "category": "Catálogo General"
     },
     {
         "title": "Chelsea 26/27 White Full Zipper Stand Collar Windbreaker Set S-XXL",
         "img": "https://photo.yupoo.com/minkang/b42141c905/small.jpg",
-        "category": "Premier League"
+        "category": "Catálogo General"
     },
     {
         "title": "Arsenal 26/27 Royal Blue Full Zipper Windbreaker Set S-XXL",
         "img": "https://photo.yupoo.com/minkang/58daca3986/small.jpg",
-        "category": "Premier League"
+        "category": "Catálogo General"
     },
     {
         "title": "Arsenal 26/27 Royal Blue Full Zipper Hooded Windbreaker Set S-XXL",
         "img": "https://photo.yupoo.com/minkang/fdab60562e/small.jpg",
-        "category": "Premier League"
+        "category": "Catálogo General"
     },
     {
         "title": "Arsenal 26/27 Royal Blue and Red Full Zipper Hooded Windbreaker Set S-XXL",
         "img": "https://photo.yupoo.com/minkang/f057b08064/small.jpg",
-        "category": "Premier League"
+        "category": "Catálogo General"
     },
     {
         "title": "Arsenal 26/27 Red Full Zipper Windbreaker Set S-XXL",
         "img": "https://photo.yupoo.com/minkang/61ca0dda94/small.jpg",
-        "category": "Premier League"
+        "category": "Catálogo General"
     },
     {
         "title": "Arsenal 26/27 Red Full Zipper Hooded Windbreaker Set S-XXL",
         "img": "https://photo.yupoo.com/minkang/6982a5f9e0/small.jpg",
-        "category": "Premier League"
+        "category": "Catálogo General"
     },
     {
         "title": "Arsenal 26/27 Gradient Red Full Zipper Windbreaker Set S-XXL",
         "img": "https://photo.yupoo.com/minkang/65bf295d30/small.jpg",
-        "category": "Premier League"
+        "category": "Catálogo General"
     },
     {
         "title": "Nottingham Forest 26/27 Away Jersey S-4XL",
@@ -2467,16 +2422,6 @@
     {
         "title": "Inter Milan 26/27 Black Training Kit Jersey S-4XL",
         "img": "https://photo.yupoo.com/minkang/94344ce5ec/medium.jpg",
-        "category": "Catálogo General"
-    },
-    {
-        "title": "JUV 26/27 White-Blue Full Zipper Windbreaker Set S-XXL",
-        "img": "https://photo.yupoo.com/minkang/16b682d358/small.jpg",
-        "category": "Catálogo General"
-    },
-    {
-        "title": "JUV 26/27 Gradient White Full Zipper Windbreaker Set S-XXL",
-        "img": "https://photo.yupoo.com/minkang/5a06fd69c9/small.jpg",
         "category": "Catálogo General"
     },
     {
@@ -2502,7 +2447,7 @@
     {
         "title": "Como 1907 26/27 Third Away Jersey S-4XL",
         "img": "https://photo.yupoo.com/minkang/9ab7c126b9/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "AC Milan Light Grey Hooded Windbreaker Y015 S-3XL",
@@ -2522,7 +2467,7 @@
     {
         "title": "Napoli 12/13 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/e20f7fce9b/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Palermo FC 26/27 Third Away Jersey S-4XL",
@@ -2542,17 +2487,12 @@
     {
         "title": "Como 1907 26/27 Black Goalkeeper Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/a48e7dd9f9/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "AC Monza 26/27 Away Jersey S-4XL",
         "img": "https://photo.yupoo.com/minkang/fc117f76bb/small.jpg",
         "category": "Catálogo General"
-    },
-    {
-        "title": "Roma 26/27 EQT White Player Version Retro Jersey S-3XL",
-        "img": "https://photo.yupoo.com/minkang/1d58b8acd2/small.jpg",
-        "category": "Retro"
     },
     {
         "title": "Fiorentina 23/24 Pre-Match Warm-Up Jersey S-4XL",
@@ -2597,7 +2537,7 @@
     {
         "title": "Werder Bremen 97/98 Away Retro Reissue Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/4ffd172322/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Sao Paulo 25/26 Home Baby Jersey Size 9-12",
@@ -2607,32 +2547,32 @@
     {
         "title": "Borussia Monchengladbach 97/98 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/53ebe8dceb/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Bayern Munich 16/17 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/d239f0334e/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Hertha BSC 09/10 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/6bb3f24cc8/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "FC Kaiserslautern 91/92 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/6932b8d50b/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Bayern Munich 26/27 EQT White Player Version Retro Jersey S-3XL",
         "img": "https://photo.yupoo.com/minkang/25329a79f9/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Bayern Munich 26/27 EQT Red Player Version Retro Jersey S-3XL",
         "img": "https://photo.yupoo.com/minkang/1a0c199579/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "RB Leipzig 26/27 Third Away Player Version Jersey S-XXL",
@@ -2682,37 +2622,37 @@
     {
         "title": "River Plate 26/27 EQT White Retro Jersey S-4XL",
         "img": "https://photo.yupoo.com/minkang/36be289bc6/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "River Plate 26/27 EQT White Player Version Retro Jersey S-3XL",
         "img": "https://photo.yupoo.com/minkang/9349317581/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "River Plate 26/27 EQT Red Player Version Retro Jersey S-3XL",
         "img": "https://photo.yupoo.com/minkang/93378edb46/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Boca Juniors 26/27 EQT White Retro Jersey S-4XL",
         "img": "https://photo.yupoo.com/minkang/d15bfc47ff/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Boca Juniors 26/27 EQT Blue Retro Jersey S-4XL",
         "img": "https://photo.yupoo.com/minkang/56afdf7dad/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Boca Juniors 26/27 White Special Edition Player Version Retro Jersey S-3XL",
         "img": "https://photo.yupoo.com/minkang/7e3244873a/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Boca Juniors 26/27 EQT Dark Blue Player Version Retro Jersey S-3XL",
         "img": "https://photo.yupoo.com/minkang/78e0612822/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Boca Juniors 26/27 Blue Goalkeeper Player Version Jersey S-4XL",
@@ -2722,22 +2662,22 @@
     {
         "title": "Rosario Central 89/91 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/448e0433fd/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Independiente Rivadavia 98/99 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/676f43bee7/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Independiente Rivadavia 98/99 Away Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/e3862b9266/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Independiente Rivadavia 10/11 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/1f83185b4b/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Club León 26/27 Home Player Version Jersey S-3XL",
@@ -2772,12 +2712,12 @@
     {
         "title": "Atlético Rosario Central 06/07 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/161814ec66/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Atlético Rosario Central 87/88 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/66ab7f88c2/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Sporting CP 26/27 120th Anniversary Jersey S-XXL",
@@ -2812,7 +2752,7 @@
     {
         "title": "FC Porto 11/12 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/55d17818cc/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Benfica Purple Special Edition Jersey S-4XL",
@@ -2827,7 +2767,7 @@
     {
         "title": "Sporting CP 25/26 NK Total 90s Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/466e1163e9/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Porto Yellow Goalkeeper Kids Kit Size 16-28",
@@ -2957,7 +2897,7 @@
     {
         "title": "FC Groningen 11/12 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/9fc781fbea/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Feyenoord 26/27 Third Away Player Version S-3XL",
@@ -2972,12 +2912,12 @@
     {
         "title": "Ajax 26/27 Casual Black Long-Sleeve Retro Shirt S-4XL",
         "img": "https://photo.yupoo.com/minkang/f2cdf4a105/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "FC Groningen 07/08 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/23a978c310/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Wrexham AFC 26/27 Home Jersey S-4XL",
@@ -3082,7 +3022,7 @@
     {
         "title": "Celtic 85/86 Away Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/6d0191d089/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Rangers 26/27 Away Jersey S-4XL",
@@ -3092,77 +3032,77 @@
     {
         "title": "Rangers 99/00 Away Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/2e4215af4a/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Rangers 94/96 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/bc827dd4d6/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Rangers 94/95 European Third Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/6b5006b666/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Rangers 94/95 Away Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/02bd4561b6/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Rangers 93/94 Away Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/e6a40c9866/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Rangers 90/92 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/141d8ba96b/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Rangers 90/92 Away Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/101c6ab072/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Rangers 82/83 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/091877edfe/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Rangers 15/16 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/c17ae0c486/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Rangers 02/03 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/e47e2e667f/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Rangers 93/94 Away Retro Jersey S-2XL",
         "img": "https://photo.yupoo.com/minkang/5d010ff558/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Celtics 94/96 Away Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/511060ad8e/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Celtics 85/86 Away Retro Jersey S-2XL",
         "img": "https://photo.yupoo.com/minkang/ee8e58b0c7/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Celtics 85/86  Home Retro Jersey S-XXL",
         "img": "https://alfred-internal-1365252509.cos.ap-shanghai.myqcloud.com/yupoo/album/im_photo_album.png",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Celtic 99/00 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/bc8c42a14b/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Universidad de Chile 26/27 Away Long-Sleeved Jersey S-4XL",
@@ -3177,12 +3117,12 @@
     {
         "title": "Colo Colo 2627 EQT White Player Version Retro Jersey S-3XL",
         "img": "https://photo.yupoo.com/minkang/290a25e7af/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Colo Colo 2627 EQT Black Player Version Retro Jersey S-3XL",
         "img": "https://photo.yupoo.com/minkang/eeb61aa1f4/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Colo Colo 26-27 Half-Zip Training Suit – Black S-XXL",
@@ -3192,27 +3132,27 @@
     {
         "title": "Colo-Colo 26/27 EQT White Retro Jersey S-4XL",
         "img": "https://photo.yupoo.com/minkang/ed69f6e3cc/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Colo-Colo 26/27 EQT Black Retro Jersey S-4XL",
         "img": "https://photo.yupoo.com/minkang/0bc72db249/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Universidad de Chile1996 Away Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/21af21e652/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Universidad Católica 2010 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/9385e29aad/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Universidad Catolica 1998 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/09ba231e52/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Deportivo Universidad Católica 2009 Home Jersey S-XXL",
@@ -3222,62 +3162,62 @@
     {
         "title": "Deportivo Universidad Católica 1998 Third Away Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/e7df5e3c33/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Deportivo Universidad Católica 1998  Away Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/d5b6fe9169/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Deportivo Universidad Católica 1996 Third Away Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/dadf1248af/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Colo Colo 98/99 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/54ac694b2b/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Colo Colo 98/99 Away Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/fd830ad08f/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Colo Colo 97/98 Away Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/872cbc8d75/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Colo Colo 96/97 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/e173c16b8b/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Colo Colo 96/97 Away Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/c842e75367/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Colo Colo 95/96 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/a40234af4b/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Colo Colo 95/96 Away Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/f6ca40b44c/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Colo Colo 92/93 Away Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/3a78288b61/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Chile 2014 Home Retro Jersey S-XXL",
         "img": "https://photo.yupoo.com/minkang/1263fffad5/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Inter Miami 27/28 Away Player Version Jersey",
@@ -3407,12 +3347,12 @@
     {
         "title": "Chivas Guadalajara 04/05 Home Long-sleeved Retro Jersey S-3XL",
         "img": "https://photo.yupoo.com/minkang/75fdab2850/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Chivas 94/95 Away Long-Sleeve Retro Jersey S-3XL",
         "img": "https://photo.yupoo.com/minkang/3498e44de7/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Atlas 26/27 Black 110th Anniversary Edition Player Version Jersey S-XXL",
@@ -3457,7 +3397,7 @@
     {
         "title": "Club América 26/27 Blue 110th Anniversary Retro Jersey S-4XL",
         "img": "https://photo.yupoo.com/minkang/f8fbe14e81/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Club América 26/27 Blue 110th Anniversary Edition Long-Sleeve Jersey S-4XL",
@@ -3472,7 +3412,7 @@
     {
         "title": "Japan 26/27 EQT White Retro Jersey S-4XL",
         "img": "https://photo.yupoo.com/minkang/c8ccc28392/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Yakos 26/27 Home Jersey S-4XL",
@@ -3627,7 +3567,7 @@
     {
         "title": "Flamengo 2024/25 Lifestyler Retro Jersey S-4XL",
         "img": "https://photo.yupoo.com/minkang/61612fea/small.jpg",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "Vasco da Gama 24/25 Third Away Women's Jersey S-XXL",
@@ -3642,7 +3582,7 @@
     {
         "title": "25/26 Sevilla away S-4XL",
         "img": "https://photo.yupoo.com/minkang/c7711da2/small.jpg",
-        "category": "LaLiga"
+        "category": "Catálogo General"
     },
     {
         "title": "Flamengo 24/25 home S-4XL",
@@ -3697,7 +3637,7 @@
     {
         "title": "Retro size",
         "img": "https://photo.yupoo.com/minkang/5388c7e1d8/medium.png",
-        "category": "Retro"
+        "category": "Catálogo General"
     },
     {
         "title": "size",
