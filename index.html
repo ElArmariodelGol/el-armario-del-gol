@@ -4,25 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>El Armario del Gol</title>
-    <!-- Favicon con tu logo -->
-    <link rel="icon" type="image/jpeg" href="imagenes/logo.jpg">
+    <!-- Favicon con tu logo corporativo -->
+    <link rel="icon" type="image/jpeg" href="imagenes/LOGO.BLA.jpg">
     <style>
         :root {
-            --bg-dark: #0b0f19;
-            --bg-card: #131c2e;
-            --accent: #10b981;
-            --accent-glow: rgba(16, 185, 129, 0.2);
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border: #1e293b;
+            --bg-dark: #070d09;
+            --bg-card: #0f1d13;
+            --accent: #2e7d32;
+            --accent-bright: #4caf50;
+            --accent-glow: rgba(46, 125, 50, 0.3);
+            --text-main: #f1f8f2;
+            --text-muted: #a3b8a8;
+            --border: #1b3822;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
         body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
 
-        /* Header Minimalista y Estiloso */
+        /* Header Corporativo */
         header {
-            background-color: rgba(11, 15, 25, 0.9);
+            background-color: rgba(7, 13, 9, 0.95);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
             position: sticky; top: 0; z-index: 100;
@@ -34,13 +35,14 @@
         }
 
         .brand {
-            display: flex; align-items: center; gap: 0.8rem; text-decoration: none; color: var(--text-main);
+            display: flex; align-items: center; gap: 0.9rem; text-decoration: none; color: var(--text-main);
         }
         .brand img {
-            width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent);
+            width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-bright);
+            box-shadow: 0 0 10px var(--accent-glow);
         }
         .brand span { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px; }
-        .brand span span { color: var(--accent); }
+        .brand span span { color: var(--accent-bright); }
 
         .search-bar { width: 100%; max-width: 380px; }
         .search-bar input {
@@ -48,7 +50,7 @@
             border: 1px solid var(--border); background: var(--bg-card); color: white;
             font-size: 0.95rem; outline: none; transition: all 0.3s;
         }
-        .search-bar input:focus { border-color: var(--accent); box-shadow: 0 0 15px var(--accent-glow); }
+        .search-bar input:focus { border-color: var(--accent-bright); box-shadow: 0 0 15px var(--accent-glow); }
 
         /* Filtros de Categorías */
         .filters {
@@ -60,7 +62,7 @@
             padding: 0.5rem 1.2rem; border-radius: 20px; cursor: pointer; white-space: nowrap; font-weight: 500; font-size: 0.9rem; transition: all 0.2s;
         }
         .filter-btn:hover { border-color: var(--text-muted); color: var(--text-main); }
-        .filter-btn.active { background: var(--accent); color: #000; font-weight: 700; border-color: var(--accent); box-shadow: 0 0 15px var(--accent-glow); }
+        .filter-btn.active { background: var(--accent-bright); color: #000; font-weight: 700; border-color: var(--accent-bright); box-shadow: 0 0 15px var(--accent-glow); }
 
         /* Grid de Productos */
         .catalog {
@@ -76,16 +78,16 @@
         .card {
             background: var(--bg-card); border-radius: 16px; overflow: hidden;
             border: 1px solid var(--border); transition: all 0.3s ease;
-            display: flex; flex-direction: column; position: relative;
+            display: flex; flex-direction: column; position: relative; cursor: pointer;
         }
-        .card:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .card:hover { transform: translateY(-6px); border-color: var(--accent-bright); box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
         
-        .card-img-container { width: 100%; aspect-ratio: 1/1; background: #070a10; position: relative; overflow: hidden; }
+        .card-img-container { width: 100%; aspect-ratio: 1/1; background: #040805; position: relative; overflow: hidden; }
         .card-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
         .card:hover .card-img { transform: scale(1.05); }
 
         .card-body { padding: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem; flex: 1; justify-content: space-between; }
-        .card-tag { font-size: 0.7rem; color: var(--accent); text-transform: uppercase; font-weight: 800; letter-spacing: 1px; }
+        .card-tag { font-size: 0.7rem; color: var(--accent-bright); text-transform: uppercase; font-weight: 800; letter-spacing: 1px; }
         .card-title { font-size: 1rem; font-weight: 600; color: var(--text-main); line-height: 1.4; }
 
         /* Footer limpio */
@@ -94,7 +96,7 @@
             color: var(--text-muted); font-size: 0.85rem; margin-top: auto;
         }
 
-        /* Modal Limpio para Ver Imagen Grande */
+        /* Modal para Ver Imagen Grande */
         .modal {
             display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85);
             z-index: 200; justify-content: center; align-items: center; padding: 1.5rem;
@@ -113,7 +115,7 @@
             color: white; width: 35px; height: 35px; border-radius: 50%; font-size: 1.2rem; cursor: pointer;
             z-index: 10; display: flex; align-items: center; justify-content: center; transition: background 0.2s;
         }
-        .close-btn:hover { background: var(--accent); color: #000; }
+        .close-btn:hover { background: var(--accent-bright); color: #000; }
         
         .modal-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; background: #000; }
         .modal-info { padding: 1.5rem; text-align: center; }
@@ -124,8 +126,8 @@
 
     <header>
         <a href="#" class="brand">
-            <!-- AQUÍ SE CARGA TU LOGO -->
-            <img src="imagenes/logo.jpg" alt="Logo">
+            <!-- Si tu archivo de logo se llama de otra forma en la carpeta imagenes, cambia aqui el nombre exacto -->
+            <img src="imagenes/logo.jpg" alt="Logo El Armario del Gol" onerror="this.src='imagenes/LOGO.BLA.jpg'">
             <div>EL ARMARIO DEL <span>GOL</span></div>
         </a>
         <div class="search-bar">
@@ -164,7 +166,6 @@
         let productos = [];
         let currentCategory = "Todos";
 
-        // Cargar catálogo generado por el robot de Yupoo
         fetch('productos.json')
             .then(response => response.json())
             .then(data => {
@@ -223,7 +224,7 @@
         }
 
         function closeModal() {
-            document.getElementById("productModal5" || "productModal").classList.remove("open");
+            document.getElementById("productModal").classList.remove("open");
         }
     </script>
 </body>
