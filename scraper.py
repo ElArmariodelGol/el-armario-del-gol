@@ -1,80 +1,104 @@
-import os
-import json
-import re
 import requests
 from bs4 import BeautifulSoup
+import json
 
-# CONFIGURACIÓN
-YUPOO_URL = "https://minkang.x.yupoo.com/albums?tab=gallery"
-IMG_DIR = "imagenes"
-JSON_FILE = "productos.json"
-PRECIO_DEFECTO = 25  # Precio si no lo pones en el título de Yupoo
-
-os.makedirs(IMG_DIR, exist_ok=True)
+# Enlace directo a tu Yupoo
+YUPOO_URL = "https://minkang.x.yupoo.com/albums"
 
 headers = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-    "Referer": YUPOO_URL  # Clave para que Yupoo deje descargar las fotos
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
 }
 
-def detectar_categoria(titulo):
-    t = titulo.lower()
-    if any(x in t for x in ["madrid", "barcelona", "atletico", "betis", "sevilla", "laliga"]):
-        return "LaLiga"
-    if any(x in t for x in ["arsenal", "chelsea", "liverpool", "city", "united", "premier"]):
-        return "Premier League"
-    if any(x in t for x in ["españa", "espana", "argentina", "brasil", "francia", "selección"]):
-        return "Selecciones"
-    if any(x in t for x in ["retro", "199", "200", "classic"]):
-        return "Retro"
-    return "Otros"
-
-def extraer_precio(titulo):
-    # Si pones "25€" o "25EUR" en el título de Yupoo, lo detecta solo
-    match = re.search(r'(\d+)\s*(?:€|eur)', titulo, re.IGNORECASE)
-    return int(match.group(1)) if match else PRECIO_DEFECTO
-
-def actualizar_catalogo():
-    print("Conectando con Yupoo...")
-    resp = requests.get(YUPOO_URL, headers=headers)
-    soup = BeautifulSoup(resp.text, "html.parser")
-    
-    albumes = soup.select(".album__main")
+def obtener_productos():
     productos = []
-
-    for idx, album in enumerate(albumes, start=1):
-        titulo_el = album.select_one(".album__title")
-        img_el = album.select_one("img")
+    page = 1
+    
+    while True:
+        url_pag = f"{YUPOO_URL}?page={page}" if page == 1 else f"{YUPOO_URL}?page={page}"
+        print(f"Buscando en: {url_pag}")
         
-        if not titulo_el or not img_el:
-            continue
+        try:
+            response = requests.get(url_pag, headers=headers)
+            if response.status_code != 200:
+                break
 
-        titulo = titulo_el.get_text(strip=True)
-        # Yupoo guarda la imagen real en data-origin-src o src
-        img_url = img_el.get("data-origin-src") or img_el.get("src")
-        if img_url.startswith("//"):
-            img_url = "https:" + img_url
+            soup = BeautifulSoup(response.text, 'html.parser')
+            
+            # Selectores habituales para los álbumes de Yupoo
+            albums = soup.find_all('div', class_='album__main') or soup.find_all('a', class_='album__item')
+            
+            if not albums:
+                # Intento alternativo de búsqueda por etiquetas si cambia el diseño
+                albums = soup.select('a.album')
+                if not albums:
+                    break
 
-        # Descargar imagen localmente
-        nombre_archivo = f"camiseta_{idx}.jpg"
-        ruta_local = os.path.join(IMG_DIR, nombre_archivo)
-        
-        img_data = requests.get(img_url, headers=headers).content
-        with open(ruta_local, "wb") as f:
-            f.write(img_data)
+            contador_pagina = 0
+            for album in albums:
+                # Extraer título
+                title_elem = album.find('div', class_='album__title') or album.find('span', class_='album__title') or album.find('img')
+                if title_elem and title_elem.has_attr('alt'):
+                    title = title_elem['alt'].strip()
+                elif title_elem:
+                    title = title_elem.text.strip()
+                else:
+                    title = "Camiseta de Fútbol"
 
-        productos.append({
-            "id": idx,
-            "title": titulo,
-            "category": detectar_categoria(titulo),
-            "price": extraer_precio(titulo),
-            "img": f"{IMG_DIR}/{nombre_archivo}"
-        })
-        print(f"Guardado: {titulo}")
+                if not title or title == "":
+                    title = "Camiseta de Fútbol"
 
-    with open(JSON_FILE, "w", encoding="utf-8") as f:
-        json.dump(productos, f, ensure_ascii=False, indent=2)
-    print(f"¡Listo! {len(productos)} productos actualizados.")
+                # Extraer imagen de portada
+                img_elem = album.find('img')
+                img_url = ""
+                if img_elem:
+                    img_url = img_elem.get('data-src') or img_elem.get('src') or img_elem.get('data-original')
+                    if img_url and img_url.startswith('//'):
+                        img_url = "https:" + img_url
+                    elif img_url and img_url.startswith('/'):
+                        img_url = "https://minkang.x.yupoo.com" + img_url
+
+                if img_url:
+                    # Categorización automática inteligente por palabras clave
+                    category = "Otros"
+                    t_lower = title.lower()
+                    if any(k in t_lower for k in ['madrid', 'barcelona', 'atlético', 'valencia', 'sevilla', 'betis', 'laliga', 'real madrid', 'fc barcelona']):
+                        category = "LaLiga"
+                    elif any(k in t_lower for k in ['premier', 'arsenal', 'chelsea', 'city', 'united', 'liverpool', 'tottenham', 'manchester']):
+                        category = "Premier League"
+                    elif any(k in t_lower for k in ['retro', 'vintage', 'classic', '90', '80', 'historic', 'remake']):
+                        category = "Retro"
+                    elif any(k in t_lower for k in ['españa', 'argentina', 'brasil', 'francia', 'selección', 'world cup', 'italy', 'germany', 'portugal']):
+                        category = "Selecciones"
+
+                    # Evitar duplicados
+                    if not any(p['img'] == img_url for p in productos):
+                        productos.append({
+                            "title": title,
+                            "img": img_url,
+                            "category": category
+                        })
+                        contador_pagina += 1
+
+            # Si en esta página no encontró productos nuevos, salimos del bucle
+            if contador_pagina == 0 and page > 1:
+                break
+                
+            page += 1
+            if page > 15: # Límite de seguridad de páginas
+                break
+                
+        except Exception as e:
+            print(f"Error procesando la página {page}: {e}")
+            break
+
+    print(f"Total de productos extraídos: {len(productos)}")
+    return productos
 
 if __name__ == "__main__":
-    actualizar_catalogo()
+    datos = obtener_productos()
+    if datos:
+        with open("productos.json", "w", encoding="utf-8") as f:
+            json.dump(datos, f, ensure_ascii=False, indent=4)
+        print("Archivo productos.json guardado con éxito.")
+    else:
+        print("No se encontraron productos.")
