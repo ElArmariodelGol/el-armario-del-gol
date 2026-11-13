@@ -4,7 +4,7 @@ import json
 import time
 
 # Enlace base de tus álbumes en Yupoo
-BASE_URL = "https://minkang.x.yupoo.com/categories"
+BASE_URL = "https://minkang.x.yupoo.com/albums"
 
 headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
@@ -13,13 +13,12 @@ headers = {
 def extraer_todo_yupoo():
     productos = []
     page = 1
-    max_paginas = 120  # Límite ampliado a 120 páginas
 
-    print(f"Iniciando extracción automática de Yupoo (hasta {max_paginas} páginas)...")
+    print("Iniciando extracción automática de todas las páginas de Yupoo sin límite...")
 
-    while page <= max_paginas:
+    while True:
         url_actual = f"{BASE_URL}?page={page}"
-        print(f"Leyendo página {page} de {max_paginas}...")
+        print(f"Leyendo página {page}...")
         
         try:
             response = requests.get(url_actual, headers=headers, timeout=15)
@@ -34,7 +33,7 @@ def extraer_todo_yupoo():
             if not albums:
                 albums = soup.select('a.album')
             
-            # Si una página no devuelve ningún álbum, hemos llegado al final real del catálogo
+            # Si una página no devuelve ningún álbum, hemos llegado al final absoluto del catálogo
             if not albums:
                 print(f"No hay más álbumes en la página {page}. ¡Catálogo completamente descargado!")
                 break
