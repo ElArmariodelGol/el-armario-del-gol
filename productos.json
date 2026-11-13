@@ -1,1 +1,842 @@
-[]
+[
+  {
+    "id": 1,
+    "title": "Torreense 26/27 Home Jersey S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_1.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Stade Rennais 96/97 Home Retro Jersey S-XXL",
+    "category": "Retro",
+    "price": 25,
+    "img": "imagenes/camiseta_2.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Sporting CP 26/27 120th Anniversary Jersey S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_3.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Sport Recife 26/27 Third Away Jersey S-4XL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_4.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Sevilla 41/42 Home Long-Sleeve Retro Jersey S-XXL",
+    "category": "LaLiga",
+    "price": 25,
+    "img": "imagenes/camiseta_5.jpg"
+  },
+  {
+    "id": 6,
+    "title": "Sevilla 26/27 White Training Suit Set S-XXL",
+    "category": "LaLiga",
+    "price": 25,
+    "img": "imagenes/camiseta_6.jpg"
+  },
+  {
+    "id": 7,
+    "title": "Sevilla 06/07 Home Retro Jersey S-XXL",
+    "category": "LaLiga",
+    "price": 25,
+    "img": "imagenes/camiseta_7.jpg"
+  },
+  {
+    "id": 8,
+    "title": "Real Madrid x Y-3 Black Special Edition Jersey S-4XL",
+    "category": "LaLiga",
+    "price": 25,
+    "img": "imagenes/camiseta_8.jpg"
+  },
+  {
+    "id": 9,
+    "title": "Real Madrid 26/27 White Commemorative Edition POLO Jersey S-4XL",
+    "category": "LaLiga",
+    "price": 25,
+    "img": "imagenes/camiseta_9.jpg"
+  },
+  {
+    "id": 10,
+    "title": "Real Betis 26/27 Windproof Hooded Jacket S-XXL",
+    "category": "LaLiga",
+    "price": 25,
+    "img": "imagenes/camiseta_10.jpg"
+  },
+  {
+    "id": 11,
+    "title": "PSG 27/28 Red Training Jersey S-2XL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_11.jpg"
+  },
+  {
+    "id": 12,
+    "title": "PSG 26/27 Third Away Long-Sleeve Jersey S-4XL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_12.jpg"
+  },
+  {
+    "id": 13,
+    "title": "PSG 26/27 Purple Special Edition Jersey S-4XL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_13.jpg"
+  },
+  {
+    "id": 14,
+    "title": "Peñarol 98/99 Home Retro Jersey S-XXL",
+    "category": "Retro",
+    "price": 25,
+    "img": "imagenes/camiseta_14.jpg"
+  },
+  {
+    "id": 15,
+    "title": "Peñarol 98/99 Home Long-Sleeve Retro Jersey S-XXL",
+    "category": "Retro",
+    "price": 25,
+    "img": "imagenes/camiseta_15.jpg"
+  },
+  {
+    "id": 16,
+    "title": "Peñarol 96/97 Home Retro Jersey S-XXL",
+    "category": "Retro",
+    "price": 25,
+    "img": "imagenes/camiseta_16.jpg"
+  },
+  {
+    "id": 17,
+    "title": "Peñarol 96/97 Away Retro Jersey S-XXL",
+    "category": "Retro",
+    "price": 25,
+    "img": "imagenes/camiseta_17.jpg"
+  },
+  {
+    "id": 18,
+    "title": "Peñarol 94/95 Home Retro Jersey S-XXL",
+    "category": "Retro",
+    "price": 25,
+    "img": "imagenes/camiseta_18.jpg"
+  },
+  {
+    "id": 19,
+    "title": "Peñarol 94/95 Home Long-Sleeve Retro Jersey S-XXL",
+    "category": "Retro",
+    "price": 25,
+    "img": "imagenes/camiseta_19.jpg"
+  },
+  {
+    "id": 20,
+    "title": "Peñarol 2002 Home Retro Jersey S-XXL",
+    "category": "Retro",
+    "price": 25,
+    "img": "imagenes/camiseta_20.jpg"
+  },
+  {
+    "id": 21,
+    "title": "Peñarol 1987 Home Retro Jersey S-XXL",
+    "category": "Retro",
+    "price": 25,
+    "img": "imagenes/camiseta_21.jpg"
+  },
+  {
+    "id": 22,
+    "title": "Peñarol 1982 Home Retro Jersey S-XXL",
+    "category": "Retro",
+    "price": 25,
+    "img": "imagenes/camiseta_22.jpg"
+  },
+  {
+    "id": 23,
+    "title": "Malaga 26/27 Tan Training Jersey S-3XL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_23.jpg"
+  },
+  {
+    "id": 24,
+    "title": "LFC 26/27 Red Retro Culture Jersey S-4XL",
+    "category": "Retro",
+    "price": 25,
+    "img": "imagenes/camiseta_24.jpg"
+  },
+  {
+    "id": 25,
+    "title": "LFC 02/03 Black and Grey Long-Sleeved Retro Jersey S-XXL",
+    "category": "Retro",
+    "price": 25,
+    "img": "imagenes/camiseta_25.jpg"
+  },
+  {
+    "id": 26,
+    "title": "Inter Milan 26/27 Third Away Long-Sleeve Jersey S-4XL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_26.jpg"
+  },
+  {
+    "id": 27,
+    "title": "Inter Milan 26/27 Black Training Kit Jersey S-4XL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_27.jpg"
+  },
+  {
+    "id": 28,
+    "title": "France 2002 Away Retro Jersey S-XXL",
+    "category": "Retro",
+    "price": 25,
+    "img": "imagenes/camiseta_28.jpg"
+  },
+  {
+    "id": 29,
+    "title": "Flamengo 27/28 Home Jersey S-4XL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_29.jpg"
+  },
+  {
+    "id": 30,
+    "title": "Cruzeiro 2003 Home Retro Jersey S-XXL",
+    "category": "Retro",
+    "price": 25,
+    "img": "imagenes/camiseta_30.jpg"
+  },
+  {
+    "id": 31,
+    "title": "Cobreloa 89/91 Home Retro Jersey S-XXL",
+    "category": "Retro",
+    "price": 25,
+    "img": "imagenes/camiseta_31.jpg"
+  },
+  {
+    "id": 32,
+    "title": "Chivas de Guadalajara 26/27 Third Away Women's Jersey S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_32.jpg"
+  },
+  {
+    "id": 33,
+    "title": "Chivas de Guadalajara 26/27 Red 30th Anniversary Edition Player Version Jersey S-4XL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_33.jpg"
+  },
+  {
+    "id": 34,
+    "title": "Chivas de Guadalajara 26/27 Red 30th Anniversary Edition Jersey S-4XL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_34.jpg"
+  },
+  {
+    "id": 35,
+    "title": "Bayern Munich 26/27 White Special Edition Jersey S-4XL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_35.jpg"
+  },
+  {
+    "id": 36,
+    "title": "Bayern Munich 26/27 Third Away Player Version Long-Sleeve Jersey S-3XL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_36.jpg"
+  },
+  {
+    "id": 37,
+    "title": "Barcelona x GOLF WANG 26/27 Cyan Collaboration Jersey S-4XL",
+    "category": "LaLiga",
+    "price": 25,
+    "img": "imagenes/camiseta_37.jpg"
+  },
+  {
+    "id": 38,
+    "title": "Aston Villa 26/27 Home Long-sleeved Jersey S-4XL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_38.jpg"
+  },
+  {
+    "id": 39,
+    "title": "Arsenal 05/06 Home Retro Jersey S-XXL",
+    "category": "Premier League",
+    "price": 25,
+    "img": "imagenes/camiseta_39.jpg"
+  },
+  {
+    "id": 40,
+    "title": "Argentina 76/77 Home Retro Jersey S-XXL",
+    "category": "Selecciones",
+    "price": 25,
+    "img": "imagenes/camiseta_40.jpg"
+  },
+  {
+    "id": 41,
+    "title": "Argentina 1986 White Goalkeeper Long-Sleeved Retro Jersey S-XXL",
+    "category": "Selecciones",
+    "price": 25,
+    "img": "imagenes/camiseta_41.jpg"
+  },
+  {
+    "id": 42,
+    "title": "Spain Two-Stars 26/27 Off-white Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_42.jpg"
+  },
+  {
+    "id": 43,
+    "title": "Spain Two-Stars 26/27 Lake Blue Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_43.jpg"
+  },
+  {
+    "id": 44,
+    "title": "Senegal Two-Stars 26/27 Green Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_44.jpg"
+  },
+  {
+    "id": 45,
+    "title": "River Plate 26/27 Black Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_45.jpg"
+  },
+  {
+    "id": 46,
+    "title": "Real Madrid 26/27 White Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "LaLiga",
+    "price": 25,
+    "img": "imagenes/camiseta_46.jpg"
+  },
+  {
+    "id": 47,
+    "title": "Real Madrid 26/27 White Full Zip Hooded Windbreaker Set S-XXL",
+    "category": "LaLiga",
+    "price": 25,
+    "img": "imagenes/camiseta_47.jpg"
+  },
+  {
+    "id": 48,
+    "title": "Real Madrid 26/27 White and Green Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "LaLiga",
+    "price": 25,
+    "img": "imagenes/camiseta_48.jpg"
+  },
+  {
+    "id": 49,
+    "title": "Real Madrid 26/27 Royal Blue Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "LaLiga",
+    "price": 25,
+    "img": "imagenes/camiseta_49.jpg"
+  },
+  {
+    "id": 50,
+    "title": "Real Madrid 26/27 Light Green Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "LaLiga",
+    "price": 25,
+    "img": "imagenes/camiseta_50.jpg"
+  },
+  {
+    "id": 51,
+    "title": "Real Madrid 26/27 Green Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "LaLiga",
+    "price": 25,
+    "img": "imagenes/camiseta_51.jpg"
+  },
+  {
+    "id": 52,
+    "title": "Real Madrid 26/27 Fluorescent Green Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "LaLiga",
+    "price": 25,
+    "img": "imagenes/camiseta_52.jpg"
+  },
+  {
+    "id": 53,
+    "title": "Real Madrid 26/27 Black Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "LaLiga",
+    "price": 25,
+    "img": "imagenes/camiseta_53.jpg"
+  },
+  {
+    "id": 54,
+    "title": "PSG Two-Stars 26/27 Dark Cyan Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_54.jpg"
+  },
+  {
+    "id": 55,
+    "title": "PSG Two-Stars 26/27 Blue Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_55.jpg"
+  },
+  {
+    "id": 56,
+    "title": "PSG Two-Stars 26/27 Black Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_56.jpg"
+  },
+  {
+    "id": 57,
+    "title": "PSG 26/27 White Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_57.jpg"
+  },
+  {
+    "id": 58,
+    "title": "PSG 26/27 Two-Stars Black Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_58.jpg"
+  },
+  {
+    "id": 59,
+    "title": "PSG 26/27 Royal Blue Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_59.jpg"
+  },
+  {
+    "id": 60,
+    "title": "Portugal 26/27 Red Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_60.jpg"
+  },
+  {
+    "id": 61,
+    "title": "Chelsea 26/27 Black Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "Premier League",
+    "price": 25,
+    "img": "imagenes/camiseta_61.jpg"
+  },
+  {
+    "id": 62,
+    "title": "Mexico 26/27 Black Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_62.jpg"
+  },
+  {
+    "id": 63,
+    "title": "Marseille 26/27 Blue Full Zip Hooded Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_63.jpg"
+  },
+  {
+    "id": 64,
+    "title": "Marseille 26/27 Black Full Zip Hooded Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_64.jpg"
+  },
+  {
+    "id": 65,
+    "title": "Marseille 26/27 Black and Blue Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_65.jpg"
+  },
+  {
+    "id": 66,
+    "title": "Marseille 26/27 All Blue Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_66.jpg"
+  },
+  {
+    "id": 67,
+    "title": "Brazil 26/27 Royal Blue Full Zipper Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_67.jpg"
+  },
+  {
+    "id": 68,
+    "title": "M-U 26/27 Red Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_68.jpg"
+  },
+  {
+    "id": 69,
+    "title": "M-U 26/27 Dark Red Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_69.jpg"
+  },
+  {
+    "id": 70,
+    "title": "M-U 26/27 Blue Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_70.jpg"
+  },
+  {
+    "id": 71,
+    "title": "M-U 26/27 Black Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_71.jpg"
+  },
+  {
+    "id": 72,
+    "title": "Manchester City 26/27 Royal Blue Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "Premier League",
+    "price": 25,
+    "img": "imagenes/camiseta_72.jpg"
+  },
+  {
+    "id": 73,
+    "title": "LFC 26/27 Green Full Zipper Stand Collar Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_73.jpg"
+  },
+  {
+    "id": 74,
+    "title": "LFC 26/27 Black Full Zip Hooded Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_74.jpg"
+  },
+  {
+    "id": 75,
+    "title": "LFC 26/27 Black and Red Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_75.jpg"
+  },
+  {
+    "id": 76,
+    "title": "JUV 26/27 White-Blue Full Zipper Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_76.jpg"
+  },
+  {
+    "id": 77,
+    "title": "JUV 26/27 Gradient White Full Zipper Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_77.jpg"
+  },
+  {
+    "id": 78,
+    "title": "Italy 26/27 White Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_78.jpg"
+  },
+  {
+    "id": 79,
+    "title": "Italy 26/27 Green Full-Zip Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_79.jpg"
+  },
+  {
+    "id": 80,
+    "title": "Italy 26/27 Green Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_80.jpg"
+  },
+  {
+    "id": 81,
+    "title": "Italy 26/27 Dark Blue Full Zipper Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_81.jpg"
+  },
+  {
+    "id": 82,
+    "title": "Inter Milan 26/27 Grey Full Zipper Stand Collar Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_82.jpg"
+  },
+  {
+    "id": 83,
+    "title": "Inter Milan 26/27 Black Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_83.jpg"
+  },
+  {
+    "id": 84,
+    "title": "Germany 26/27 White Full Zipper Stand Collar Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_84.jpg"
+  },
+  {
+    "id": 85,
+    "title": "Germany 26/27 Red Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_85.jpg"
+  },
+  {
+    "id": 86,
+    "title": "Germany 26/27 Black Full Zipper Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_86.jpg"
+  },
+  {
+    "id": 87,
+    "title": "Germany 26/27 Black Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_87.jpg"
+  },
+  {
+    "id": 88,
+    "title": "France Two-Stars 26/27 Navy Blue Full-Zip Hooded Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_88.jpg"
+  },
+  {
+    "id": 89,
+    "title": "France Two-Stars 26/27 Navy Blue Full Zipper Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_89.jpg"
+  },
+  {
+    "id": 90,
+    "title": "France Two-Stars 26/27 Green Full-Zip Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_90.jpg"
+  },
+  {
+    "id": 91,
+    "title": "France Two-Stars 26/27 Blue Full Zipper Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_91.jpg"
+  },
+  {
+    "id": 92,
+    "title": "France Two-Stars 26/27 Blue Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_92.jpg"
+  },
+  {
+    "id": 93,
+    "title": "France 26/27 Navy Blue Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_93.jpg"
+  },
+  {
+    "id": 94,
+    "title": "France 26/27 Fluorescent Green Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_94.jpg"
+  },
+  {
+    "id": 95,
+    "title": "England One-Stars2627 Royal Blue Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_95.jpg"
+  },
+  {
+    "id": 96,
+    "title": "England 26/27 One-Stars Royal Blue Full Zipper Stand Collar Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_96.jpg"
+  },
+  {
+    "id": 97,
+    "title": "England 26/27 One-Stars Red Full Zipper Stand Collar Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_97.jpg"
+  },
+  {
+    "id": 98,
+    "title": "Cote d’Ivoire 26/27 Green Full-Zip Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_98.jpg"
+  },
+  {
+    "id": 99,
+    "title": "Colombia 26/27 Royal Blue Full-Zip Hooded Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_99.jpg"
+  },
+  {
+    "id": 100,
+    "title": "Colombia 26/27 Royal Blue Full Zipper Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_100.jpg"
+  },
+  {
+    "id": 101,
+    "title": "Colombia 26/27 Blue Full-Zip Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_101.jpg"
+  },
+  {
+    "id": 102,
+    "title": "Chelsea 26/27 White Full Zipper Stand Collar Windbreaker Set S-XXL",
+    "category": "Premier League",
+    "price": 25,
+    "img": "imagenes/camiseta_102.jpg"
+  },
+  {
+    "id": 103,
+    "title": "Brazil 26/27 Blue Full Zipper Stand Collar Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_103.jpg"
+  },
+  {
+    "id": 104,
+    "title": "Bayern Munich 26/27 White Full Zipper Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_104.jpg"
+  },
+  {
+    "id": 105,
+    "title": "Brazil 26/27 Black Full Zipper Stand Collar Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_105.jpg"
+  },
+  {
+    "id": 106,
+    "title": "Boca Juniors 26/27 Royal Blue Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_106.jpg"
+  },
+  {
+    "id": 107,
+    "title": "Boca Juniors 26/27 Dark Blue Full Zip Hooded Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_107.jpg"
+  },
+  {
+    "id": 108,
+    "title": "Bayern Munich 26/27 Red Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_108.jpg"
+  },
+  {
+    "id": 109,
+    "title": "Bayern Munich 26/27 Royal Blue Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_109.jpg"
+  },
+  {
+    "id": 110,
+    "title": "Bayern Munich 26/27 Grey-blue Full Zipper Windbreaker Set S-XXL",
+    "category": "Otros",
+    "price": 25,
+    "img": "imagenes/camiseta_110.jpg"
+  },
+  {
+    "id": 111,
+    "title": "Barcelona 26/27 Royal Blue Full Zipper Windbreaker Set S-XXL",
+    "category": "LaLiga",
+    "price": 25,
+    "img": "imagenes/camiseta_111.jpg"
+  },
+  {
+    "id": 112,
+    "title": "Barcelona 26/27 Royal Blue Full Zipper Stand Collar Windbreaker Set S-XXL",
+    "category": "LaLiga",
+    "price": 25,
+    "img": "imagenes/camiseta_112.jpg"
+  },
+  {
+    "id": 113,
+    "title": "Barcelona 26/27 Red Full Zipper Windbreaker Set S-XXL",
+    "category": "LaLiga",
+    "price": 25,
+    "img": "imagenes/camiseta_113.jpg"
+  },
+  {
+    "id": 114,
+    "title": "Barcelona 26/27 Red Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "LaLiga",
+    "price": 25,
+    "img": "imagenes/camiseta_114.jpg"
+  },
+  {
+    "id": 115,
+    "title": "Barcelona 26/27 Dark Cyan Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "LaLiga",
+    "price": 25,
+    "img": "imagenes/camiseta_115.jpg"
+  },
+  {
+    "id": 116,
+    "title": "Barcelona 26/27 Blue Full Zipper Stand Collar Windbreaker Set S-XXL",
+    "category": "LaLiga",
+    "price": 25,
+    "img": "imagenes/camiseta_116.jpg"
+  },
+  {
+    "id": 117,
+    "title": "Barcelona 26/27 Blue Full Zipper Hooded Windbreaker Set S-XXL",
+    "category": "LaLiga",
+    "price": 25,
+    "img": "imagenes/camiseta_117.jpg"
+  },
+  {
+    "id": 118,
+    "title": "Barcelona 26/27 Black Full Zipper Windbreaker Set S-XXL",
+    "category": "LaLiga",
+    "price": 25,
+    "img": "imagenes/camiseta_118.jpg"
+  },
+  {
+    "id": 119,
+    "title": "Barcelona 26/27 Black Full Zip Hooded Windbreaker Set S-XXL",
+    "category": "LaLiga",
+    "price": 25,
+    "img": "imagenes/camiseta_119.jpg"
+  },
+  {
+    "id": 120,
+    "title": "Arsenal 26/27 Royal Blue Full Zipper Windbreaker Set S-XXL",
+    "category": "Premier League",
+    "price": 25,
+    "img": "imagenes/camiseta_120.jpg"
+  }
+]
