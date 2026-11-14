@@ -16,7 +16,7 @@ def extraer_todo_yupoo():
     page = 1
     max_paginas = 120
 
-    print("Iniciando extracción con captura de imágenes blindada...")
+    print("Iniciando extracción con barrido universal de imágenes de Yupoo...")
 
     while page <= max_paginas:
         url_actual = f"{BASE_URL}albums?page={page}"
@@ -30,10 +30,10 @@ def extraer_todo_yupoo():
 
             soup = BeautifulSoup(response.text, 'html.parser')
             
-            # Buscar todos los contenedores de álbumes
-            albums = soup.select('.album__main, .album__item, a.album, div.album')
+            # Selectores amplios para capturar los álbumes de Yupoo
+            albums = soup.select('.album__main, .album__item, a.album, div.album, .showalbumlist__item')
             if not albums:
-                albums = soup.find_all('div', class_='album')
+                albums = soup.find_all('a', href=lambda x: x and '/albums/' in x)
 
             if not albums:
                 print(f"No se detectaron más álbumes en la página {page}.")
@@ -41,16 +41,16 @@ def extraer_todo_yupoo():
 
             encontrados = 0
             for album in albums:
-                # 1. Título
+                # 1. Título corporativo del álbum
                 title = "Camiseta de Fútbol"
-                title_elem = album.find(class_='album__title') or album.find('span', class_='album__title') or album.find('img')
+                title_elem = album.find(class_='album__title') or album.find('span') or album.find('img')
                 if title_elem:
                     if title_elem.has_attr('alt') and title_elem['alt'].strip():
                         title = title_elem['alt'].strip()
                     elif title_elem.text.strip():
                         title = title_elem.text.strip()
 
-                # 2. Categoría
+                # 2. Categorización inteligente
                 category = "Catálogo General"
                 t_lower = title.lower()
                 if any(k in t_lower for k in ['madrid', 'barcelona', 'atlético', 'valencia', 'sevilla', 'betis', 'laliga', 'real madrid', 'fc barcelona']):
@@ -62,13 +62,13 @@ def extraer_todo_yupoo():
                 elif any(k in t_lower for k in ['españa', 'argentina', 'brasil', 'francia', 'selección', 'world cup', 'italy', 'germany', 'portugal', 'mexico']):
                     category = "Selecciones"
 
-                # 3. Extracción infalible de la imagen de Yupoo
+                # 3. Extracción exhaustiva y prioritaria de la URL de la imagen
                 img_url = ""
                 img_elem = album.find('img')
                 if img_elem:
-                    # Comprobamos ordenadamente todos los atributos posibles de Yupoo
                     img_url = (
                         img_elem.get('data-origin-src') or
+                        img_elem.get('data-master') or
                         img_elem.get('data-src') or 
                         img_elem.get('data-original') or
                         img_elem.get('data-lazy-src') or
@@ -81,8 +81,8 @@ def extraer_todo_yupoo():
                     elif img_url.startswith('/'):
                         img_url = "https://minkang.x.yupoo.com" + img_url
 
-                    # Filtrar para asegurarnos de que es un enlace de imagen válido y no un icono vacío
-                    if "photo" in img_url or "images" in img_url or "yupoo" in img_url:
+                    # Validación estricta para descartar iconos vacíos o grises
+                    if any(x in img_url for x in ["photo", "images", "yupoo", "cdn", ".jpg", ".png", ".webp"]):
                         if not any(p['img'] == img_url for p in productos):
                             productos.append({
                                 "title": title,
@@ -91,7 +91,7 @@ def extraer_todo_yupoo():
                             })
                             encontrados += 1
 
-            print(f"-> Página {page}: {encontrados} imágenes añadidas correctamente.")
+            print(f"-> Página {page}: {encontrados} imágenes válidas capturadas.")
             
             if encontrados == 0 and page > 1:
                 break
