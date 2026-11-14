@@ -16,7 +16,7 @@ def extraer_todo_yupoo():
     page = 1
     max_paginas = 120
 
-    print("Iniciando extracción con barrido universal de imágenes de Yupoo...")
+    print("Iniciando extracción con la estructura exacta de Yupoo...")
 
     while page <= max_paginas:
         url_actual = f"{BASE_URL}albums?page={page}"
@@ -30,10 +30,10 @@ def extraer_todo_yupoo():
 
             soup = BeautifulSoup(response.text, 'html.parser')
             
-            # Selectores amplios para capturar los álbumes de Yupoo
-            albums = soup.select('.album__main, .album__item, a.album, div.album, .showalbumlist__item')
+            # Selector exacto basado en tu captura HTML
+            albums = soup.find_all('a', class_='album__main')
             if not albums:
-                albums = soup.find_all('a', href=lambda x: x and '/albums/' in x)
+                albums = soup.select('a.album__main, .showalbumlist__item')
 
             if not albums:
                 print(f"No se detectaron más álbumes en la página {page}.")
@@ -41,13 +41,13 @@ def extraer_todo_yupoo():
 
             encontrados = 0
             for album in albums:
-                # 1. Título corporativo del álbum
+                # 1. Extraer título directamente del atributo 'title' del enlace o del div de título
                 title = "Camiseta de Fútbol"
-                title_elem = album.find(class_='album__title') or album.find('span') or album.find('img')
-                if title_elem:
-                    if title_elem.has_attr('alt') and title_elem['alt'].strip():
-                        title = title_elem['alt'].strip()
-                    elif title_elem.text.strip():
+                if album.has_attr('title') and album['title'].strip():
+                    title = album['title'].strip()
+                else:
+                    title_elem = album.find(class_='album__title') or album.find_next(class_='album__title')
+                    if title_elem and title_elem.text.strip():
                         title = title_elem.text.strip()
 
                 # 2. Categorización inteligente
@@ -62,18 +62,11 @@ def extraer_todo_yupoo():
                 elif any(k in t_lower for k in ['españa', 'argentina', 'brasil', 'francia', 'selección', 'world cup', 'italy', 'germany', 'portugal', 'mexico']):
                     category = "Selecciones"
 
-                # 3. Extracción exhaustiva y prioritaria de la URL de la imagen
+                # 3. Extraer la URL de la imagen del atributo 'src' de la etiqueta img
                 img_url = ""
                 img_elem = album.find('img')
                 if img_elem:
-                    img_url = (
-                        img_elem.get('data-origin-src') or
-                        img_elem.get('data-master') or
-                        img_elem.get('data-src') or 
-                        img_elem.get('data-original') or
-                        img_elem.get('data-lazy-src') or
-                        img_elem.get('src')
-                    )
+                    img_url = img_elem.get('src') or img_elem.get('data-src') or img_elem.get('data-original')
 
                 if img_url:
                     if img_url.startswith('//'):
@@ -81,17 +74,15 @@ def extraer_todo_yupoo():
                     elif img_url.startswith('/'):
                         img_url = "https://minkang.x.yupoo.com" + img_url
 
-                    # Validación estricta para descartar iconos vacíos o grises
-                    if any(x in img_url for x in ["photo", "images", "yupoo", "cdn", ".jpg", ".png", ".webp"]):
-                        if not any(p['img'] == img_url for p in productos):
-                            productos.append({
-                                "title": title,
-                                "img": img_url,
-                                "category": category
-                            })
-                            encontrados += 1
+                    if not any(p['img'] == img_url for p in productos):
+                        productos.append({
+                            "title": title,
+                            "img": img_url,
+                            "category": category
+                        })
+                        encontrados += 1
 
-            print(f"-> Página {page}: {encontrados} imágenes válidas capturadas.")
+            print(f"-> Página {page}: {encontrados} productos extraídos perfectamente.")
             
             if encontrados == 0 and page > 1:
                 break
