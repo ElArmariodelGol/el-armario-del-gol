@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>El Armario del Gol</title>
-    <link rel="icon" type="image/jpeg" href="imagenes/logo.jpg">
+    <!-- Logo exacto en la pestaña del navegador -->
+    <link rel="icon" type="image/jpeg" href="imagenes/LOGO.BLA.jpg">
     <style>
         :root {
             --bg-dark: #070d09;
@@ -144,7 +145,8 @@
 
     <header>
         <a href="#" class="brand">
-            <img src="imagenes/logo.jpg" alt="Logo" onerror="this.src='imagenes/LOGO.BLA.jpg'">
+            <!-- Logotipo corporativo exacto -->
+            <img src="imagenes/LOGO.BLA.jpg" alt="Logo" onerror="this.src='imagenes/logo.jpg'">
             <div>EL ARMARIO DEL <span>GOL</span></div>
         </a>
         <div class="search-bar">
@@ -152,12 +154,17 @@
         </div>
     </header>
 
-    <!-- Filtros de Categorías Generados Automáticamente -->
-    <div class="filters" id="categoryFilters"></div>
+    <div class="filters" id="categoryFilters">
+        <button class="filter-btn active" onclick="filterCategory('Todos', event.target)">Todos</button>
+        <button class="filter-btn" onclick="filterCategory('LaLiga', event.target)">LaLiga</button>
+        <button class="filter-btn" onclick="filterCategory('Premier League', event.target)">Premier League</button>
+        <button class="filter-btn" onclick="filterCategory('Selecciones', event.target)">Selecciones</button>
+        <button class="filter-btn" onclick="filterCategory('Retro', event.target)">Retro</button>
+        <button class="filter-btn" onclick="filterCategory('Catálogo General', event.target)">Otros</button>
+    </div>
 
     <main class="catalog" id="catalogGrid"></main>
 
-    <!-- Paginador Estilo Yupoo -->
     <div class="pagination-container" id="paginationContainer"></div>
 
     <footer>
@@ -185,26 +192,9 @@
             .then(response => response.json())
             .then(data => {
                 productos = data;
-                initCategories();
                 renderCatalog();
             })
             .catch(err => console.error("Error cargando el catálogo:", err));
-
-        function initCategories() {
-            // Extrae dinámicamente las categorías reales que traiga el Yupoo
-            const uniqueCats = [...new Set(productos.map(p => p.category))].filter(Boolean);
-            const cats = ["Todos", ...uniqueCats];
-            const filtersContainer = document.getElementById("categoryFilters");
-            filtersContainer.innerHTML = "";
-
-            cats.forEach(cat => {
-                const btn = document.createElement("button");
-                btn.className = `filter-btn ${cat === currentCategory ? 'active' : ''}`;
-                btn.innerText = cat;
-                btn.onclick = (e) => filterCategory(cat, e.target);
-                filtersContainer.appendChild(btn);
-            });
-        }
 
         function renderCatalog() {
             const query = document.getElementById("searchInput").value.toLowerCase();
