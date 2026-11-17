@@ -1,9 +1,10 @@
 import requests
 from bs4 import BeautifulSoup
 import json
-import re
+from urllib.parse import urljoin
 
 URL = "https://minkang.x.yupoo.com/categories"
+# Cabeceras idénticas a las de un navegador real
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
@@ -18,61 +19,59 @@ def main():
     menu_final = []
     productos_final = []
 
-    # 1. Extraer el menú de la izquierda (Categorías)
-    # Buscamos los enlaces que estén dentro de las listas de categorías
-    for a in soup.find_all("a", href=True):
+    # 1. EXTRAER EL MENÚ LATERAL (Basado en tu archivo yupoo.txt)
+    # Buscamos los enlaces que estén dentro de las categorías
+    for a in soup.select(".showheader__category_item a.showheader__link"):
         text = a.get_text(strip=True)
-        href = a["href"]
+        href = a.get("href", "")
         
-        # Filtramos enlaces basura o menús de navegación
-        if not text or text in ["All categories", "Menu", "Menu 2", "Home", "Album", "Contact"]:
+        # Ignoramos menús de navegación
+        if not text or text in ["Menu", "Menu 2"]:
             continue
             
-        # Si el enlace lleva a una categoría o álbum
-        if "/categories/" in href or "/albums/" in href:
-            if not any(m['name'] == text for m in menu_final):
-                menu_final.append({
-                    "name": text,
-                    "url": f"https://minkang.x.yupoo.com{href}" if href.startswith("/") else href,
-                    "img": "imagenes/logo.jpg"
-                })
+        if "/categories/" in href:
+            menu_final.append({
+                "name": text,
+                "url": urljoin("https://minkang.x.yupoo.com", href),
+                "img": "imagenes/logo.jpg"
+            })
 
-    # 2. Extraer las carpetas/productos que se ven en el centro
-    # Buscamos los bloques de álbumes
-    for alb in soup.select(".album__main, .showalbumheader__galleryitem"):
-        # Título
-        title_el = alb.select_one(".album__title, .showalbumheader__gallerytitle")
-        # Imagen
+    # 2. EXTRAER LOS PRODUCTOS DE LA VISTA PRINCIPAL
+    # Si Yupoo carga las fotos en el HTML, las sacamos aquí
+    for alb in soup.select(".album__main"):
+        title_el = alb.select_one(".album__title")
         img_el = alb.select_one("img")
         
         if title_el and img_el:
-            title = title_el.get_text(strip=True)
             img_url = img_el.get("data-src") or img_el.get("data-original") or img_el.get("src") or ""
-            
             if img_url and not img_url.startswith("http"):
-                img_url = f"https:{img_url}" if img_url.startswith("//") else f"https://minkang.x.yupoo.com{img_url}"
-            
-            # Evitar duplicados
-            if not any(p['title'] == title for p in productos_final):
-                productos_final.append({
-                    "title": title,
-                    "img": img_url,
-                    "category": "All categories"
-                })
+                img_url = urljoin("https://minkang.x.yupoo.com", img_url)
+                
+            productos_final.append({
+                "title": title_el.get_text(strip=True),
+                "img": img_url,
+                "category": "Todos"
+            })
 
-    # 3. Si por lo que sea no hay menú (porque Yupoo carga el menú con JS), forzamos las de tu foto
+    # 3. SI EL MENÚ FALLA, USAMOS TU LISTA (Extraída de tu archivo)
     if not menu_final:
-        print("[*] Menú no encontrado en HTML (posible carga JS). Usando fallback...")
-        categorias_fijas = [
-            "new season", "Casual Shorts", "La Liga", "Brasileiro Série A", 
-            "2026 FIFA World Cup", "NRL", "newF1", "Brazil team column",
-            "Worldwide Other League", "NFL", "Bundesliga", "EREDIVISIE", 
-            "LIGA MX", "Premier League", "Serie A", "Ligue 1", "MLS"
+        print("[*] Menú no encontrado en el HTML. Usando fallback exacto de tu archivo...")
+        categorias_exactas = [
+            "new season", "La Liga", "Brasileiro Série A", "2026 FIFA World Cup", 
+            "NRL", "newF1", "Brazil team column", "🧦Socks", "🏈NFL", "🏁F1", 
+            "⚽Polos", "Shorts", "Worldwide Other League", "Retro football shirt", 
+            "💨🧥Windbreaker/Training Top", "⚽💪🏻Player Version", "⚽💁🏻‍♀️Women's shirt", 
+            "⚽🌍 National Teams", "⚽👦🏻kids kit size：16-28", "👶🏻Baby jersey size:9-12", 
+            "⚽🧤Goalkeeper kit", "⚽Long sleeve shirt", "Premier League", "Serie A", 
+            "Bundesliga", "Liga Profesional", "Primeira Liga", "Ligue 1", 
+            "EREDIVISIE", "Scottish League", "Chilean League", "MLS", "LIGA MX", 
+            "🇯🇵Japan League", "🔥 Clearance Sale: $9/PCS, Minimum Order 5PCS 🔥", 
+            "📏Sizes"
         ]
-        for c in categorias_fijas:
+        for c in categorias_exactas:
             menu_final.append({"name": c, "url": "#", "img": "imagenes/logo.jpg"})
 
-    # 4. Guardar JSON
+    # 4. GUARDAR
     with open("productos.json", "w", encoding="utf-8") as f:
         json.dump({"menu": menu_final, "productos": productos_final}, f, ensure_ascii=False, indent=2)
 
