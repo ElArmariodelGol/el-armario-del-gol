@@ -12,6 +12,7 @@
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, sans-serif; }
         body { background-color: var(--bg-dark); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; }
+        
         header { background-color: var(--bg-dark); border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
         .brand { display: flex; align-items: center; gap: 0.8rem; color: var(--text-main); text-decoration: none; }
         .brand img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--accent); }
@@ -20,7 +21,7 @@
         
         .main-container { display: flex; flex: 1; max-width: 1600px; margin: 0 auto; width: 100%; }
         
-        /* MENÚ LATERAL (Idéntico a Yupoo) */
+        /* MENÚ LATERAL */
         .sidebar { width: 260px; border-right: 1px solid var(--border); padding: 1.5rem 0; flex-shrink: 0; }
         .sidebar-header { padding: 0 1.5rem 1rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; color: #10b981; font-weight: 600; font-size: 1.1rem;}
         .sidebar ul { list-style: none; }
@@ -33,7 +34,7 @@
         .content-header h1 { font-size: 1.2rem; font-weight: 500; margin-bottom: 0.3rem; }
         .content-header p { font-size: 0.85rem; color: var(--text-muted); }
         
-        /* CUADRÍCULA DE 4 COLUMNAS */
+        /* CUADRÍCULA */
         .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
         @media(max-width: 1200px) { .grid { grid-template-columns: repeat(3, 1fr); } }
         @media(max-width: 900px) { .main-container { flex-direction: column; } .sidebar { width: 100%; } .grid { grid-template-columns: repeat(2, 1fr); } }
@@ -42,7 +43,7 @@
         .card:hover { transform: scale(1.02); }
         .card-img-container { width: 100%; aspect-ratio: 1/1; background: #070a10; border-radius: 4px; overflow: hidden; }
         .card-img { width: 100%; height: 100%; object-fit: cover; }
-        .card-title { font-size: 0.85rem; font-weight: 500; margin-top: 0.5rem; line-height: 1.3; }
+        .card-title { font-size: 0.85rem; font-weight: 500; margin-top: 0.5rem; line-height: 1.3; text-align: center; }
         
         footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.85rem; }
     </style>
@@ -68,7 +69,7 @@
                 <p id="totalAlbums">in total 0 albums</p>
             </div>
             <div class="grid" id="catalogGrid">
-                <p style="grid-column: 1/-1; text-align: center; color: var(--text-muted);">Cargando...</p>
+                <p style="grid-column: 1/-1; text-align: center; color: var(--text-muted);">Cargando catálogo...</p>
             </div>
         </main>
     </div>
@@ -84,33 +85,33 @@
                 const menu = document.getElementById("sidebarMenu");
                 const grid = document.getElementById("catalogGrid");
                 
+                // 1. Pintar el menú lateral
                 if (data.menu && data.menu.length > 0) {
-                    // 1. Pintar el menú de la izquierda
                     data.menu.forEach(cat => {
                         const li = document.createElement("li");
                         li.innerHTML = `<span>${cat.name}</span> <span>></span>`;
                         menu.appendChild(li);
                     });
+                }
 
-                    // 2. Pintar las carpetas (portadas) en la cuadrícula derecha
-                    grid.innerHTML = ""; 
-                    let total = data.menu.reduce((acc, cat) => acc + (cat.count || 0), 0);
-                    document.getElementById("totalAlbums").innerText = `in total ${total} albums`;
+                // 2. Pintar los productos
+                if (data.productos && data.productos.length > 0) {
+                    grid.innerHTML = "";
+                    document.getElementById("totalAlbums").innerText = `in total ${data.productos.length} albums`;
                     
-                    data.menu.forEach(cat => {
+                    data.productos.forEach(p => {
                         const card = document.createElement("div");
                         card.className = "card";
                         card.innerHTML = `
                             <div class="card-img-container">
-                                <!-- referrerpolicy evita el bloqueo de Yupoo -->
-                                <img src="${cat.img}" class="card-img" referrerpolicy="no-referrer" onerror="this.src='imagenes/logo.jpg'">
+                                <img src="${p.img}" class="card-img" referrerpolicy="no-referrer" onerror="this.src='imagenes/logo.jpg'">
                             </div>
-                            <div class="card-title">${cat.name}</div>
+                            <div class="card-title">${p.title}</div>
                         `;
                         grid.appendChild(card);
                     });
                 } else {
-                    grid.innerHTML = "<p>No se encontraron categorías en el JSON.</p>";
+                    grid.innerHTML = "<p style='color:red;'>El robot no encontró productos. Revisa el JSON.</p>";
                 }
             })
             .catch(err => {
