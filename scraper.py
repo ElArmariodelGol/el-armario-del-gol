@@ -3,7 +3,7 @@ import json
 import time
 import re
 
-# La URL secreta de la API de Yupoo
+# La URL interna de la API de Yupoo
 API_URL = "https://minkang.x.yupoo.com/api/categories/albums"
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
@@ -39,7 +39,6 @@ def main():
             print(f"[!] Error en la petición: {e}")
             break
 
-        # La API devuelve los álbumes dentro de la clave 'albums' o directamente en una lista
         albumes = datos.get('albums', []) if isinstance(datos, dict) else datos
         
         if not albumes:
@@ -47,14 +46,11 @@ def main():
             break
 
         for album in albumes:
-            # Extraemos los datos que nos interesan del JSON
             title = album.get('title', '').strip()
             
-            # Ignoramos los álbumes vacíos, bloqueados o con contraseña
             if not title or "加密相册" in title or len(title) < 3:
                 continue
                 
-            # Sacamos la imagen (Yupoo usa 'cover_url' o similar en su API)
             img = album.get('cover_url', '')
             if img and not img.startswith('http'):
                 img = f"https:{img}" if img.startswith('//') else f"https://photo.yupoo.com{img}"
@@ -67,9 +63,8 @@ def main():
 
         print(f"    -> {len(albumes)} encontrados en esta página.")
         pagina += 1
-        time.sleep(1) # Pausa de 1 segundo para no saturar
+        time.sleep(1)
 
-    # Guardar el JSON
     with open("productos.json", "w", encoding="utf-8") as f:
         json.dump(todos_los_productos, f, ensure_ascii=False, indent=2)
         
