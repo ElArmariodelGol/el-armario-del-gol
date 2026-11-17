@@ -9,16 +9,17 @@ BASE_URL = "https://minkang.x.yupoo.com"
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
-    "Referer": "https://minkang.x.yupoo.com/" # TRUCO PARA DESCARGAR IMÁGENES
+    "Referer": "https://minkang.x.yupoo.com/"
 }
 
 def extraer_categoria(titulo):
     t = titulo.upper()
-    if any(x in t for x in ["REAL MADRID", "BARCELONA", "ATLETICO", "SEVILLA", "VALENCIA", "VILLARREAL", "BETIS"]): return "La Liga"
-    if any(x in t for x in ["M-U", "LFC", "ARSENAL", "CHELSEA", "CITY", "TOTTENHAM", "UNITED"]): return "Premier League"
+    if any(x in t for x in ["REAL MADRID", "BARCELONA", "ATLETICO", "SEVILLA", "VALENCIA", "VILLARREAL", "BETIS", "CELTA"]): return "La Liga"
+    if any(x in t for x in ["M-U", "LFC", "ARSENAL", "CHELSEA", "CITY", "TOTTENHAM", "UNITED", "NEWCASTLE"]): return "Premier League"
+    if any(x in t for x in ["INTER", "MILAN", "JUV", "NAPOLI", "ROMA", "LAZIO"]): return "Serie A"
     if "NK" in t or "NIKE" in t: return "Nike"
     if "JB" in t or "JORDAN" in t: return "Jordan"
-    if "F1" in t or "FERRARI" in t: return "F1"
+    if "F1" in t or "FERRARI" in t or "MCLAREN" in t: return "F1"
     if "NFL" in t: return "NFL"
     if "RETRO" in t: return "Retro"
     if "SHORT" in t: return "Shorts"
@@ -26,12 +27,16 @@ def extraer_categoria(titulo):
 
 def descargar_imagen(url, nombre_archivo):
     try:
-        # Pedimos la foto con el Referer de Yupoo para que nos deje
-        r = requests.get(url, headers=HEADERS, timeout=15)
+        # Usamos el proxy para saltarnos el bloqueo de Yupoo
+        url_proxy = f"https://images.weserv.nl/?url={url.replace('https://', '')}"
+        
+        r = requests.get(url_proxy, timeout=20)
         if r.status_code == 200:
-            with open(nombre_archivo, "wb") as f:
-                f.write(r.content)
-            return True
+            # Comprobamos que lo que ha descargado es una imagen de verdad
+            if r.headers.get('Content-Type', '').startswith('image'):
+                with open(nombre_archivo, "wb") as f:
+                    f.write(r.content)
+                return True
     except Exception as e:
         print(f"[!] Error descargando {url}: {e}")
     return False
@@ -43,6 +48,7 @@ def main():
     os.makedirs("imagenes/productos", exist_ok=True)
     
     todos_los_productos = []
+    contador_fotos = 0
     
     for pagina in range(1, 201):
         url = f"{BASE_URL}/categories?page={pagina}"
@@ -70,7 +76,7 @@ def main():
                     
                     if img_url:
                         # Generar nombre único para la foto
-                        nombre_foto = f"foto_{pagina}_{len(todos_los_productos)}.jpg"
+                        nombre_foto = f"foto_{pagina}_{contador_fotos}.jpg"
                         ruta_local = f"imagenes/productos/{nombre_foto}"
                         
                         # Descargar la foto a tu GitHub
@@ -79,12 +85,13 @@ def main():
                         if exito:
                             todos_los_productos.append({
                                 "title": titulo,
-                                "img": ruta_local, # Ruta local, no de Yupoo
+                                "img": ruta_local, 
                                 "category": extraer_categoria(titulo)
                             })
+                            contador_fotos += 1
             
             print(f"    -> {len(albumes)} productos procesados.")
-            time.sleep(1)
+            time.sleep(1.5) # Pausa para no saturar el proxy
             
         except Exception as e:
             print(f"[!] Error: {e}")
