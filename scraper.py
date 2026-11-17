@@ -2,78 +2,60 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import time
+import os
 from urllib.parse import urljoin
 
 BASE_URL = "https://minkang.x.yupoo.com"
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+    "Referer": "https://minkang.x.yupoo.com/" # TRUCO PARA DESCARGAR IMÁGENES
 }
 
-def extraer_categoria(titulo, dicc_equipos):
-    """Asigna la categoría basándose en el título del producto."""
+def extraer_categoria(titulo):
     t = titulo.upper()
-    
-    # 1. Comprobar si el título contiene el nombre de algún equipo
-    for liga, equipos in dicc_equipos.items():
-        for equipo in equipos:
-            if equipo.upper() in t:
-                return liga
-                
-    # 2. Si no es un equipo, clasificar por tipo de prenda o marca
+    if any(x in t for x in ["REAL MADRID", "BARCELONA", "ATLETICO", "SEVILLA", "VALENCIA", "VILLARREAL", "BETIS"]): return "La Liga"
+    if any(x in t for x in ["M-U", "LFC", "ARSENAL", "CHELSEA", "CITY", "TOTTENHAM", "UNITED"]): return "Premier League"
     if "NK" in t or "NIKE" in t: return "Nike"
     if "JB" in t or "JORDAN" in t: return "Jordan"
-    if "F1" in t or "FERRARI" in t or "MCLAREN" in t: return "F1"
+    if "F1" in t or "FERRARI" in t: return "F1"
     if "NFL" in t: return "NFL"
     if "RETRO" in t: return "Retro"
     if "SHORT" in t: return "Shorts"
-    
     return "Catálogo General"
 
+def descargar_imagen(url, nombre_archivo):
+    try:
+        # Pedimos la foto con el Referer de Yupoo para que nos deje
+        r = requests.get(url, headers=HEADERS, timeout=15)
+        if r.status_code == 200:
+            with open(nombre_archivo, "wb") as f:
+                f.write(r.content)
+            return True
+    except Exception as e:
+        print(f"[!] Error descargando {url}: {e}")
+    return False
+
 def main():
-    print("[*] Iniciando extracción masiva de Yupoo...")
+    print("[*] Iniciando extracción y descarga...")
     
-    # 1. PRIMERO: Leemos la página 1 para sacar el menú de ligas y equipos
-    print("[*] Leyendo menú lateral de categorías...")
-    r_menu = requests.get(f"{BASE_URL}/categories?is_ajax=1", headers=HEADERS)
-    soup_menu = BeautifulSoup(r_menu.text, "lxml")
+    # Crear carpeta para las fotos si no existe
+    os.makedirs("imagenes/productos", exist_ok=True)
     
-    dicc_equipos = {}
-    for li in soup_menu.select(".showheader__category_item"):
-        a_principal = li.select_one(".showheader__link")
-        if not a_principal: continue
-        nombre_liga = a_principal.get_text(strip=True)
-        
-        # Ignoramos menús que no son ligas
-        if nombre_liga in ["Menu", "Menu 2", "new season", "Casual Shorts"]: continue
-        
-        equipos = []
-        for sub_a in li.select(".showheader__child_link"):
-            equipos.append(sub_a.get_text(strip=True))
-            
-        if equipos:
-            dicc_equipos[nombre_liga] = equipos
-
-    print(f"[*] Ligas detectadas: {len(dicc_equipos)}")
-
-    # 2. SEGUNDO: Recorremos las páginas para coger TODOS los productos
     todos_los_productos = []
     
-    for pagina in range(1, 201): # Hasta 200 páginas
+    for pagina in range(1, 201):
         url = f"{BASE_URL}/categories?page={pagina}"
-        print(f"[*] Leyendo productos de la página {pagina}...")
+        print(f"[*] Leyendo página {pagina}...")
         
         try:
             r = requests.get(url, headers=HEADERS, timeout=20)
-            if r.status_code != 200:
-                break
+            if r.status_code != 200: break
                 
             soup = BeautifulSoup(r.text, "lxml")
             albumes = soup.select(".album__main")
             
-            if not albumes:
-                print("[*] Fin del catálogo alcanzado.")
-                break
+            if not albumes: break
                 
             for alb in albumes:
                 title_el = alb.select_one(".album__title")
@@ -86,27 +68,32 @@ def main():
                     if img_url and not img_url.startswith("http"):
                         img_url = urljoin(BASE_URL, img_url)
                     
-                    # TRUCO: Usar la imagen medium para que se vea mejor
                     if img_url:
-                        img_url = img_url.replace("/small.jpg", "/medium.jpg")
-
-                    todos_los_productos.append({
-                        "title": titulo,
-                        "img": img_url,
-                        "category": extraer_categoria(titulo, dicc_equipos)
-                    })
+                        # Generar nombre único para la foto
+                        nombre_foto = f"foto_{pagina}_{len(todos_los_productos)}.jpg"
+                        ruta_local = f"imagenes/productos/{nombre_foto}"
+                        
+                        # Descargar la foto a tu GitHub
+                        exito = descargar_imagen(img_url, ruta_local)
+                        
+                        if exito:
+                            todos_los_productos.append({
+                                "title": titulo,
+                                "img": ruta_local, # Ruta local, no de Yupoo
+                                "category": extraer_categoria(titulo)
+                            })
             
-            time.sleep(1) # Pausa para no saturar
+            print(f"    -> {len(albumes)} productos procesados.")
+            time.sleep(1)
             
         except Exception as e:
-            print(f"[!] Error en página {pagina}: {e}")
+            print(f"[!] Error: {e}")
             break
 
-    # 3. Guardar el JSON (CON CORCHETES POR FUERA, como lo quiere tu web)
     with open("productos.json", "w", encoding="utf-8") as f:
         json.dump(todos_los_productos, f, ensure_ascii=False, indent=2)
         
-    print(f"[+] ¡ÉXITO! {len(todos_los_productos)} productos guardados en productos.json")
+    print(f"[+] ¡ÉXITO! {len(todos_los_productos)} productos y fotos guardadas.")
 
 if __name__ == "__main__":
     main()
