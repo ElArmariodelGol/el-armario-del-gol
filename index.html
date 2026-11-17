@@ -3,126 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El Armario del Gol - Catálogo</title>
+    <title>El Armario del Gol</title>
     <link rel="icon" type="image/jpeg" href="imagenes/logo.jpg">
     <style>
         :root {
-            --bg-dark: #0b0f19;
-            --bg-card: #131c2e;
-            --accent: #10b981;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border: #1e293b;
+            --bg-dark: #0b0f19; --bg-card: #131c2e; --accent: #10b981;
+            --text-main: #f8fafc; --text-muted: #94a3b8; --border: #1e293b;
         }
-
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, sans-serif; }
         body { background-color: var(--bg-dark); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; }
-
-        /* CABECERA SUPERIOR (Igual que Yupoo) */
-        header {
-            background-color: rgba(11, 15, 25, 0.95);
-            border-bottom: 1px solid var(--border);
-            padding: 1rem 2rem;
-            display: flex; justify-content: space-between; align-items: center;
-            position: sticky; top: 0; z-index: 100;
-        }
-        
+        header { background-color: var(--bg-dark); border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
         .brand { display: flex; align-items: center; gap: 0.8rem; color: var(--text-main); text-decoration: none; }
         .brand img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--accent); }
         .brand span { font-size: 1.2rem; font-weight: 800; }
         .brand span span { color: var(--accent); }
-
-        /* CONTENEDOR PRINCIPAL */
-        .main-container {
-            display: flex; flex: 1; max-width: 1600px; margin: 0 auto; width: 100%;
-        }
-
-        /* MENÚ LATERAL IZQUIERDO (Igual que Yupoo) */
-        .sidebar {
-            width: 250px; border-right: 1px solid var(--border); padding: 1.5rem 0; flex-shrink: 0;
-        }
-        .sidebar-title {
-            font-size: 1.1rem; font-weight: 600; color: var(--accent); padding: 0 1.5rem 1rem;
-            border-bottom: 1px solid var(--border); display: flex; justify-content: space-between;
-        }
-        .menu-list { list-style: none; }
-        .menu-item {
-            padding: 0.8rem 1.5rem; color: var(--text-muted); font-size: 0.95rem; font-weight: 500;
-            cursor: pointer; transition: all 0.2s; display: flex; justify-content: space-between; align-items: center;
-        }
-        .menu-item:hover { background: var(--bg-card); color: var(--text-main); border-left: 3px solid var(--accent); }
-        .menu-item.active { background: var(--bg-card); color: var(--text-main); border-left: 3px solid var(--accent); font-weight: 700; }
         
-        .menu-item .badge { font-size: 0.75rem; color: var(--text-muted); background: var(--border); padding: 0.2rem 0.5rem; border-radius: 10px; }
-
-        /* ÁREA DE PRODUCTOS (Derecha) */
-        .content-area {
-            flex: 1; padding: 2rem;
-        }
-        .content-header {
-            display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;
-        }
-        .content-title { font-size: 1.2rem; font-weight: 600; color: var(--text-main); }
-        .content-count { font-size: 0.9rem; color: var(--text-muted); margin-top: 0.3rem; }
-
-        /* GRID 4 COLUMNAS */
-        .grid {
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
-        }
+        .main-container { display: flex; flex: 1; max-width: 1600px; margin: 0 auto; width: 100%; }
+        
+        /* MENÚ LATERAL (Idéntico a Yupoo) */
+        .sidebar { width: 260px; border-right: 1px solid var(--border); padding: 1.5rem 0; flex-shrink: 0; }
+        .sidebar-header { padding: 0 1.5rem 1rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; color: #10b981; font-weight: 600; font-size: 1.1rem;}
+        .sidebar ul { list-style: none; }
+        .sidebar li { padding: 0.9rem 1.5rem; border-bottom: 1px solid #1e293b; color: #cbd5e1; font-size: 0.95rem; display: flex; justify-content: space-between; cursor: pointer; transition: background 0.2s; }
+        .sidebar li:hover { background: var(--bg-card); color: white; }
+        
+        /* ZONA DERECHA */
+        .content { flex: 1; padding: 2rem; }
+        .content-header { margin-bottom: 1.5rem; }
+        .content-header h1 { font-size: 1.2rem; font-weight: 500; margin-bottom: 0.3rem; }
+        .content-header p { font-size: 0.85rem; color: var(--text-muted); }
+        
+        /* CUADRÍCULA DE 4 COLUMNAS */
+        .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
         @media(max-width: 1200px) { .grid { grid-template-columns: repeat(3, 1fr); } }
-        @media(max-width: 900px) { .main-container { flex-direction: column; } .sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--border); } .grid { grid-template-columns: repeat(2, 1fr); } }
-        @media(max-width: 600px) { .grid { grid-template-columns: 1fr; } }
-
-        /* TARJETAS */
-        .card {
-            background: var(--bg-card); border-radius: 8px; overflow: hidden;
-            border: 1px solid var(--border); transition: all 0.2s; cursor: pointer;
-        }
-        .card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+        @media(max-width: 900px) { .main-container { flex-direction: column; } .sidebar { width: 100%; } .grid { grid-template-columns: repeat(2, 1fr); } }
         
-        .card-img-container { width: 100%; aspect-ratio: 1/1; background: #070a10; }
+        .card { background: transparent; border-radius: 8px; overflow: hidden; cursor: pointer; transition: transform 0.2s; }
+        .card:hover { transform: scale(1.02); }
+        .card-img-container { width: 100%; aspect-ratio: 1/1; background: #070a10; border-radius: 4px; overflow: hidden; }
         .card-img { width: 100%; height: 100%; object-fit: cover; }
+        .card-title { font-size: 0.85rem; font-weight: 500; margin-top: 0.5rem; line-height: 1.3; }
         
-        .card-info { padding: 1rem 0.5rem; text-align: center; }
-        .card-title { font-size: 0.85rem; font-weight: 500; color: var(--text-main); line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        
-        /* FOOTER */
         footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.85rem; }
     </style>
 </head>
 <body>
 
     <header>
-        <a href="#" class="brand" onclick="cargarCategoria('Todos', 'All categories', 0)">
+        <a href="#" class="brand">
             <img src="imagenes/logo.jpg" alt="Logo">
             <div>EL ARMARIO DEL <span>GOL</span></div>
         </a>
-        <div style="color: var(--text-muted); font-size: 0.9rem;">Catálogo oficial</div>
     </header>
 
     <div class="main-container">
-        <!-- MENÚ LATERAL -->
         <aside class="sidebar">
-            <div class="sidebar-title">
-                All categories
-                <span>≡</span>
-            </div>
-            <ul class="menu-list" id="sidebarMenu">
-                <!-- El JS rellenará esto -->
-            </ul>
+            <div class="sidebar-header"><span>All categories</span><span>≡</span></div>
+            <ul id="sidebarMenu"></ul>
         </aside>
 
-        <!-- CONTENIDO -->
-        <main class="content-area">
+        <main class="content">
             <div class="content-header">
-                <div>
-                    <h1 class="content-title" id="mainTitle">All categories</h1>
-                    <p class="content-count" id="mainCount">in total 0 albums</p>
-                </div>
+                <h1>All categories</h1>
+                <p id="totalAlbums">in total 0 albums</p>
             </div>
-
             <div class="grid" id="catalogGrid">
-                <p style="grid-column: 1/-1; text-align: center; padding: 3rem; color: var(--text-muted);">Cargando catálogo de Yupoo...</p>
+                <p style="grid-column: 1/-1; text-align: center; color: var(--text-muted);">Cargando...</p>
             </div>
         </main>
     </div>
@@ -132,73 +78,44 @@
     </footer>
 
     <script>
-        let menuData = [];
-
-        // Cargar el JSON generado por el scraper
         fetch('productos.json')
             .then(r => r.json())
             .then(data => {
-                menuData = data;
-                renderSidebar();
-                // Al cargar, mostramos "Todos" (que serían las carpetas principales)
-                cargarCategoria('Todos', 'All categories', 8614); // 8614 es el número real de tu captura
+                const menu = document.getElementById("sidebarMenu");
+                const grid = document.getElementById("catalogGrid");
+                
+                if (data.menu && data.menu.length > 0) {
+                    // 1. Pintar el menú de la izquierda
+                    data.menu.forEach(cat => {
+                        const li = document.createElement("li");
+                        li.innerHTML = `<span>${cat.name}</span> <span>></span>`;
+                        menu.appendChild(li);
+                    });
+
+                    // 2. Pintar las carpetas (portadas) en la cuadrícula derecha
+                    grid.innerHTML = ""; 
+                    let total = data.menu.reduce((acc, cat) => acc + (cat.count || 0), 0);
+                    document.getElementById("totalAlbums").innerText = `in total ${total} albums`;
+                    
+                    data.menu.forEach(cat => {
+                        const card = document.createElement("div");
+                        card.className = "card";
+                        card.innerHTML = `
+                            <div class="card-img-container">
+                                <!-- referrerpolicy evita el bloqueo de Yupoo -->
+                                <img src="${cat.img}" class="card-img" referrerpolicy="no-referrer" onerror="this.src='imagenes/logo.jpg'">
+                            </div>
+                            <div class="card-title">${cat.name}</div>
+                        `;
+                        grid.appendChild(card);
+                    });
+                } else {
+                    grid.innerHTML = "<p>No se encontraron categorías en el JSON.</p>";
+                }
             })
             .catch(err => {
-                document.getElementById("catalogGrid").innerHTML = "<p style='grid-column:1/-1; text-align:center;'>Error: Sube el productos.json generado por el robot.</p>";
+                document.getElementById("catalogGrid").innerHTML = "<p style='color:red;'>Error al cargar productos.json. Asegúrate de que el robot se ejecutó.</p>";
             });
-
-        // Pintar el menú de la izquierda
-        function renderSidebar() {
-            const lista = document.getElementById("sidebarMenu");
-            menuData.forEach(cat => {
-                const li = document.createElement("li");
-                li.className = "menu-item";
-                li.innerHTML = `
-                    <span>${cat.name}</span>
-                    <span style="color:var(--text-muted); font-size:0.8rem;">></span>
-                `;
-                li.onclick = () => cargarCategoria(cat.name, cat.name, cat.count);
-                lista.appendChild(li);
-            });
-        }
-
-        // Función que simula la carga de productos (Muestra las carpetas como productos)
-        function cargarCategoria(nombre, tituloMostrar, cantidad) {
-            document.getElementById("mainTitle").innerText = tituloMostrar;
-            document.getElementById("mainCount").innerText = `in total ${cantidad} albums`;
-            
-            const grid = document.getElementById("catalogGrid");
-            grid.innerHTML = "";
-            
-            // Para la vista de "Todos", mostramos las carpetas del menú (como si fueran álbumes)
-            if (nombre === 'Todos') {
-                menuData.forEach(cat => {
-                    const card = document.createElement("div");
-                    card.className = "card";
-                    card.innerHTML = `
-                        <div class="card-img-container">
-                            <img src="${cat.img}" class="card-img" referrerpolicy="no-referrer" onerror="this.src='imagenes/logo.jpg'">
-                        </div>
-                        <div class="card-info">
-                            <div class="card-title">${cat.name}</div>
-                        </div>
-                    `;
-                    card.onclick = () => cargarCategoria(cat.name, cat.name, cat.count);
-                    grid.appendChild(card);
-                });
-            } else {
-                // Si el usuario hace clic en una categoría de la izquierda, debería cargar los productos reales
-                // (Por ahora mostramos un aviso para la Fase 2)
-                grid.innerHTML = `
-                    <div style="grid-column: 1/-1; text-align:center; padding: 3rem; border: 1px dashed var(--border); border-radius: 8px;">
-                        <h2 style="color:var(--accent); margin-bottom: 1rem;">Carpeta: ${nombre}</h2>
-                        <p style="color:var(--text-muted);">Aquí irían las fotos de las camisetas de ${nombre}.</p>
-                        <p style="color:var(--text-muted); font-size: 0.8rem; margin-top: 1rem;">(Para que salgan las fotos reales, necesitamos programar la Fase 2).</p>
-                        <button onclick="cargarCategoria('Todos', 'All categories', 8614)" style="margin-top: 1.5rem; padding: 0.5rem 1rem; background: var(--accent); border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">Volver al inicio</button>
-                    </div>
-                `;
-            }
-        }
     </script>
 </body>
 </html>
