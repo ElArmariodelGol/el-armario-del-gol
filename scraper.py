@@ -1,155 +1,79 @@
-import argparse
+import requests
 import json
-import re
-import sys
 import time
-from dataclasses import dataclass
-from typing import Optional
-from urllib.parse import urljoin
+import re
 
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+# La URL secreta de la API de Yupoo
+API_URL = "https://minkang.x.yupoo.com/api/categories/albums"
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "Accept": "application/json, text/plain, */*",
+    "Referer": "https://minkang.x.yupoo.com/categories"
+}
 
-BASE_URL = "https://minkang.x.yupoo.com"
-CATEGORIES_URL = f"{BASE_URL}/categories"
-MAX_PAGES_DEFAULT = 200
-
-@dataclass
-class Producto:
-    title: str
-    category: str
-    img: str
-    album_url: str = ""
-    sizes: Optional[str] = None
-
-class YupooScraper:
-    def __init__(self):
-        chrome_options = Options()
-        chrome_options.add_argument("--headless=new")
-        chrome_options.add_argument("--no-sandbox")
-        chrome_options.add_argument("--disable-dev-shm-usage")
-        chrome_options.add_argument("--disable-gpu")
-        chrome_options.add_argument("window-size=1920,1080")
-        chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36")
-        self.driver = webdriver.Chrome(options=chrome_options)
-
-    @staticmethod
-    def _clasificar(title: str) -> str:
-        t = title.upper()
-        if re.search(r"\bNK\b", t) or "NIKE" in t: return "Nike"
-        if re.search(r"\bJB\b", t) or "JORDAN" in t: return "Jordan"
-        if "SHORT" in t: return "Shorts"
-        if "HOODIE" in t or "SUDADERA" in t or "SWEAT" in t: return "Sudaderas"
-        if "PANT" in t or "JOGGER" in t: return "Pantalones"
-        if "JERSEY" in t or "CAMISETA" in t or "SHIRT" in t: return "Camisetas"
-        if "SOCK" in t or "CAP" in t or "BAG" in t or "ACCESSOR" in t: return "Accesorios"
-        return "Catálogo General"
-
-    def scrape_page(self, url: str) -> list[Producto]:
-        print(f"[*] Navegando a: {url}")
-        self.driver.get(url)
-        
-        try:
-            WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located((By.CSS_SELECTOR, "div.album__main, a[href*='albums']"))
-            )
-            time.sleep(2)
-        except Exception:
-            print("[*] No se han encontrado productos en esta página.")
-            return []
-
-        productos = []
-        cards = self.driver.find_elements(By.CSS_SELECTOR, "div.album__main, a[href*='albums']")
-        
-        for card in cards:
-            try:
-                link = card if card.tag_name == 'a' else card.find_element(By.CSS_SELECTOR, "a[href]")
-                album_url = link.get_attribute("href")
-                
-                # Obtener título
-                try:
-                    img_el = link.find_element(By.CSS_SELECTOR, "img[alt]")
-                    title = img_el.get_attribute("alt")
-                except:
-                    try:
-                        title = link.find_element(By.CSS_SELECTOR, ".album__title").text
-                    except:
-                        continue
-                
-                # Si el título está vacío o es basura, lo saltamos
-                if not title or len(title) < 3 or "yupoo" in title.lower() or "加密相册" in title:
-                    continue
-
-                # Obtener imagen
-                try:
-                    img_el = card.find_element(By.CSS_SELECTOR, "img")
-                    img = img_el.get_attribute("data-src") or img_el.get_attribute("data-original") or img_el.get_attribute("src") or ""
-                    if img:
-                        img = urljoin(BASE_URL, img)
-                except:
-                    img = ""
-
-                productos.append(Producto(
-                    title=title.strip(),
-                    category=self._clasificar(title),
-                    img=img,
-                    album_url=album_url
-                ))
-            except Exception:
-                continue
-                
-        return productos
-
-    def scrape_all(self, max_pages: int):
-        todos = []
-        for page in range(1, max_pages + 1):
-            url = f"{CATEGORIES_URL}?page={page}" if page > 1 else CATEGORIES_URL
-            prods = self.scrape_page(url)
-            print(f"    -> {len(prods)} productos encontrados.")
-            
-            if len(prods) == 0:
-                print("[*] Fin del catálogo.")
-                break
-                
-            todos.extend(prods)
-            time.sleep(1)
-
-        self.driver.quit()
-
-        vistos = set()
-        unicos = []
-        for p in todos:
-            key = (p.title, p.album_url)
-            if key in vistos: continue
-            vistos.add(key)
-            unicos.append(p)
-
-        return unicos
-
-def guardar_json(productos: list[Producto], path: str):
-    data = [{"title": p.title, "category": p.category, "img": p.img} for p in productos if p.title and p.img]
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
-    print(f"[+] ¡Éxito! Escritos {len(data)} productos en {path}")
+def clasificar(title):
+    t = title.upper()
+    if re.search(r"\bNK\b", t) or "NIKE" in t: return "Nike"
+    if re.search(r"\bJB\b", t) or "JORDAN" in t: return "Jordan"
+    if "SHORT" in t: return "Shorts"
+    if "HOODIE" in t or "SUDADERA" in t or "SWEAT" in t: return "Sudaderas"
+    if "PANT" in t or "JOGGER" in t: return "Pantalones"
+    if "JERSEY" in t or "CAMISETA" in t or "SHIRT" in t: return "Camisetas"
+    if "SOCK" in t or "CAP" in t or "BAG" in t or "ACCESSOR" in t: return "Accesorios"
+    return "Catálogo General"
 
 def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--max-pages", type=int, default=MAX_PAGES_DEFAULT)
-    ap.add_argument("--out", default="productos.json")
-    args = ap.parse_args()
+    print("[*] Iniciando extracción vía API interna...")
+    todos_los_productos = []
+    pagina = 1
+    
+    while True:
+        print(f"[*] Pidiendo página {pagina}...")
+        params = {"page": pagina}
+        
+        try:
+            respuesta = requests.get(API_URL, headers=HEADERS, params=params, timeout=15)
+            respuesta.raise_for_status()
+            datos = respuesta.json()
+        except Exception as e:
+            print(f"[!] Error en la petición: {e}")
+            break
 
-    print("[*] Iniciando navegador fantasma...")
-    scraper = YupooScraper()
-    productos = scraper.scrape_all(args.max_pages)
+        # La API devuelve los álbumes dentro de la clave 'albums' o directamente en una lista
+        albumes = datos.get('albums', []) if isinstance(datos, dict) else datos
+        
+        if not albumes:
+            print("[*] No hay más productos. Fin del catálogo.")
+            break
 
-    if not productos:
-        print("[!] No se encontraron productos.")
-        sys.exit(1)
+        for album in albumes:
+            # Extraemos los datos que nos interesan del JSON
+            title = album.get('title', '').strip()
+            
+            # Ignoramos los álbumes vacíos, bloqueados o con contraseña
+            if not title or "加密相册" in title or len(title) < 3:
+                continue
+                
+            # Sacamos la imagen (Yupoo usa 'cover_url' o similar en su API)
+            img = album.get('cover_url', '')
+            if img and not img.startswith('http'):
+                img = f"https:{img}" if img.startswith('//') else f"https://photo.yupoo.com{img}"
 
-    guardar_json(productos, args.out)
+            todos_los_productos.append({
+                "title": title,
+                "category": clasificar(title),
+                "img": img
+            })
+
+        print(f"    -> {len(albumes)} encontrados en esta página.")
+        pagina += 1
+        time.sleep(1) # Pausa de 1 segundo para no saturar
+
+    # Guardar el JSON
+    with open("productos.json", "w", encoding="utf-8") as f:
+        json.dump(todos_los_productos, f, ensure_ascii=False, indent=2)
+        
+    print(f"[+] ¡Éxito! {len(todos_los_productos)} productos guardados en productos.json")
 
 if __name__ == "__main__":
     main()
