@@ -12,19 +12,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      
       - name: Configurar Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
           
-      - name: Instalar navegador Chrome (necesario para Selenium)
+      - name: Instalar Playwright y dependencias
         run: |
-          sudo apt-get update
-          sudo apt-get install -y chromium-browser
+          pip install playwright
+          playwright install chromium
+          playwright install-deps
           
-      - name: Instalar librerías de Python
-        run: pip install requests beautifulsoup4 selenium webdriver-manager
-
       - name: Ejecutar Scraper
         run: python scraper.py
 
