@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="El Armario del Gol — Catálogo visual de equipaciones y ropa deportiva.">
     <title>El Armario del Gol</title>
-    <link rel="icon" type="image/jpeg" href="imagenes/LOGO.BLA.jpg">
+    <link rel="icon" type="image/jpeg" href="imagenes/logo.jpg">
     <style>
         :root {
             --bg-dark: #0b0f19;
@@ -129,16 +129,17 @@
         </div>
     </header>
 
-    <!-- Categorías idénticas a minkang.x.yupoo.com/categories -->
+    <!-- Filtros adaptados a las categorías que extrae el robot -->
     <div class="filters" id="categoryFilters">
         <button class="filter-btn active" data-cat="Todos">Todos</button>
+        <button class="filter-btn" data-cat="Camisetas">Camisetas / Jerseys</button>
+        <button class="filter-btn" data-cat="Sudaderas">Sudaderas / Hoodies</button>
+        <button class="filter-btn" data-cat="Shorts">Shorts</button>
+        <button class="filter-btn" data-cat="Pantalones">Pantalones</button>
         <button class="filter-btn" data-cat="Nike">Nike</button>
         <button class="filter-btn" data-cat="Jordan">Jordan</button>
-        <button class="filter-btn" data-cat="Shorts">Shorts</button>
-        <button class="filter-btn" data-cat="Camisetas">Camisetas</button>
-        <button class="filter-btn" data-cat="Sudaderas">Sudaderas</button>
-        <button class="filter-btn" data-cat="Pantalones">Pantalones</button>
         <button class="filter-btn" data-cat="Accesorios">Accesorios</button>
+        <button class="filter-btn" data-cat="Catálogo General">Otros</button>
     </div>
 
     <main class="catalog" id="catalogGrid"></main>
@@ -150,7 +151,7 @@
     <div class="modal" id="productModal">
         <div class="modal-content" onclick="event.stopPropagation()">
             <button class="close-btn" type="button" aria-label="Cerrar">×</button>
-            <img id="mImg" class="modal-img" src="" alt="">
+            <img id="mImg" class="modal-img" src="" alt="" referrerpolicy="no-referrer">
             <div class="modal-info">
                 <span class="card-tag" id="mCat"></span>
                 <h2 class="modal-title" id="mTitle"></h2>
@@ -192,7 +193,7 @@
             grid.innerHTML = "";
 
             const filtered = productos.filter(p => {
-                const cat = p.category || "Otros";
+                const cat = p.category || "Catálogo General";
                 const title = (p.title || "").toLowerCase();
                 const matchCat = currentCategory === "Todos" || cat === currentCategory;
                 const matchSearch = !query || title.includes(query);
@@ -200,7 +201,7 @@
             });
 
             if (filtered.length === 0) {
-                grid.innerHTML = `<p style="grid-column: 1/-1; text-align:center; color:var(--text-muted); padding:3rem;">No se encontraron equipaciones.</p>`;
+                grid.innerHTML = `<p style="grid-column: 1/-1; text-align:center; color:var(--text-muted); padding:3rem;">No se encontraron equipaciones en esta categoría.</p>`;
                 return;
             }
 
@@ -210,7 +211,8 @@
                 card.className = "card";
                 card.innerHTML = `
                     <div class="card-img-container">
-                        <img src="${esc(p.img)}" alt="${esc(p.title)}" class="card-img" loading="lazy">
+                        <!-- referrerpolicy es CLAVE para que Yupoo no bloquee las fotos -->
+                        <img src="${esc(p.img)}" alt="${esc(p.title)}" class="card-img" loading="lazy" referrerpolicy="no-referrer">
                     </div>
                     <div class="card-body">
                         <div>
