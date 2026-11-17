@@ -1,59 +1,54 @@
 import requests
 import json
-import re
+import time
 
-API_URL = "https://minkang.x.yupoo.com/api/categories/albums"
+BASE_URL = "https://minkang.x.yupoo.com"
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
     "Accept": "application/json, text/plain, */*",
-    "Referer": "https://minkang.x.yupoo.com/categories"
+    "Referer": f"{BASE_URL}/categories"
 }
 
 def main():
-    print("[*] Extrayendo las categorías reales de Yupoo...")
+    print("[*] Extrayendo menú de categorías idéntico a Yupoo...")
     
-    # Quitamos el bucle de páginas, Yupoo devuelve todo el árbol de categorías de golpe
     try:
-        respuesta = requests.get(API_URL, headers=HEADERS, timeout=15)
-        respuesta.raise_for_status()
-        datos = respuesta.json()
+        # Endpoint que devuelve el menú lateral de Yupoo
+        r = requests.get(f"{BASE_URL}/api/categories", headers=HEADERS, timeout=15)
+        r.raise_for_status()
+        datos = r.json()
     except Exception as e:
-        print(f"[!] Error: {e}")
+        print(f"[!] Error al conectar: {e}")
         return
 
-    # Yupoo devuelve las categorías dentro de 'category_list'
     categorias = datos.get('category_list', [])
-    
-    if not categorias:
-        print("[!] No se encontraron categorías.")
-        return
-
     resultado = []
-    
-    # Recorremos las categorías principales
+
+    # Filtramos para que queden exactamente las que salen en tu foto
     for cat in categorias:
         nombre = cat.get('name', '').strip()
         cat_id = cat.get('id')
         
-        # Ignoramos las que no tengan nombre o sean la raíz
-        if not nombre or nombre == "All Categories":
+        # Ignoramos los menús basura o vacíos de Yupoo
+        if not nombre or nombre in ["All categories", "Menu", "Menu 2"]:
             continue
-            
+
+        # Sacamos la foto de portada de la carpeta
         img = cat.get('cover_url', '')
         if img and not img.startswith('http'):
             img = f"https:{img}" if img.startswith('//') else f"https://photo.yupoo.com{img}"
 
         resultado.append({
-            "title": nombre,
-            "category": "Menu Principal",
+            "id": cat_id,
+            "name": nombre,
             "img": img,
-            "album_url": f"https://minkang.x.yupoo.com/categories/{cat_id}"
+            "count": cat.get('album_count', 0) # El numero de productos que tiene dentro
         })
 
     with open("productos.json", "w", encoding="utf-8") as f:
         json.dump(resultado, f, ensure_ascii=False, indent=2)
         
-    print(f"[+] ¡Éxito! Se han guardado {len(resultado)} categorías en productos.json")
+    print(f"[+] ¡Éxito! Menú guardado con {len(resultado)} categorías.")
 
 if __name__ == "__main__":
     main()
