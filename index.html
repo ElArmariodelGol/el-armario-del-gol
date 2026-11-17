@@ -1,119 +1,341 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El Armario del Gol</title>
-    <link rel="icon" type="image/jpeg" href="imagenes/logo.jpg">
-    <style>
-        :root { --bg-dark: #0b0f19; --bg-card: #131c2e; --accent: #10b981; --text-main: #f8fafc; --text-muted: #94a3b8; --border: #1e293b; }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, sans-serif; }
-        body { background-color: var(--bg-dark); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; }
-        header { background-color: var(--bg-dark); border-bottom: 1px solid var(--border); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
-        .brand { display: flex; align-items: center; gap: 0.8rem; color: var(--text-main); text-decoration: none; }
-        .brand img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--accent); }
-        .brand span { font-size: 1.2rem; font-weight: 800; }
-        .brand span span { color: var(--accent); }
-        
-        .main-container { display: flex; flex: 1; max-width: 1600px; margin: 0 auto; width: 100%; }
-        
-        /* MENÚ LATERAL */
-        .sidebar { width: 280px; border-right: 1px solid var(--border); padding: 1.5rem 0; flex-shrink: 0; background: var(--bg-dark); overflow-y: auto; max-height: calc(100vh - 70px); }
-        .sidebar-header { padding: 0 1.5rem 1rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; color: var(--accent); font-weight: 600; font-size: 1.1rem;}
-        .sidebar ul { list-style: none; }
-        .sidebar li { padding: 0.9rem 1.5rem; border-bottom: 1px solid #1e293b; color: var(--text-muted); font-size: 0.9rem; cursor: pointer; transition: background 0.2s; }
-        .sidebar li:hover { background: var(--bg-card); color: white; }
-        
-        /* ZONA DERECHA */
-        .content { flex: 1; padding: 2rem; }
-        .content-header { margin-bottom: 1.5rem; }
-        .content-header h1 { font-size: 1.2rem; font-weight: 500; margin-bottom: 0.3rem; }
-        .content-header p { font-size: 0.85rem; color: var(--text-muted); }
-        
-        /* CUADRÍCULA */
-        .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
-        @media(max-width: 1200px) { .grid { grid-template-columns: repeat(3, 1fr); } }
-        @media(max-width: 900px) { .main-container { flex-direction: column; } .sidebar { width: 100%; max-height: none; } .grid { grid-template-columns: repeat(2, 1fr); } }
-        
-        .card { background: transparent; border-radius: 8px; overflow: hidden; cursor: pointer; transition: transform 0.2s; }
-        .card:hover { transform: scale(1.02); }
-        .card-img-container { width: 100%; aspect-ratio: 1/1; background: #070a10; border-radius: 4px; overflow: hidden; }
-        .card-img { width: 100%; height: 100%; object-fit: cover; }
-        .card-title { font-size: 0.85rem; font-weight: 500; margin-top: 0.5rem; line-height: 1.3; text-align: center; color: var(--text-main); }
-        
-        footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.85rem; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  <title>El Armario del Gol | Catálogo</title>
+  <link rel="icon" type="image/jpeg" href="imagenes/logo.jpg">
+  
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #0b0f19;
+      --bg-card: #131c2e;
+      --accent: #10b981; /* Verde El Armario del Gol */
+      --accent-hover: #059669;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: #1e293b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', system-ui, sans-serif; background-color: var(--bg-dark); color: var(--text-main); font-size: 14px; line-height: 1.5; min-height: 100vh; display: flex; flex-direction: column; }
+    a { text-decoration: none; color: inherit; }
+
+    /* Store Header (Marca) */
+    .store-header { background: var(--bg-dark); border-bottom: 1px solid var(--border); }
+    .store-header-inner { max-width: 1400px; margin: 0 auto; padding: 20px 24px 0; }
+    .store-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding-bottom: 18px; }
+    .store-profile { display: flex; align-items: center; gap: 14px; }
+    .store-avatar { width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--accent); object-fit: cover; }
+    .store-title { font-size: 20px; font-weight: 800; color: var(--text-main); letter-spacing: -0.5px; }
+    .store-title span { color: var(--accent); }
+    .store-subtitle { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+    /* Buscador */
+    .search-box { display: flex; align-items: center; width: 100%; max-width: 380px; border: 1px solid var(--border); border-radius: 30px; overflow: hidden; background: var(--bg-card); }
+    .search-box input { flex: 1; border: none; outline: none; padding: 10px 16px; font-size: 13px; color: var(--text-main); background: transparent; }
+    .search-box input::placeholder { color: var(--text-muted); }
+    .search-box button { background: var(--accent); color: #000; border: none; padding: 10px 20px; font-size: 13px; font-weight: 700; cursor: pointer; transition: background 0.2s; }
+    .search-box button:hover { background: var(--accent-hover); }
+
+    /* Nav Tabs */
+    .store-nav { display: flex; gap: 28px; border-top: 1px solid var(--border); padding-top: 2px; overflow-x: auto; }
+    .store-nav a { padding: 12px 2px; font-size: 14px; font-weight: 500; color: var(--text-muted); border-bottom: 2px solid transparent; white-space: nowrap; transition: color 0.2s, border-color 0.2s; }
+    .store-nav a:hover { color: var(--text-main); }
+    .store-nav a.active { color: var(--accent); border-bottom-color: var(--accent); font-weight: 700; }
+
+    /* Main Container */
+    .main-container { max-width: 1400px; margin: 20px auto; padding: 0 24px; display: flex; gap: 20px; align-items: flex-start; flex: 1; width: 100%;}
+
+    /* Menú Lateral (Sidebar) */
+    .sidebar { width: 260px; flex-shrink: 0; background: var(--bg-card); border-radius: 8px; border: 1px solid var(--border); overflow: hidden; }
+    .sidebar-header { padding: 14px 16px; background: var(--accent); color: #000; font-weight: 800; font-size: 14px; display: flex; justify-content: space-between; align-items: center; }
+    .cat-item { border-bottom: 1px solid var(--border); }
+    .cat-item:last-child { border-bottom: none; }
+    .cat-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; cursor: pointer; transition: background 0.15s; }
+    .cat-row:hover { background: #1e293b; }
+    .cat-row a { font-size: 13px; color: var(--text-main); flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 500; }
+    .cat-row a:hover { color: var(--accent); }
+    .cat-toggle { font-size: 11px; color: var(--text-muted); padding: 2px 6px; border-radius: 4px; background: #0f172a; margin-left: 6px; user-select: none; font-weight: bold; }
+    
+    .subcat-list { display: none; background: #0b0f19; padding: 4px 0 8px 22px; border-top: 1px solid var(--border); }
+    .subcat-list.open { display: block; }
+    .subcat-list a { display: block; padding: 6px 12px; font-size: 12px; color: var(--text-muted); }
+    .subcat-list a:hover { color: var(--accent); }
+
+    /* Contenido (Grid de Productos) */
+    .content { flex: 1; min-width: 0; }
+    .toolbar { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; margin-bottom: 16px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+    .breadcrumb { font-size: 13px; color: var(--text-muted); }
+    .breadcrumb strong { color: var(--text-main); }
+    .filter-pills { display: flex; gap: 6px; }
+    .pill-btn { border: 1px solid var(--border); background: transparent; color: var(--text-muted); padding: 5px 12px; border-radius: 20px; font-size: 12px; cursor: pointer; transition: all 0.15s; font-weight: 600; }
+    .pill-btn.active, .pill-btn:hover { background: var(--accent); color: #000; border-color: var(--accent); }
+
+    .album-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(195px, 1fr)); gap: 16px; }
+    .album-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; transition: transform 0.18s ease, box-shadow 0.18s ease; display: flex; flex-direction: column; }
+    .album-card:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.5); border-color: var(--accent); }
+    
+    .album-thumb-wrap { position: relative; width: 100%; padding-top: 100%; background: #070a10; overflow: hidden; cursor: pointer; }
+    .album-thumb-wrap img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.25s ease; }
+    .album-card:hover .album-thumb-wrap img { transform: scale(1.05); }
+    
+    .photo-badge { position: absolute; bottom: 8px; right: 8px; background: rgba(0, 0, 0, 0.75); color: #fff; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; }
+    .zoom-badge { position: absolute; top: 8px; right: 8px; background: var(--accent); color: #000; font-size: 11px; font-weight: bold; padding: 3px 8px; border-radius: 4px; opacity: 0; transition: opacity 0.2s; }
+    .album-card:hover .zoom-badge { opacity: 1; }
+
+    .album-info { padding: 12px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .album-title { font-size: 12.5px; color: var(--text-main); line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 10px; font-weight: 500;}
+    .album-title:hover { color: var(--accent); }
+    
+    .album-actions { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 8px; font-size: 11px; }
+    .album-link { color: var(--accent); font-weight: 700; }
+    .album-link:hover { text-decoration: underline; }
+
+    /* Paginación */
+    .pagination { margin-top: 24px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; }
+    .page-btns { display: flex; gap: 6px; }
+    .page-btn { padding: 6px 12px; border: 1px solid var(--border); border-radius: 4px; font-size: 13px; color: var(--text-muted); background: transparent; transition: all 0.2s;}
+    .page-btn.active { background: var(--accent); color: #000; border-color: var(--accent); font-weight: bold; }
+    .page-btn:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
+
+    /* Lightbox Modal */
+    .lightbox { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.9); z-index: 9999; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(5px); }
+    .lightbox.open { display: flex; }
+    .lightbox-box { background: var(--bg-card); border-radius: 12px; max-width: 720px; width: 100%; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.6); border: 1px solid var(--border); animation: scaleUp 0.2s ease; }
+    @keyframes scaleUp { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    
+    .lightbox-img-wrap { background: #000; display: flex; align-items: center; justify-content: center; max-height: 70vh; }
+    .lightbox-img-wrap img { max-width: 100%; max-height: 70vh; object-fit: contain; }
+    .lightbox-footer { padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .lightbox-title { font-size: 14px; font-weight: 600; color: var(--text-main); flex: 1; }
+    .lightbox-btns { display: flex; gap: 8px; flex-shrink: 0; }
+    
+    .btn-primary { background: var(--accent); color: #000; padding: 8px 16px; border-radius: 6px; font-size: 13px; font-weight: 700; }
+    .btn-primary:hover { background: var(--accent-hover); }
+    .btn-secondary { background: #334155; color: #fff; padding: 8px 16px; border-radius: 6px; font-size: 13px; border: none; cursor: pointer; font-weight: 600; }
+    .btn-secondary:hover { background: #475569; }
+
+    footer { text-align: center; padding: 30px; color: var(--text-muted); font-size: 12px; border-top: 1px solid var(--border); margin-top: auto; }
+
+    @media (max-width: 860px) {
+      .main-container { flex-direction: column; }
+      .sidebar { width: 100%; }
+      .album-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <a href="#" class="brand">
-            <img src="imagenes/logo.jpg" alt="Logo">
-            <div>EL ARMARIO DEL <span>GOL</span></div>
+  <!-- Store Header -->
+  <header class="store-header">
+    <div class="store-header-inner">
+      <div class="store-top">
+        <a href="#" class="store-profile">
+          <img src="imagenes/logo.jpg" alt="Logo" class="store-avatar">
+          <div>
+            <div class="store-title">EL ARMARIO DEL <span>GOL</span></div>
+            <div class="store-subtitle">Catálogo Exclusivo • 120 artículos destacados</div>
+          </div>
         </a>
-    </header>
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="Buscar equipo, liga o prenda...">
+          <button type="button" id="clearSearchBtn">Buscar</button>
+        </div>
+      </div>
 
-    <div class="main-container">
-        <aside class="sidebar">
-            <div class="sidebar-header"><span>All categories</span><span>≡</span></div>
-            <ul id="sidebarMenu"></ul>
-        </aside>
-
-        <main class="content">
-            <div class="content-header">
-                <h1>All categories</h1>
-                <p id="totalAlbums">in total 0 albums</p>
-            </div>
-            <div class="grid" id="catalogGrid">
-                <p style="grid-column: 1/-1; text-align: center; color: var(--text-muted);">Cargando catálogo...</p>
-            </div>
-        </main>
+      <nav class="store-nav">
+        <a href="#" class="active">Inicio</a>
+        <a href="#">Novedades</a>
+        <a href="#">Ofertas</a>
+        <a href="#">Contacto</a>
+      </nav>
     </div>
+  </header>
 
-    <footer>
-        <p>© 2026 El Armario del Gol • Catálogo Exclusivo</p>
-    </footer>
+  <!-- Main Content -->
+  <div class="main-container">
+    <!-- Categories Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <span>Todas las Categorías</span>
+        <span style="font-size:11px;opacity:0.8;" id="catCount"></span>
+      </div>
+      <div id="categoryList"></div>
+    </aside>
 
-    <script>
-        fetch('productos.json')
-            .then(r => r.json())
-            .then(data => {
-                const menu = document.getElementById("sidebarMenu");
-                const grid = document.getElementById("catalogGrid");
-                
-                // 1. Rellenar menú lateral con las categorías reales
-                if (data.menu && data.menu.length > 0) {
-                    data.menu.forEach(cat => {
-                        const li = document.createElement("li");
-                        li.innerText = cat.name;
-                        menu.appendChild(li);
-                    });
-                }
+    <!-- Albums Grid Section -->
+    <main class="content">
+      <div class="toolbar">
+        <div class="breadcrumb">
+          Mostrando <strong id="visibleCount">120</strong> productos
+        </div>
+        <div class="filter-pills">
+          <button class="pill-btn active" data-brand="ALL">Todos</button>
+          <button class="pill-btn" data-brand="NK">Nike (NK)</button>
+          <button class="pill-btn" data-brand="JB">Jordan (JB)</button>
+        </div>
+      </div>
 
-                // 2. Rellenar la cuadrícula de productos
-                if (data.productos && data.productos.length > 0) {
-                    grid.innerHTML = "";
-                    document.getElementById("totalAlbums").innerText = `in total ${data.productos.length} albums`;
-                    
-                    data.productos.forEach(p => {
-                        const card = document.createElement("div");
-                        card.className = "card";
-                        card.innerHTML = `
-                            <div class="card-img-container">
-                                <img src="${p.img}" class="card-img" referrerpolicy="no-referrer" onerror="this.src='imagenes/logo.jpg'">
-                            </div>
-                            <div class="card-title">${p.title}</div>
-                        `;
-                        grid.appendChild(card);
-                    });
-                } else {
-                    // Si no hay productos (porque Yupoo los carga con JS), mostramos un mensaje
-                    grid.innerHTML = "<p style='grid-column: 1/-1; text-align: center; color: var(--accent);'>Las categorías se han cargado a la izquierda. Los productos se mostrarán aquí cuando hagamos la Fase 2.</p>";
-                }
-            })
-            .catch(err => {
-                document.getElementById("catalogGrid").innerHTML = "<p style='color:red;'>Error al cargar productos.json.</p>";
-            });
-    </script>
+      <div class="album-grid" id="albumGrid"></div>
+
+      <!-- Paginación visual (Enlaces a Yupoo) -->
+      <div class="pagination">
+        <div style="font-size:12px;color:var(--text-muted);">Página 1 de 72 (8,614 álbumes en total en Yupoo)</div>
+        <div class="page-btns">
+          <a class="page-btn active" href="https://minkang.x.yupoo.com/categories?is_ajax=1&page=1" target="_blank" rel="noopener">1</a>
+          <a class="page-btn" href="https://minkang.x.yupoo.com/categories?is_ajax=1&page=2" target="_blank" rel="noopener">2</a>
+          <a class="page-btn" href="https://minkang.x.yupoo.com/categories?is_ajax=1&page=3" target="_blank" rel="noopener">3</a>
+          <a class="page-btn" href="https://minkang.x.yupoo.com/categories?is_ajax=1&page=2" target="_blank" rel="noopener">Siguiente &raquo;</a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-box">
+      <div class="lightbox-img-wrap">
+        <img id="lightboxImg" src="" referrerpolicy="no-referrer" alt="">
+      </div>
+      <div class="lightbox-footer">
+        <div class="lightbox-title" id="lightboxTitle"></div>
+        <div class="lightbox-btns">
+          <a id="lightboxAlbumLink" href="#" target="_blank" rel="noopener" class="btn-primary">Ver en Yupoo</a>
+          <button type="button" id="closeLightbox" class="btn-secondary">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    © 2026 El Armario del Gol • Catálogo Exclusivo
+  </footer>
+
+  <script>
+    // --- DATOS EXTRAÍDOS POR GEMINI ---
+    const CATEGORIES = [{"title": "All categories", "href": "https://minkang.x.yupoo.com/categories/", "subcats": []}, {"title": "Menu", "href": "https://minkang.x.yupoo.com/categories/664377", "subcats": []}, {"title": "Menu 2", "href": "https://minkang.x.yupoo.com/categories/3775070", "subcats": []}, {"title": "new season", "href": "https://minkang.x.yupoo.com/categories/712891", "subcats": []}, {"title": "Casual Shorts", "href": "https://minkang.x.yupoo.com/categories/5391386", "subcats": []}, {"title": "La Liga", "href": "https://minkang.x.yupoo.com/categories/680717", "subcats": [["Real Madrid", "https://minkang.x.yupoo.com/categories/718622?isSubCate=true"], ["Barcelona", "https://minkang.x.yupoo.com/categories/718623?isSubCate=true"], ["Atletico Madrid", "https://minkang.x.yupoo.com/categories/718624?isSubCate=true"], ["Athletic Bilbao", "https://minkang.x.yupoo.com/categories/718625?isSubCate=true"], ["Real Sociedad", "https://minkang.x.yupoo.com/categories/718626?isSubCate=true"], ["Real Betis", "https://minkang.x.yupoo.com/categories/718627?isSubCate=true"], ["Celta de Vigo", "https://minkang.x.yupoo.com/categories/718628?isSubCate=true"], ["Girona", "https://minkang.x.yupoo.com/categories/718629?isSubCate=true"], ["Villarreal", "https://minkang.x.yupoo.com/categories/718630?isSubCate=true"], ["Valencia", "https://minkang.x.yupoo.com/categories/718631?isSubCate=true"], ["Osasuna", "https://minkang.x.yupoo.com/categories/718632?isSubCate=true"], ["Sevilla", "https://minkang.x.yupoo.com/categories/718633?isSubCate=true"], ["Rayo Vallecano", "https://minkang.x.yupoo.com/categories/718634?isSubCate=true"], ["Las Palmas", "https://minkang.x.yupoo.com/categories/718635?isSubCate=true"], ["Deportivo Alavés", "https://minkang.x.yupoo.com/categories/718636?isSubCate=true"], ["Zaragoza", "https://minkang.x.yupoo.com/categories/718637?isSubCate=true"], ["Cadiz CF", "https://minkang.x.yupoo.com/categories/718638?isSubCate=true"], ["Deportivo La Coruna", "https://minkang.x.yupoo.com/categories/718639?isSubCate=true"], ["Cordoba", "https://minkang.x.yupoo.com/categories/718640?isSubCate=true"], ["Espanyol", "https://minkang.x.yupoo.com/categories/718641?isSubCate=true"], ["Getafe", "https://minkang.x.yupoo.com/categories/718642?isSubCate=true"], ["Malaga", "https://minkang.x.yupoo.com/categories/718643?isSubCate=true"], ["Tenerife", "https://minkang.x.yupoo.com/categories/718644?isSubCate=true"], ["Granada", "https://minkang.x.yupoo.com/categories/718645?isSubCate=true"], ["Real Valladolid", "https://minkang.x.yupoo.com/categories/718646?isSubCate=true"], ["Mallorca", "https://minkang.x.yupoo.com/categories/718647?isSubCate=true"], ["Burgos", "https://minkang.x.yupoo.com/categories/718648?isSubCate=true"], ["Albacete", "https://minkang.x.yupoo.com/categories/718649?isSubCate=true"], ["Sporting de Gijon", "https://minkang.x.yupoo.com/categories/718650?isSubCate=true"], ["Elche", "https://minkang.x.yupoo.com/categories/718651?isSubCate=true"], ["Leganes", "https://minkang.x.yupoo.com/categories/718652?isSubCate=true"], ["Racing de Santander", "https://minkang.x.yupoo.com/categories/718653?isSubCate=true"], ["Real Murcia", "https://minkang.x.yupoo.com/categories/718654?isSubCate=true"], ["Real Oviedo", "https://minkang.x.yupoo.com/categories/718655?isSubCate=true"], ["Levante UD", "https://minkang.x.yupoo.com/categories/728197?isSubCate=true"], ["Cartagena", "https://minkang.x.yupoo.com/categories/731357?isSubCate=true"], ["Basque Country", "https://minkang.x.yupoo.com/categories/759410?isSubCate=true"], ["Hércules", "https://minkang.x.yupoo.com/categories/762252?isSubCate=true"], ["Compostela", "https://minkang.x.yupoo.com/categories/808231?isSubCate=true"], ["UD Almeria", "https://minkang.x.yupoo.com/categories/889728?isSubCate=true"], ["Don Castello", "https://minkang.x.yupoo.com/categories/993108?isSubCate=true"], ["Cádiz", "https://minkang.x.yupoo.com/categories/993119?isSubCate=true"], ["UD Las Palmas", "https://minkang.x.yupoo.com/categories/993146?isSubCate=true"], ["Cultural Leonesa", "https://minkang.x.yupoo.com/categories/1014745?isSubCate=true"], ["Recreativo de Huelva", "https://minkang.x.yupoo.com/categories/1014856?isSubCate=true"], ["Ceara SC", "https://minkang.x.yupoo.com/categories/1052218?isSubCate=true"], ["AD Ceuta FC", "https://minkang.x.yupoo.com/categories/1052255?isSubCate=true"], ["Villarreal CF", "https://minkang.x.yupoo.com/categories/1058191?isSubCate=true"]]}, {"title": "📢 New Notice 2-Star 🏆 Large Stock Available", "href": "https://minkang.x.yupoo.com/categories/5211803", "subcats": []}, {"title": "Brasileiro Série A", "href": "https://minkang.x.yupoo.com/categories/680738", "subcats": [["Flamengo", "https://minkang.x.yupoo.com/categories/720314?isSubCate=true"], ["Palmeiras", "https://minkang.x.yupoo.com/categories/720315?isSubCate=true"], ["São Paulo", "https://minkang.x.yupoo.com/categories/720325?isSubCate=true"], ["Corinthians", "https://minkang.x.yupoo.com/categories/725796?isSubCate=true"], ["Santos", "https://minkang.x.yupoo.com/categories/720317?isSubCate=true"], ["Gremio", "https://minkang.x.yupoo.com/categories/720316?isSubCate=true"], ["Botafogo", "https://minkang.x.yupoo.com/categories/720319?isSubCate=true"], ["Atlético Mineiro", "https://minkang.x.yupoo.com/categories/720318?isSubCate=true"], ["Red Bull Bragantino", "https://minkang.x.yupoo.com/categories/720320?isSubCate=true"], ["Fluminense", "https://minkang.x.yupoo.com/categories/720321?isSubCate=true"], ["Atlético Paranaense", "https://minkang.x.yupoo.com/categories/720322?isSubCate=true"], ["Internacional", "https://minkang.x.yupoo.com/categories/720323?isSubCate=true"], ["Fortaleza", "https://minkang.x.yupoo.com/categories/720324?isSubCate=true"], ["Cruzeiro", "https://minkang.x.yupoo.com/categories/720327?isSubCate=true"], ["Vasco da Gama", "https://minkang.x.yupoo.com/categories/720328?isSubCate=true"], ["Bahia", "https://minkang.x.yupoo.com/categories/720329?isSubCate=true"], ["Sport Recife", "https://minkang.x.yupoo.com/categories/720330?isSubCate=true"], ["Paysandu", "https://minkang.x.yupoo.com/categories/720331?isSubCate=true"], ["Vitória", "https://minkang.x.yupoo.com/categories/720332?isSubCate=true"], ["Remo", "https://minkang.x.yupoo.com/categories/720333?isSubCate=true"], ["Santa Cruz", "https://minkang.x.yupoo.com/categories/720334?isSubCate=true"], ["Confiança", "https://minkang.x.yupoo.com/categories/720335?isSubCate=true"], ["Atlético Juventus", "https://minkang.x.yupoo.com/categories/720336?isSubCate=true"], ["Cuiabá", "https://minkang.x.yupoo.com/categories/720337?isSubCate=true"], ["Nautico", "https://minkang.x.yupoo.com/categories/743974?isSubCate=true"], ["Ceará Sporting", "https://minkang.x.yupoo.com/categories/820479?isSubCate=true"], ["Chapecoense", "https://minkang.x.yupoo.com/categories/825561?isSubCate=true"], ["Coritiba", "https://minkang.x.yupoo.com/categories/853710?isSubCate=true"]]}, {"title": "2026 FIFA World Cup", "href": "https://minkang.x.yupoo.com/categories/5062328", "subcats": []}, {"title": "NRL", "href": "https://minkang.x.yupoo.com/categories/5101782", "subcats": []}, {"title": "newF1", "href": "https://minkang.x.yupoo.com/categories/4093290", "subcats": []}, {"title": "Brazil team column", "href": "https://minkang.x.yupoo.com/categories/3856104", "subcats": []}, {"title": "🧦Socks", "href": "https://minkang.x.yupoo.com/categories/3880538", "subcats": []}, {"title": "🏈NFL", "href": "https://minkang.x.yupoo.com/categories/3279569", "subcats": []}, {"title": "🏁F1", "href": "https://minkang.x.yupoo.com/categories/3796980", "subcats": []}, {"title": "⚽Polos", "href": "https://minkang.x.yupoo.com/categories/2893798", "subcats": []}, {"title": "Shorts", "href": "https://minkang.x.yupoo.com/categories/2896038", "subcats": []}, {"title": "Worldwide Other League", "href": "https://minkang.x.yupoo.com/categories/5063627", "subcats": []}, {"title": "Retro football shirt", "href": "https://minkang.x.yupoo.com/categories/711624", "subcats": []}, {"title": "💨🧥Windbreaker/Training Top", "href": "https://minkang.x.yupoo.com/categories/4093293", "subcats": []}, {"title": "⚽💪🏻Player Version", "href": "https://minkang.x.yupoo.com/categories/757749", "subcats": []}, {"title": "⚽💁🏻‍♀️Women's shirt", "href": "https://minkang.x.yupoo.com/categories/2890904", "subcats": []}, {"title": "⚽🌍 National Teams", "href": "https://minkang.x.yupoo.com/categories/3118456", "subcats": []}, {"title": "⚽👦🏻kids kit size：16-28", "href": "https://minkang.x.yupoo.com/categories/757739", "subcats": []}, {"title": "👶🏻Baby jersey size:9-12", "href": "https://minkang.x.yupoo.com/categories/3491510", "subcats": []}, {"title": "⚽🧤Goalkeeper kit", "href": "https://minkang.x.yupoo.com/categories/3427612", "subcats": []}, {"title": "⚽Long sleeve shirt", "href": "https://minkang.x.yupoo.com/categories/3709501", "subcats": []}, {"title": "Premier League", "href": "https://minkang.x.yupoo.com/categories/680719", "subcats": [["LFC", "https://minkang.x.yupoo.com/categories/720293?isSubCate=true"], ["M-U", "https://minkang.x.yupoo.com/categories/720294?isSubCate=true"], ["Manchester City", "https://minkang.x.yupoo.com/categories/720295?isSubCate=true"], ["Chelsea", "https://minkang.x.yupoo.com/categories/720296?isSubCate=true"], ["Arsenal", "https://minkang.x.yupoo.com/categories/720297?isSubCate=true"], ["Tottenham Hotspur", "https://minkang.x.yupoo.com/categories/720298?isSubCate=true"], ["West Ham United", "https://minkang.x.yupoo.com/categories/720299?isSubCate=true"], ["Wolves", "https://minkang.x.yupoo.com/categories/720300?isSubCate=true"], ["Aston Villa", "https://minkang.x.yupoo.com/categories/720301?isSubCate=true"], ["Everton", "https://minkang.x.yupoo.com/categories/720302?isSubCate=true"], ["Leicester City", "https://minkang.x.yupoo.com/categories/720303?isSubCate=true"], ["Newcastle United", "https://minkang.x.yupoo.com/categories/720304?isSubCate=true"], ["Crystal Palace", "https://minkang.x.yupoo.com/categories/720305?isSubCate=true"], ["Brighton", "https://minkang.x.yupoo.com/categories/720306?isSubCate=true"], ["Fulham", "https://minkang.x.yupoo.com/categories/720307?isSubCate=true"], ["Sheffield Wednesday", "https://minkang.x.yupoo.com/categories/720308?isSubCate=true"], ["Sunderland", "https://minkang.x.yupoo.com/categories/720309?isSubCate=true"], ["Southampton", "https://minkang.x.yupoo.com/categories/720310?isSubCate=true"], ["Birmingham City", "https://minkang.x.yupoo.com/categories/720311?isSubCate=true"], ["Leeds United", "https://minkang.x.yupoo.com/categories/720312?isSubCate=true"], ["Nottingham Forest", "https://minkang.x.yupoo.com/categories/720313?isSubCate=true"], ["Coventry City", "https://minkang.x.yupoo.com/categories/747939?isSubCate=true"], ["Hull City", "https://minkang.x.yupoo.com/categories/756973?isSubCate=true"], ["Blackburn Rovers", "https://minkang.x.yupoo.com/categories/780064?isSubCate=true"], ["Lincoln City", "https://minkang.x.yupoo.com/categories/871144?isSubCate=true"], ["Derby County", "https://minkang.x.yupoo.com/categories/874058?isSubCate=true"], ["Bradford City", "https://minkang.x.yupoo.com/categories/926173?isSubCate=true"], ["Plymouth Argyle", "https://minkang.x.yupoo.com/categories/926186?isSubCate=true"], ["Queens Park Rangers", "https://minkang.x.yupoo.com/categories/965762?isSubCate=true"], ["Preston", "https://minkang.x.yupoo.com/categories/965764?isSubCate=true"], ["Portsmouth", "https://minkang.x.yupoo.com/categories/965766?isSubCate=true"], ["Brentford", "https://minkang.x.yupoo.com/categories/993089?isSubCate=true"], ["Burnley", "https://minkang.x.yupoo.com/categories/993090?isSubCate=true"], ["Cardiff City", "https://minkang.x.yupoo.com/categories/993091?isSubCate=true"], ["Ipswich Town", "https://minkang.x.yupoo.com/categories/993092?isSubCate=true"], ["Middlesbrough", "https://minkang.x.yupoo.com/categories/993094?isSubCate=true"], ["Sheffield United", "https://minkang.x.yupoo.com/categories/993096?isSubCate=true"], ["Crescent", "https://minkang.x.yupoo.com/categories/993102?isSubCate=true"], ["Doncaster", "https://minkang.x.yupoo.com/categories/993104?isSubCate=true"], ["Millwall", "https://minkang.x.yupoo.com/categories/993105?isSubCate=true"], ["Leyard", "https://minkang.x.yupoo.com/categories/993114?isSubCate=true"], ["AFC Bournemouth", "https://minkang.x.yupoo.com/categories/1014736?isSubCate=true"], ["Stoke City", "https://minkang.x.yupoo.com/categories/1014847?isSubCate=true"], ["Watford", "https://minkang.x.yupoo.com/categories/1014852?isSubCate=true"], ["West Bromwich Albion", "https://minkang.x.yupoo.com/categories/1014855?isSubCate=true"], ["AFC Richmond", "https://minkang.x.yupoo.com/categories/1043975?isSubCate=true"], ["Torreense", "https://minkang.x.yupoo.com/categories/1063555?isSubCate=true"]]}, {"title": "Serie A", "href": "https://minkang.x.yupoo.com/categories/708736", "subcats": [["Inter Milan", "https://minkang.x.yupoo.com/categories/724783?isSubCate=true"], ["AC Milan", "https://minkang.x.yupoo.com/categories/724784?isSubCate=true"], ["Juv", "https://minkang.x.yupoo.com/categories/724785?isSubCate=true"], ["Napoli", "https://minkang.x.yupoo.com/categories/724791?isSubCate=true"], ["Roma", "https://minkang.x.yupoo.com/categories/724793?isSubCate=true"], ["Fiorentina", "https://minkang.x.yupoo.com/categories/724789?isSubCate=true"], ["Atalanta", "https://minkang.x.yupoo.com/categories/724786?isSubCate=true"], ["Bologna", "https://minkang.x.yupoo.com/categories/724787?isSubCate=true"], ["Lazio", "https://minkang.x.yupoo.com/categories/724788?isSubCate=true"], ["Torino", "https://minkang.x.yupoo.com/categories/724790?isSubCate=true"], ["Parma Calcio", "https://minkang.x.yupoo.com/categories/724792?isSubCate=true"], ["Sampdoria", "https://minkang.x.yupoo.com/categories/724794?isSubCate=true"], ["Brescia Calcio", "https://minkang.x.yupoo.com/categories/724795?isSubCate=true"], ["Venezia", "https://minkang.x.yupoo.com/categories/724797?isSubCate=true"], ["Pisa", "https://minkang.x.yupoo.com/categories/734317?isSubCate=true"], ["SSC Bari", "https://minkang.x.yupoo.com/categories/747206?isSubCate=true"], ["Cremonese", "https://minkang.x.yupoo.com/categories/747210?isSubCate=true"], ["Sassuolo", "https://minkang.x.yupoo.com/categories/747211?isSubCate=true"], ["Genoa", "https://minkang.x.yupoo.com/categories/771241?isSubCate=true"], ["Padova", "https://minkang.x.yupoo.com/categories/941269?isSubCate=true"], ["Perugia", "https://minkang.x.yupoo.com/categories/941284?isSubCate=true"], ["Palermo", "https://minkang.x.yupoo.com/categories/993095?isSubCate=true"], ["Como", "https://minkang.x.yupoo.com/categories/993121?isSubCate=true"], ["AC Monza", "https://minkang.x.yupoo.com/categories/1043973?isSubCate=true"], ["Hellas Verona", "https://minkang.x.yupoo.com/categories/1052229?isSubCate=true"]]}, {"title": "Bundesliga", "href": "https://minkang.x.yupoo.com/categories/680725", "subcats": [["Bayern Munich", "https://minkang.x.yupoo.com/categories/724824?isSubCate=true"], ["Borussia Dortmund", "https://minkang.x.yupoo.com/categories/724825?isSubCate=true"], ["Frankfurt", "https://minkang.x.yupoo.com/categories/724826?isSubCate=true"], ["RB Leipzig", "https://minkang.x.yupoo.com/categories/724827?isSubCate=true"], ["Schalke 04", "https://minkang.x.yupoo.com/categories/724828?isSubCate=true"], ["Hamburger SV", "https://minkang.x.yupoo.com/categories/724829?isSubCate=true"], ["Köln", "https://minkang.x.yupoo.com/categories/724830?isSubCate=true"], ["Werder Bremen", "https://minkang.x.yupoo.com/categories/724831?isSubCate=true"], ["Bayer Leverkusen", "https://minkang.x.yupoo.com/categories/724832?isSubCate=true"], ["Borussia Monchengladbach", "https://minkang.x.yupoo.com/categories/724833?isSubCate=true"], ["St. Pauli", "https://minkang.x.yupoo.com/categories/747208?isSubCate=true"], ["Wolfsburg", "https://minkang.x.yupoo.com/categories/756975?isSubCate=true"], ["Nurnberg FC", "https://minkang.x.yupoo.com/categories/771240?isSubCate=true"], ["Augsburg", "https://minkang.x.yupoo.com/categories/771846?isSubCate=true"], ["MSV Duisburg", "https://minkang.x.yupoo.com/categories/800835?isSubCate=true"], ["Freiburg", "https://minkang.x.yupoo.com/categories/801863?isSubCate=true"], ["Rot-Weiss Essen", "https://minkang.x.yupoo.com/categories/890953?isSubCate=true"], ["VfL Bochum", "https://minkang.x.yupoo.com/categories/899138?isSubCate=true"], ["Holstein Kiel", "https://minkang.x.yupoo.com/categories/899141?isSubCate=true"], ["Hansa Rostock", "https://minkang.x.yupoo.com/categories/899142?isSubCate=true"], ["Düsseldorf", "https://minkang.x.yupoo.com/categories/926176?isSubCate=true"], ["Kaiserslautern", "https://minkang.x.yupoo.com/categories/935601?isSubCate=true"], ["Hannover", "https://minkang.x.yupoo.com/categories/937080?isSubCate=true"], ["Hannover 96", "https://minkang.x.yupoo.com/categories/941327?isSubCate=true"], ["Karlsruher", "https://minkang.x.yupoo.com/categories/947558?isSubCate=true"], ["Union Berlin", "https://minkang.x.yupoo.com/categories/965765?isSubCate=true"], ["Panamera", "https://minkang.x.yupoo.com/categories/993106?isSubCate=true"], ["Fortuna Düsseldorf", "https://minkang.x.yupoo.com/categories/993110?isSubCate=true"], ["Sao Paulo", "https://minkang.x.yupoo.com/categories/993117?isSubCate=true"], ["VfB Stuttgart", "https://minkang.x.yupoo.com/categories/993148?isSubCate=true"], ["TSG Hoffenheim", "https://minkang.x.yupoo.com/categories/993151?isSubCate=true"], ["Dynamo Dresden", "https://minkang.x.yupoo.com/categories/1018479?isSubCate=true"], ["Hertha BSC", "https://minkang.x.yupoo.com/categories/1043978?isSubCate=true"]]}, {"title": "Liga Profesional", "href": "https://minkang.x.yupoo.com/categories/3302915", "subcats": [["River Plate", "https://minkang.x.yupoo.com/categories/724819?isSubCate=true"], ["Boca Juniors", "https://minkang.x.yupoo.com/categories/724820?isSubCate=true"], ["Independiente", "https://minkang.x.yupoo.com/categories/724821?isSubCate=true"], ["San Lorenzo", "https://minkang.x.yupoo.com/categories/724822?isSubCate=true"], ["Racing Club", "https://minkang.x.yupoo.com/categories/724823?isSubCate=true"], ["Atlético Rosario Central", "https://minkang.x.yupoo.com/categories/800790?isSubCate=true"], ["Newell's Old Boys", "https://minkang.x.yupoo.com/categories/800804?isSubCate=true"], ["Estudiantes de La Plata", "https://minkang.x.yupoo.com/categories/825393?isSubCate=true"]]}, {"title": "Primeira Liga", "href": "https://minkang.x.yupoo.com/categories/3302977", "subcats": [["FC Porto", "https://minkang.x.yupoo.com/categories/724803?isSubCate=true"], ["S.L. Benfica", "https://minkang.x.yupoo.com/categories/724804?isSubCate=true"], ["Sporting CP", "https://minkang.x.yupoo.com/categories/724805?isSubCate=true"], ["Braga", "https://minkang.x.yupoo.com/categories/724806?isSubCate=true"], ["Famalicao", "https://minkang.x.yupoo.com/categories/724807?isSubCate=true"], ["Alverca", "https://minkang.x.yupoo.com/categories/724808?isSubCate=true"]]}, {"title": "Ligue 1", "href": "https://minkang.x.yupoo.com/categories/2897018", "subcats": [["PSG", "https://minkang.x.yupoo.com/categories/724798?isSubCate=true"], ["Monaco", "https://minkang.x.yupoo.com/categories/724799?isSubCate=true"], ["Olympique de Marseille", "https://minkang.x.yupoo.com/categories/724800?isSubCate=true"], ["Olympique lyonnais", "https://minkang.x.yupoo.com/categories/724801?isSubCate=true"], ["AS Cannes", "https://minkang.x.yupoo.com/categories/747207?isSubCate=true"], ["OGC Nice", "https://minkang.x.yupoo.com/categories/764612?isSubCate=true"], ["Girondins Bordeaux", "https://minkang.x.yupoo.com/categories/800834?isSubCate=true"], ["Stade Rennais", "https://minkang.x.yupoo.com/categories/825427?isSubCate=true"], ["Paris FC", "https://minkang.x.yupoo.com/categories/840318?isSubCate=true"], ["Girondins de Bordeaux", "https://minkang.x.yupoo.com/categories/885707?isSubCate=true"], ["RC Lens", "https://minkang.x.yupoo.com/categories/928703?isSubCate=true"], ["Nantes", "https://minkang.x.yupoo.com/categories/993143?isSubCate=true"], ["AS Saint-Etienne", "https://minkang.x.yupoo.com/categories/1014737?isSubCate=true"], ["RC Strasbourg", "https://minkang.x.yupoo.com/categories/1014846?isSubCate=true"], ["Toulouse", "https://minkang.x.yupoo.com/categories/1014848?isSubCate=true"], ["LOSC Lille", "https://minkang.x.yupoo.com/categories/1043968?isSubCate=true"], ["Stade Brestois", "https://minkang.x.yupoo.com/categories/1043971?isSubCate=true"], ["Saint Etienne", "https://minkang.x.yupoo.com/categories/1052257?isSubCate=true"]]}, {"title": "EREDIVISIE", "href": "https://minkang.x.yupoo.com/categories/3302916", "subcats": [["PSV Eindhoven", "https://minkang.x.yupoo.com/categories/724835?isSubCate=true"], ["Feyenoord", "https://minkang.x.yupoo.com/categories/724836?isSubCate=true"], ["AFC Ajax", "https://minkang.x.yupoo.com/categories/724837?isSubCate=true"], ["Hereja", "https://minkang.x.yupoo.com/categories/993113?isSubCate=true"], ["FC Groningen", "https://minkang.x.yupoo.com/categories/1028015?isSubCate=true"]]}, {"title": "Scottish League", "href": "https://minkang.x.yupoo.com/categories/3452090", "subcats": [["Celtic F.C.", "https://minkang.x.yupoo.com/categories/724847?isSubCate=true"], ["Rangers F.C.", "https://minkang.x.yupoo.com/categories/724848?isSubCate=true"], ["Aberdeen", "https://minkang.x.yupoo.com/categories/724849?isSubCate=true"], ["Dundee United", "https://minkang.x.yupoo.com/categories/993122?isSubCate=true"]]}, {"title": "Chilean League", "href": "https://minkang.x.yupoo.com/categories/3703045", "subcats": [["Universidad de Chile", "https://minkang.x.yupoo.com/categories/724779?isSubCate=true"], ["Deportivo Universidad Católica", "https://minkang.x.yupoo.com/categories/724780?isSubCate=true"], ["Deportivo Palestino", "https://minkang.x.yupoo.com/categories/724781?isSubCate=true"], ["Colo Colo", "https://minkang.x.yupoo.com/categories/724782?isSubCate=true"]]}, {"title": "MLS", "href": "https://minkang.x.yupoo.com/categories/3247384", "subcats": [["LA Galaxy", "https://minkang.x.yupoo.com/categories/724809?isSubCate=true"], ["D.C. United", "https://minkang.x.yupoo.com/categories/724810?isSubCate=true"], ["Los Angeles FC", "https://minkang.x.yupoo.com/categories/724811?isSubCate=true"], ["Atlanta United FC", "https://minkang.x.yupoo.com/categories/724812?isSubCate=true"], ["New York Red Bulls", "https://minkang.x.yupoo.com/categories/724813?isSubCate=true"], ["Inter Miami CF", "https://minkang.x.yupoo.com/categories/724814?isSubCate=true"], ["Orlando City SC", "https://minkang.x.yupoo.com/categories/724815?isSubCate=true"], ["Charlotte FC", "https://minkang.x.yupoo.com/categories/724816?isSubCate=true"], ["Austin FC", "https://minkang.x.yupoo.com/categories/724817?isSubCate=true"], ["New York City FC", "https://minkang.x.yupoo.com/categories/724818?isSubCate=true"], ["San Diego FC", "https://minkang.x.yupoo.com/categories/750913?isSubCate=true"]]}, {"title": "LIGA MX", "href": "https://minkang.x.yupoo.com/categories/3302917", "subcats": [["Cruz Azul", "https://minkang.x.yupoo.com/categories/724838?isSubCate=true"], ["America", "https://minkang.x.yupoo.com/categories/724839?isSubCate=true"], ["Chivas de Guadalajara", "https://minkang.x.yupoo.com/categories/730845?isSubCate=true"], ["Monterrey", "https://minkang.x.yupoo.com/categories/724840?isSubCate=true"], ["Tigres UANL", "https://minkang.x.yupoo.com/categories/724841?isSubCate=true"], ["Atlasv", "https://minkang.x.yupoo.com/categories/724843?isSubCate=true"], ["Pumas unam", "https://minkang.x.yupoo.com/categories/724844?isSubCate=true"], ["Necaxa", "https://minkang.x.yupoo.com/categories/724846?isSubCate=true"], ["Toluca", "https://minkang.x.yupoo.com/categories/800735?isSubCate=true"], ["Deportivo Toluca", "https://minkang.x.yupoo.com/categories/880128?isSubCate=true"], ["Tijuana", "https://minkang.x.yupoo.com/categories/889724?isSubCate=true"], ["Atlético San Luis", "https://minkang.x.yupoo.com/categories/1014741?isSubCate=true"], ["Santos Laguna", "https://minkang.x.yupoo.com/categories/1028007?isSubCate=true"], ["FC Juarez", "https://minkang.x.yupoo.com/categories/1043967?isSubCate=true"], ["Pachuca", "https://minkang.x.yupoo.com/categories/1043969?isSubCate=true"]]}, {"title": "🇯🇵Japan League", "href": "https://minkang.x.yupoo.com/categories/2827820", "subcats": []}, {"title": "🔥 Clearance Sale: $9/PCS, Minimum Order 5PCS 🔥", "href": "https://minkang.x.yupoo.com/categories/5299127", "subcats": []}, {"title": "📏Sizes", "href": "https://minkang.x.yupoo.com/categories/3436273", "subcats": []}, {"title": "（Produto, preço, tutorial de compra）Isso vai te aj", "href": "https://minkang.x.yupoo.com/categories/3296718", "subcats": []}, {"title": "Uncategorized album", "href": "https://minkang.x.yupoo.com/categories/0", "subcats": []}];
+    const ALBUMS = [{"title": "NK Cream Beige Double Swoosh Graphic Print Breathable Mesh Shorts", "href": "https://minkang.x.yupoo.com/albums/263407976?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/8f0ff49701/medium.jpg", "count": "5"}, {"title": "NK Charcoal Gray Zip Pocket Athletic Shorts M–3XL", "href": "https://minkang.x.yupoo.com/albums/263407956?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/694507ede2/small.jpg", "count": "5"}, {"title": "NK Charcoal Gray Casual Training Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263407932?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/75aa9b3492/small.jpg", "count": "5"}, {"title": "NK brown Minimalist Streetwear Athletic Shorts", "href": "https://minkang.x.yupoo.com/albums/263407905?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/fd4dabd3e3/small.jpg", "count": "5"}, {"title": "NK blue Performance Training Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263407874?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/155a7702f8/small.jpg", "count": "5"}, {"title": "NK Black White LOGO Oversized Swoosh Shorts M-4XL", "href": "https://minkang.x.yupoo.com/albums/263407852?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/e8ece6da97/small.jpg", "count": "3"}, {"title": "NK Black Relaxed Straight-Leg Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263407822?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/ac41411eff/small.jpg", "count": "4"}, {"title": "NK Black Red LOGO Oversized Swoosh Shorts M-4XL", "href": "https://minkang.x.yupoo.com/albums/263407800?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/f460dd2222/small.jpg", "count": "3"}, {"title": "NK black Print Drawstring Casual Athletic Shorts M–3XL", "href": "https://minkang.x.yupoo.com/albums/263407766?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/82c3289dfb/small.jpg", "count": "5"}, {"title": "NK black Print Casual Athletic Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263407729?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/73e8d130b6/small.jpg", "count": "5"}, {"title": "NK Black Oversized Spray-Effect Swoosh Logo Casual Athletic Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263407697?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/622990009b/small.jpg", "count": "5"}, {"title": "NK Black Oversized Spray-Effect Swoosh Casual Streetwear Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263407669?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/9cb180a333/small.jpg", "count": "5"}, {"title": "NK Black Oversized Letter Logo Drawstring Casual Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263407636?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/d11800951d/small.jpg", "count": "5"}, {"title": "NK black Oversized Distressed Swoosh Graphic Athletic Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263407597?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/82733d3be2/small.jpg", "count": "4"}, {"title": "NK Black Outdoor Sports Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263407565?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/eb79d5648d/small.jpg", "count": "5"}, {"title": "NK Black Minimalist Streetwear Athletic Shorts", "href": "https://minkang.x.yupoo.com/albums/263407531?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/5ef7302395/small.jpg", "count": "5"}, {"title": "NK Black Minimalist Lightweight Athletic Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263407508?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/adf0b5461e/small.jpg", "count": "6"}, {"title": "NK Black Minimalist Casual Athletic Shorts M–3XL", "href": "https://minkang.x.yupoo.com/albums/263407480?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/cfffd742e4/small.jpg", "count": "5"}, {"title": "NK black Minimalist Athletic Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263407447?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/cce96d5e69/small.jpg", "count": "5"}, {"title": "NK Black Logo Drawstring Performance Training Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263407405?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/70ab3bc9e7/small.jpg", "count": "5"}, {"title": "NK Black Lightweight Athletic Training Shorts with Zip Pockets and Panel Design M-3XL", "href": "https://minkang.x.yupoo.com/albums/263407382?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/db93f64124/small.jpg", "count": "5"}, {"title": "NK Black Dual-Side Reflective Stripe Panel Athletic Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263407361?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/0a223b66bd/small.jpg", "count": "5"}, {"title": "NK black Drawstring Casual Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263407333?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/70e27b77d9/small.jpg", "count": "5"}, {"title": "NK Black Double Swoosh Graphic Print Breathable Mesh Shorts S-3XL", "href": "https://minkang.x.yupoo.com/albums/263407302?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/c305fe6780/small.jpg", "count": "5"}, {"title": "NK Black Digital Stripe Swoosh Graphic Athletic Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263407273?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/884373ceca/small.jpg", "count": "5"}, {"title": "NK Black Colorblock Side Panel Athletic Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263407245?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/f60a049a6e/small.jpg", "count": "5"}, {"title": "NK black Casual Training Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263407190?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/ac6036dadb/small.jpg", "count": "5"}, {"title": "NK Black Cargo Sports Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263407162?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/ce14b5e7f4/small.jpg", "count": "5"}, {"title": "NK Black athletic shorts with white panel detailing along the sides M-3XL", "href": "https://minkang.x.yupoo.com/albums/263407127?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/28b134f290/small.jpg", "count": "5"}, {"title": "NK black (Side angle hook Drawstring) Casual Shorts M-3XL-1", "href": "https://minkang.x.yupoo.com/albums/263407105?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/75b3c28e71/small.jpg", "count": "5"}, {"title": "NK Black 2-in-1 Performance Training Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263407077?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/ca2d178267/small.jpg", "count": "5"}, {"title": "NK black 2-in-1 Athletic Training Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263407051?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/7353e2bf89/small.jpg", "count": "5"}, {"title": "NK Beige Letter Print Drawstring Casual Athletic Shorts M–3XL", "href": "https://minkang.x.yupoo.com/albums/263407025?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/d6fea85894/small.jpg", "count": "5"}, {"title": "NK Army Green Minimalist Streetwear Athletic Shorts", "href": "https://minkang.x.yupoo.com/albums/263407001?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/0290a1c29b/small.jpg", "count": "5"}, {"title": "NK Army green Lightweight Woven Sports Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263406971?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/222866034a/small.jpg", "count": "4"}, {"title": "NK Army green Dual-Side Reflective Stripe Panel Athletic Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263406944?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/f2a9661c19/small.jpg", "count": "5"}, {"title": "NK Aqua Blue White LOGO Oversized Swoosh Shorts M-4XL", "href": "https://minkang.x.yupoo.com/albums/263406919?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/a8d2b0b91a/small.jpg", "count": "5"}, {"title": "JB Yellow-greenReflective Curved-Stripe Sports Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263406898?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/1f455fa445/small.jpg", "count": "4"}, {"title": "JB Yellow And Black Color-Block Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263406866?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/ec3954c0c5/small.jpg", "count": "5"}, {"title": "JB White Taupe Abstract Floral Print Contrast Panel Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263406838?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/e4a1c3d6c9/small.jpg", "count": "5"}, {"title": "JB White Red Colorblock Mesh Basketball Shorts", "href": "https://minkang.x.yupoo.com/albums/263406815?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/1c53be0612/small.jpg", "count": "5"}, {"title": "JB White Red Black All-Over Graphic Print Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263406787?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/23647c856d/small.jpg", "count": "5"}, {"title": "JB White Mesh Basketball Shorts With Black Lightning Pattern XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263406754?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/99aa839e34/small.jpg", "count": "4"}, {"title": "JB White Graphic Print Breathable Mesh Shorts（S-3XL）", "href": "https://minkang.x.yupoo.com/albums/263406726?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/e2aa6d9b5b/small.jpg", "count": "5"}, {"title": "JB White Blue Contrast Panel Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263406702?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/2440ab3d75/small.jpg", "count": "5"}, {"title": "JB White Blue Abstract Brushstroke Print Mesh Basketball Shorts With Black Contrast Panels XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263406670?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/bf4ae7338d/small.jpg", "count": "4"}, {"title": "JB White Black Tie-Dye Stripe Print Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263406636?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/27b6b0eaa5/small.jpg", "count": "5"}, {"title": "JB White Black Red Abstract Graphic Print Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263406613?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/0c2ec71563/small.jpg", "count": "5"}, {"title": "JB White Black Argyle Pattern Contrast Panel Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263406582?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/14551398c9/small.jpg", "count": "5"}, {"title": "JB White And Light Green Abstract Print Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263406554?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/6e8d1361a6/small.jpg", "count": "5"}, {"title": "JB White And Light Blue Multicolor Graffiti Print Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263406527?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/7c807c0d6a/small.jpg", "count": "4"}, {"title": "JB White And Dusty Pink Color-Block Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263406504?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/789ca3e61a/small.jpg", "count": "5"}, {"title": "JB White And Dark Green Letter Graphic Color-Block Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263406483?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/8158e4848a/small.jpg", "count": "4"}, {"title": "JB White And Coral Orange Zebra Print Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263406457?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/0f3eb18178/small.jpg", "count": "5"}, {"title": "JB White And Black Trim Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263406430?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/d889877347/small.jpg", "count": "4"}, {"title": "JB White And Black Lettering Red Trim Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263406393?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/6b27768bde/small.jpg", "count": "4"}, {"title": "JB White And Black Graphic Print Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263406366?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/1f9614de4b/small.jpg", "count": "3"}, {"title": "JB White And Black Colorblock Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263406344?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/501d8954f6/small.jpg", "count": "3"}, {"title": "JB White And Black Bandana Paisley Print Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263406306?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/cbf9543fc8/small.jpg", "count": "5"}, {"title": "JB White And Black All-Over Graphic Print Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263406076?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/5fe10e962d/small.jpg", "count": "5"}, {"title": "JB White And Black Abstract Splatter Print Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263406034?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/a156ab1c55/small.jpg", "count": "5"}, {"title": "JB White All-Over Graphic Print Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263406021?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/ef2ce297e9/small.jpg", "count": "5"}, {"title": "JB Teal Blue And Neon Lime Abstract Camo Print Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263405988?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/8395405ec3/small.jpg", "count": "5"}, {"title": "JB Teal And Dark Green Color-Block Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263405963?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/ee99f92740/small.jpg", "count": "5"}, {"title": "JB Teal And Black Colorblock White Trim Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263405945?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/c49b5fd840/small.jpg", "count": "4"}, {"title": "JB Slate Blue And Charcoal Gray Abstract Camo Print Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263405900?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/ad5b81d8e8/small.jpg", "count": "5"}, {"title": "JB Sky Blue And Black Abstract Graphic Print Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263405860?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/9020776359/small.jpg", "count": "5"}, {"title": "JB Silver Gray And Black Trim Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263405843?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/148d667502/small.jpg", "count": "5"}, {"title": "JB Royal Blue Cream And Dark Teal Color-Block Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263405809?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/3e94bda6ab/small.jpg", "count": "5"}, {"title": "JB Royal Blue And White Red Trim Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263405781?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/e287257110/small.jpg", "count": "5"}, {"title": "JB Royal Blue And White Lightning Pattern Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263405763?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/d5cf62c142/small.jpg", "count": "5"}, {"title": "JB Royal Blue And White Colorblock Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263405746?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/cb22c99d6b/small.jpg", "count": "5"}, {"title": "JB Royal Blue And White Color-Block Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263405717?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/446a51e74e/small.jpg", "count": "5"}, {"title": "JB Red Tonal Graphic Print Contrast Panel Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263405686?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/f15973d999/small.jpg", "count": "5"}, {"title": "NK Iron gray Minimalist Performance Training Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263405451?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/efa487a782/small.jpg", "count": "4"}, {"title": "NK Grey Relaxed Straight-Leg Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263405420?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/f1c3ab296d/small.jpg", "count": "5"}, {"title": "NK Grey Outdoor Sports Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263405380?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/36c3e54e04/small.jpg", "count": "5"}, {"title": "NK Grey Logo Drawstring Performance Training Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263405338?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/eea531c4b0/small.jpg", "count": "5"}, {"title": "NK Grey Lightweight Athletic Training Shorts with Zip Pockets and Panel Design M-3XL", "href": "https://minkang.x.yupoo.com/albums/263405298?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/0796fe70f2/small.jpg", "count": "5"}, {"title": "NK grey Letter Print Casual Athletic Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263405283?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/35d75393ed/small.jpg", "count": "5"}, {"title": "NK Grey Dual-Side Reflective Stripe Panel Athletic Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263405218?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/143a801007/small.jpg", "count": "5"}, {"title": "NK Grey Colorblock Side Panel Athletic Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263405179?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/046539d53b/small.jpg", "count": "5"}, {"title": "NK Gray Oversized Spray-Effect Swoosh Casual Streetwear Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263405139?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/eef8598079/small.jpg", "count": "4"}, {"title": "NK Gray Digital Stripe Swoosh Graphic Athletic Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263405113?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/73bffe2454/small.jpg", "count": "5"}, {"title": "NK Dark Slate Blue Drawstring Casual Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263405067?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/240c1d00f3/small.jpg", "count": "5"}, {"title": "NK Dark Grey Cargo Sports Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263405017?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/3582020e23/small.jpg", "count": "5"}, {"title": "NK Dark Gray Performance Training Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263404988?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/6d35b693b2/small.jpg", "count": "4"}, {"title": "NK Dark Gray Minimalist Lightweight Athletic Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263404953?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/7cd8c59031/small.jpg", "count": "5"}, {"title": "NK Dark Gray Minimalist Casual Athletic Shorts M–3XL", "href": "https://minkang.x.yupoo.com/albums/263404910?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/da19323a8f/small.jpg", "count": "5"}, {"title": "NK Dark Gray Drawstring Casual Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263404878?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/6703622e6d/small.jpg", "count": "5"}, {"title": "NK Dark gray 2-in-1 Performance Training Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263404817?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/e6810f27a8/small.jpg", "count": "5"}, {"title": "NK Dark Charcoal Gray Minimalist Athletic Shorts M-3XL", "href": "https://minkang.x.yupoo.com/albums/263404777?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/5c223b0a69/small.jpg", "count": "5"}, {"title": "JB Red Mesh Basketball Shorts XS–4XL", "href": "https://minkang.x.yupoo.com/albums/263404732?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/46a9ac5bb6/small.jpg", "count": "5"}, {"title": "JB Red Black White Abstract Graffiti Print Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263404696?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/e24efd0c81/small.jpg", "count": "4"}, {"title": "JB Red Black And White Zigzag Print Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263404659?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/09013d0e15/small.jpg", "count": "5"}, {"title": "JB Red Black And White Abstract Zigzag Print Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263404610?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/ee6fc2adde/small.jpg", "count": "5"}, {"title": "JB Red And White Colorblock Black Trim Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263404580?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/7e38cecb8f/small.jpg", "count": "4"}, {"title": "JB Red And Black Colorblock Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263404542?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/e1d7fa643a/small.jpg", "count": "4"}, {"title": "JB Purple And Black Snakeskin Print Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263404500?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/e8a2161946/small.jpg", "count": "5"}, {"title": "JB Purple And Black Colorblock Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263404449?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/2af9a791da/small.jpg", "count": "5"}, {"title": "JB Pink And Light Blue Split Color Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263404406?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/834b9edf55/small.jpg", "count": "5"}, {"title": "JB Pink All-Over Print Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263404373?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/b7ea2499be/small.jpg", "count": "5"}, {"title": "JB Olive Green And White Colorblock Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263404344?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/94d78100ae/small.jpg", "count": "5"}, {"title": "JB Olive Green And White Color-Block Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263404305?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/c67605ab48/small.jpg", "count": "5"}, {"title": "JB Olive Green And Cream Color-Block Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263404124?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/bf39640909/small.jpg", "count": "5"}, {"title": "JB Neon Yellow And Black Lightning Pattern Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263404098?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/1c757de838/small.jpg", "count": "4"}, {"title": "JB Neon Green And Black Snakeskin Print Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263404073?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/d97b079f82/small.jpg", "count": "5"}, {"title": "JB Navy Blue Turquoise Abstract Wave Print Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263404034?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/05c1a327af/small.jpg", "count": "5"}, {"title": "JB Navy Blue Mesh Basketball Shorts With White Contrast Panels XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263404006?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/ce136cc3a8/small.jpg", "count": "5"}, {"title": "JB Navy Blue Light Blue Abstract Wave Print Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263403981?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/80872904e7/small.jpg", "count": "4"}, {"title": "JB Navy Blue And White Trim Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263403951?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/8f4fafad53/small.jpg", "count": "5"}, {"title": "JB Navy Blue And White Tie-Dye Print Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263403924?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/51d2e880d9/small.jpg", "count": "5"}, {"title": "JB Navy Blue And Royal Blue Abstract Camo Print Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263403876?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/b974c66f71/small.jpg", "count": "5"}, {"title": "JB Navy Blue And Red Colorblock Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263403847?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/776f896ce3/small.jpg", "count": "4"}, {"title": "JB Navy Blue And Light Blue Lightning Pattern Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263403813?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/4d1bd74d62/small.jpg", "count": "5"}, {"title": "JB Mint Green Geometric Pattern Contrast Panel Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263403798?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/0d79c05340/small.jpg", "count": "5"}, {"title": "JB Mint Green Black Abstract Brushstroke Print Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263403789?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/8c44c26d2e/small.jpg", "count": "3"}, {"title": "JB Mint Green And White Trim Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263403754?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/6bb483e360/small.jpg", "count": "5"}, {"title": "JB Mint Green And White Tie-Dye Print Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263403712?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/18b853a3cf/small.jpg", "count": "5"}, {"title": "JB Lime Green And Black White Trim Mesh Basketball Shorts XS-4XL", "href": "https://minkang.x.yupoo.com/albums/263403690?uid=1&isSubCate=false&referrercate=", "img": "https://photo.yupoo.com/minkang/65e93fcad9/small.jpg", "count": "3"}];
+
+    // --- LÓGICA DE LA WEB ---
+    const categoryListEl = document.getElementById('categoryList');
+    const albumGridEl = document.getElementById('albumGrid');
+    const searchInputEl = document.getElementById('searchInput');
+    const clearSearchBtn = document.getElementById('clearSearchBtn');
+    const visibleCountEl = document.getElementById('visibleCount');
+    const pillBtns = document.querySelectorAll('.pill-btn');
+    const catCountEl = document.getElementById('catCount');
+
+    let activeBrand = 'ALL';
+
+    // Pintar Categorías
+    function renderCategories() {
+      catCountEl.textContent = CATEGORIES.length;
+      categoryListEl.innerHTML = CATEGORIES.map((cat, idx) => {
+        const hasSubs = cat.subcats && cat.subcats.length > 0;
+        const subsHtml = hasSubs ? `
+          <div class="subcat-list" id="subcat-${idx}">
+            ${cat.subcats.map(s => `<a href="${s[1]}" target="_blank" rel="noopener">${s[0]}</a>`).join('')}
+          </div>
+        ` : '';
+        return `
+          <div class="cat-item">
+            <div class="cat-row" ${hasSubs ? `onclick="toggleSubcat(${idx}, event)"` : ''}>
+              <a href="${cat.href}" target="_blank" rel="noopener" title="${cat.title}">${cat.title}</a>
+              ${hasSubs ? `<span class="cat-toggle">+${cat.subcats.length}</span>` : ''}
+            </div>
+            ${subsHtml}
+          </div>
+        `;
+      }).join('');
+    }
+
+    window.toggleSubcat = function(idx, event) {
+      if (event.target.tagName === 'A') return;
+      const el = document.getElementById('subcat-' + idx);
+      if (el) el.classList.toggle('open');
+    };
+
+    // Pintar Productos
+    function renderAlbums() {
+      const query = searchInputEl.value.trim().toLowerCase();
+      const filtered = ALBUMS.filter(item => {
+        const matchesBrand = activeBrand === 'ALL' || item.title.toUpperCase().startsWith(activeBrand);
+        const matchesQuery = !query || item.title.toLowerCase().includes(query);
+        return matchesBrand && matchesQuery;
+      });
+
+      visibleCountEl.textContent = filtered.length;
+
+      albumGridEl.innerHTML = filtered.map((item) => {
+        const highRes = item.img.replace('/small.jpg', '/medium.jpg');
+        const safeTitle = item.title.replace(/"/g, '&quot;');
+        const jsSafeTitle = item.title.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+        return `
+          <article class="album-card">
+            <div class="album-thumb-wrap" onclick="openLightbox('${highRes}', '${jsSafeTitle}', '${item.href}')">
+              <img src="${item.img}" referrerpolicy="no-referrer" loading="lazy" alt="${safeTitle}">
+              <span class="zoom-badge">Ampliar</span>
+              <span class="photo-badge">${item.count} fotos</span>
+            </div>
+            <div class="album-info">
+              <a class="album-title" href="${item.href}" target="_blank" rel="noopener" title="${safeTitle}">
+                ${item.title}
+              </a>
+              <div class="album-actions">
+                <span style="color:var(--text-muted);">${item.count} imgs</span>
+                <a class="album-link" href="${item.href}" target="_blank" rel="noopener">Ver &rarr;</a>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    // Modal Lightbox
+    const lightboxEl = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxTitle = document.getElementById('lightboxTitle');
+    const lightboxAlbumLink = document.getElementById('lightboxAlbumLink');
+    const closeLightboxBtn = document.getElementById('closeLightbox');
+
+    window.openLightbox = function(imgUrl, title, href) {
+      lightboxImg.src = imgUrl;
+      lightboxTitle.textContent = title;
+      lightboxAlbumLink.href = href;
+      lightboxEl.classList.add('open');
+    };
+
+    closeLightboxBtn.addEventListener('click', () => lightboxEl.classList.remove('open'));
+    lightboxEl.addEventListener('click', (e) => {
+      if (e.target === lightboxEl) lightboxEl.classList.remove('open');
+    });
+
+    // Eventos
+    searchInputEl.addEventListener('input', renderAlbums);
+    clearSearchBtn.addEventListener('click', () => {
+      searchInputEl.value = '';
+      renderAlbums();
+    });
+
+    pillBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        pillBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeBrand = btn.dataset.brand;
+        renderAlbums();
+      });
+    });
+
+    // Iniciar
+    renderCategories();
+    renderAlbums();
+  </script>
 </body>
 </html>
