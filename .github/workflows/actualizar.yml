@@ -12,21 +12,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
       - name: Configurar Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          
-      - name: Instalar Playwright y dependencias
-        run: |
-          pip install playwright
-          playwright install chromium
-          playwright install-deps
-          
+      - name: Instalar librerías
+        run: pip install requests beautifulsoup4 lxml
       - name: Ejecutar Scraper
         run: python scraper.py
-
       - name: Guardar cambios en la web
         run: |
           git config --global user.name "Bot Catalogo"
