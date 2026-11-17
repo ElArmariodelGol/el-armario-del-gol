@@ -16,26 +16,30 @@
         .brand span span { color: var(--accent); }
         
         .main-container { display: flex; flex: 1; max-width: 1600px; margin: 0 auto; width: 100%; }
-        .sidebar { width: 260px; border-right: 1px solid var(--border); padding: 1.5rem 0; flex-shrink: 0; }
-        .sidebar-header { padding: 0 1.5rem 1rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; color: #10b981; font-weight: 600; font-size: 1.1rem;}
+        
+        /* MENÚ LATERAL */
+        .sidebar { width: 280px; border-right: 1px solid var(--border); padding: 1.5rem 0; flex-shrink: 0; background: var(--bg-dark); overflow-y: auto; max-height: calc(100vh - 70px); }
+        .sidebar-header { padding: 0 1.5rem 1rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; color: var(--accent); font-weight: 600; font-size: 1.1rem;}
         .sidebar ul { list-style: none; }
-        .sidebar li { padding: 0.9rem 1.5rem; border-bottom: 1px solid #1e293b; color: #cbd5e1; font-size: 0.95rem; display: flex; justify-content: space-between; cursor: pointer; transition: background 0.2s; }
+        .sidebar li { padding: 0.9rem 1.5rem; border-bottom: 1px solid #1e293b; color: var(--text-muted); font-size: 0.9rem; cursor: pointer; transition: background 0.2s; }
         .sidebar li:hover { background: var(--bg-card); color: white; }
         
+        /* ZONA DERECHA */
         .content { flex: 1; padding: 2rem; }
         .content-header { margin-bottom: 1.5rem; }
         .content-header h1 { font-size: 1.2rem; font-weight: 500; margin-bottom: 0.3rem; }
         .content-header p { font-size: 0.85rem; color: var(--text-muted); }
         
+        /* CUADRÍCULA */
         .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
         @media(max-width: 1200px) { .grid { grid-template-columns: repeat(3, 1fr); } }
-        @media(max-width: 900px) { .main-container { flex-direction: column; } .sidebar { width: 100%; } .grid { grid-template-columns: repeat(2, 1fr); } }
+        @media(max-width: 900px) { .main-container { flex-direction: column; } .sidebar { width: 100%; max-height: none; } .grid { grid-template-columns: repeat(2, 1fr); } }
         
         .card { background: transparent; border-radius: 8px; overflow: hidden; cursor: pointer; transition: transform 0.2s; }
         .card:hover { transform: scale(1.02); }
         .card-img-container { width: 100%; aspect-ratio: 1/1; background: #070a10; border-radius: 4px; overflow: hidden; }
         .card-img { width: 100%; height: 100%; object-fit: cover; }
-        .card-title { font-size: 0.85rem; font-weight: 500; margin-top: 0.5rem; line-height: 1.3; text-align: center; }
+        .card-title { font-size: 0.85rem; font-weight: 500; margin-top: 0.5rem; line-height: 1.3; text-align: center; color: var(--text-main); }
         
         footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.85rem; }
     </style>
@@ -77,16 +81,16 @@
                 const menu = document.getElementById("sidebarMenu");
                 const grid = document.getElementById("catalogGrid");
                 
-                // Pintar menú lateral
+                // 1. Rellenar menú lateral con las categorías reales
                 if (data.menu && data.menu.length > 0) {
                     data.menu.forEach(cat => {
                         const li = document.createElement("li");
-                        li.innerHTML = `<span>${cat.name}</span> <span>></span>`;
+                        li.innerText = cat.name;
                         menu.appendChild(li);
                     });
                 }
 
-                // Pintar productos
+                // 2. Rellenar la cuadrícula de productos
                 if (data.productos && data.productos.length > 0) {
                     grid.innerHTML = "";
                     document.getElementById("totalAlbums").innerText = `in total ${data.productos.length} albums`;
@@ -103,11 +107,12 @@
                         grid.appendChild(card);
                     });
                 } else {
-                    grid.innerHTML = "<p style='color:red;'>El robot no encontró productos en la página principal.</p>";
+                    // Si no hay productos (porque Yupoo los carga con JS), mostramos un mensaje
+                    grid.innerHTML = "<p style='grid-column: 1/-1; text-align: center; color: var(--accent);'>Las categorías se han cargado a la izquierda. Los productos se mostrarán aquí cuando hagamos la Fase 2.</p>";
                 }
             })
             .catch(err => {
-                document.getElementById("catalogGrid").innerHTML = "<p style='color:red;'>Error al cargar productos.json. Asegúrate de que el robot se ejecutó.</p>";
+                document.getElementById("catalogGrid").innerHTML = "<p style='color:red;'>Error al cargar productos.json.</p>";
             });
     </script>
 </body>
