@@ -1,81 +1,112 @@
 import requests
 from bs4 import BeautifulSoup
 import json
+import time
 from urllib.parse import urljoin
 
-URL = "https://minkang.x.yupoo.com/categories"
-# Cabeceras idénticas a las de un navegador real
+BASE_URL = "https://minkang.x.yupoo.com"
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
-    "Accept-Language": "es-ES,es;q=0.9,en;q=0.8",
 }
 
-def main():
-    print("[*] Conectando a Yupoo...")
-    r = requests.get(URL, headers=HEADERS)
-    soup = BeautifulSoup(r.text, "lxml")
-
-    menu_final = []
-    productos_final = []
-
-    # 1. EXTRAER EL MENÚ LATERAL (Basado en tu archivo yupoo.txt)
-    # Buscamos los enlaces que estén dentro de las categorías
-    for a in soup.select(".showheader__category_item a.showheader__link"):
-        text = a.get_text(strip=True)
-        href = a.get("href", "")
-        
-        # Ignoramos menús de navegación
-        if not text or text in ["Menu", "Menu 2"]:
-            continue
-            
-        if "/categories/" in href:
-            menu_final.append({
-                "name": text,
-                "url": urljoin("https://minkang.x.yupoo.com", href),
-                "img": "imagenes/logo.jpg"
-            })
-
-    # 2. EXTRAER LOS PRODUCTOS DE LA VISTA PRINCIPAL
-    # Si Yupoo carga las fotos en el HTML, las sacamos aquí
-    for alb in soup.select(".album__main"):
-        title_el = alb.select_one(".album__title")
-        img_el = alb.select_one("img")
-        
-        if title_el and img_el:
-            img_url = img_el.get("data-src") or img_el.get("data-original") or img_el.get("src") or ""
-            if img_url and not img_url.startswith("http"):
-                img_url = urljoin("https://minkang.x.yupoo.com", img_url)
+def extraer_categoria(titulo, dicc_equipos):
+    """Asigna la categoría basándose en el título del producto."""
+    t = titulo.upper()
+    
+    # 1. Comprobar si el título contiene el nombre de algún equipo
+    for liga, equipos in dicc_equipos.items():
+        for equipo in equipos:
+            if equipo.upper() in t:
+                return liga
                 
-            productos_final.append({
-                "title": title_el.get_text(strip=True),
-                "img": img_url,
-                "category": "Todos"
-            })
+    # 2. Si no es un equipo, clasificar por tipo de prenda o marca
+    if "NK" in t or "NIKE" in t: return "Nike"
+    if "JB" in t or "JORDAN" in t: return "Jordan"
+    if "F1" in t or "FERRARI" in t or "MCLAREN" in t: return "F1"
+    if "NFL" in t: return "NFL"
+    if "RETRO" in t: return "Retro"
+    if "SHORT" in t: return "Shorts"
+    
+    return "Catálogo General"
 
-    # 3. SI EL MENÚ FALLA, USAMOS TU LISTA (Extraída de tu archivo)
-    if not menu_final:
-        print("[*] Menú no encontrado en el HTML. Usando fallback exacto de tu archivo...")
-        categorias_exactas = [
-            "new season", "La Liga", "Brasileiro Série A", "2026 FIFA World Cup", 
-            "NRL", "newF1", "Brazil team column", "🧦Socks", "🏈NFL", "🏁F1", 
-            "⚽Polos", "Shorts", "Worldwide Other League", "Retro football shirt", 
-            "💨🧥Windbreaker/Training Top", "⚽💪🏻Player Version", "⚽💁🏻‍♀️Women's shirt", 
-            "⚽🌍 National Teams", "⚽👦🏻kids kit size：16-28", "👶🏻Baby jersey size:9-12", 
-            "⚽🧤Goalkeeper kit", "⚽Long sleeve shirt", "Premier League", "Serie A", 
-            "Bundesliga", "Liga Profesional", "Primeira Liga", "Ligue 1", 
-            "EREDIVISIE", "Scottish League", "Chilean League", "MLS", "LIGA MX", 
-            "🇯🇵Japan League", "🔥 Clearance Sale: $9/PCS, Minimum Order 5PCS 🔥", 
-            "📏Sizes"
-        ]
-        for c in categorias_exactas:
-            menu_final.append({"name": c, "url": "#", "img": "imagenes/logo.jpg"})
+def main():
+    print("[*] Iniciando extracción masiva de Yupoo...")
+    
+    # 1. PRIMERO: Leemos la página 1 para sacar el menú de ligas y equipos
+    print("[*] Leyendo menú lateral de categorías...")
+    r_menu = requests.get(f"{BASE_URL}/categories?is_ajax=1", headers=HEADERS)
+    soup_menu = BeautifulSoup(r_menu.text, "lxml")
+    
+    dicc_equipos = {}
+    for li in soup_menu.select(".showheader__category_item"):
+        a_principal = li.select_one(".showheader__link")
+        if not a_principal: continue
+        nombre_liga = a_principal.get_text(strip=True)
+        
+        # Ignoramos menús que no son ligas
+        if nombre_liga in ["Menu", "Menu 2", "new season", "Casual Shorts"]: continue
+        
+        equipos = []
+        for sub_a in li.select(".showheader__child_link"):
+            equipos.append(sub_a.get_text(strip=True))
+            
+        if equipos:
+            dicc_equipos[nombre_liga] = equipos
 
-    # 4. GUARDAR
+    print(f"[*] Ligas detectadas: {len(dicc_equipos)}")
+
+    # 2. SEGUNDO: Recorremos las páginas para coger TODOS los productos
+    todos_los_productos = []
+    
+    for pagina in range(1, 201): # Hasta 200 páginas
+        url = f"{BASE_URL}/categories?page={pagina}"
+        print(f"[*] Leyendo productos de la página {pagina}...")
+        
+        try:
+            r = requests.get(url, headers=HEADERS, timeout=20)
+            if r.status_code != 200:
+                break
+                
+            soup = BeautifulSoup(r.text, "lxml")
+            albumes = soup.select(".album__main")
+            
+            if not albumes:
+                print("[*] Fin del catálogo alcanzado.")
+                break
+                
+            for alb in albumes:
+                title_el = alb.select_one(".album__title")
+                img_el = alb.select_one("img")
+                
+                if title_el and img_el:
+                    titulo = title_el.get_text(strip=True)
+                    img_url = img_el.get("data-src") or img_el.get("data-original") or img_el.get("src") or ""
+                    
+                    if img_url and not img_url.startswith("http"):
+                        img_url = urljoin(BASE_URL, img_url)
+                    
+                    # TRUCO: Usar la imagen medium para que se vea mejor
+                    if img_url:
+                        img_url = img_url.replace("/small.jpg", "/medium.jpg")
+
+                    todos_los_productos.append({
+                        "title": titulo,
+                        "img": img_url,
+                        "category": extraer_categoria(titulo, dicc_equipos)
+                    })
+            
+            time.sleep(1) # Pausa para no saturar
+            
+        except Exception as e:
+            print(f"[!] Error en página {pagina}: {e}")
+            break
+
+    # 3. Guardar el JSON (CON CORCHETES POR FUERA, como lo quiere tu web)
     with open("productos.json", "w", encoding="utf-8") as f:
-        json.dump({"menu": menu_final, "productos": productos_final}, f, ensure_ascii=False, indent=2)
-
-    print(f"[+] ¡ÉXITO! {len(menu_final)} categorías y {len(productos_final)} productos guardados.")
+        json.dump(todos_los_productos, f, ensure_ascii=False, indent=2)
+        
+    print(f"[+] ¡ÉXITO! {len(todos_los_productos)} productos guardados en productos.json")
 
 if __name__ == "__main__":
     main()
