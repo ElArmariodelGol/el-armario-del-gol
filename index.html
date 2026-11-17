@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="El Armario del Gol — Catálogo visual de equipaciones y ropa deportiva.">
     <title>El Armario del Gol</title>
     <link rel="icon" type="image/jpeg" href="imagenes/logo.jpg">
     <style>
@@ -17,102 +16,88 @@
             --border: #1e293b;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
-        body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, sans-serif; }
+        body { background-color: var(--bg-dark); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; }
 
+        /* HEADER ESTILO YUPOO */
         header {
-            background-color: rgba(11, 15, 25, 0.9);
+            background-color: rgba(11, 15, 25, 0.95);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
             position: sticky; top: 0; z-index: 100;
-            padding: 1.2rem 5%;
+            padding: 1rem 5%;
             display: flex; flex-direction: column; align-items: center; gap: 1rem;
         }
         @media(min-width: 768px) {
             header { flex-direction: row; justify-content: space-between; }
         }
 
-        .brand {
-            display: flex; align-items: center; gap: 0.8rem; text-decoration: none; color: var(--text-main);
-        }
-        .brand img {
-            width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent);
-        }
+        .brand { display: flex; align-items: center; gap: 0.8rem; text-decoration: none; color: var(--text-main); }
+        .brand img { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); }
         .brand span { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px; }
         .brand span span { color: var(--accent); }
 
-        .search-bar { width: 100%; max-width: 380px; }
+        /* MENÚ DE CATEGORÍAS COMO YUPOO */
+        .nav-menu {
+            display: flex; gap: 1.5rem; list-style: none; align-items: center; flex-wrap: wrap; justify-content: center;
+        }
+        .nav-item {
+            position: relative;
+        }
+        .nav-link {
+            background: none; border: none; color: var(--text-main); font-size: 0.95rem; font-weight: 600;
+            cursor: pointer; padding: 0.5rem; display: flex; align-items: center; gap: 0.3rem; transition: color 0.2s;
+        }
+        .nav-link:hover { color: var(--accent); }
+        
+        .dropdown {
+            position: absolute; top: 100%; left: 0; background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 8px; padding: 0.5rem; min-width: 200px; display: none; flex-direction: column; gap: 0.2rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5); z-index: 101;
+        }
+        .nav-item:hover .dropdown { display: flex; }
+        .dropdown button {
+            background: none; border: none; color: var(--text-muted); text-align: left; padding: 0.6rem 1rem;
+            border-radius: 6px; cursor: pointer; font-size: 0.85rem; transition: all 0.2s;
+        }
+        .dropdown button:hover { background: var(--accent); color: #000; font-weight: 600; }
+
+        /* BUSCADOR */
         .search-bar input {
-            width: 100%; padding: 0.7rem 1rem; border-radius: 30px;
-            border: 1px solid var(--border); background: var(--bg-card); color: white;
-            font-size: 0.95rem; outline: none; transition: all 0.3s;
+            padding: 0.6rem 1rem; border-radius: 30px; border: 1px solid var(--border);
+            background: var(--bg-card); color: white; font-size: 0.9rem; outline: none; width: 250px;
         }
-        .search-bar input:focus { border-color: var(--accent); box-shadow: 0 0 15px var(--accent-glow); }
 
-        .filters {
-            padding: 1.5rem 5% 0.5rem;
-            display: flex; gap: 0.8rem; overflow-x: auto; justify-content: center;
-            max-width: 1200px; margin: 0 auto; width: 100%;
-        }
-        .filter-btn {
-            background: var(--bg-card); color: var(--text-muted); border: 1px solid var(--border);
-            padding: 0.5rem 1.2rem; border-radius: 20px; cursor: pointer; white-space: nowrap;
-            font-weight: 500; font-size: 0.9rem; transition: all 0.2s;
-        }
-        .filter-btn:hover { border-color: var(--text-muted); color: var(--text-main); }
-        .filter-btn.active { background: var(--accent); color: #000; font-weight: 700; border-color: var(--accent); box-shadow: 0 0 15px var(--accent-glow); }
-
+        /* GRID DE PRODUCTOS (Igual que antes pero adaptado) */
         .catalog {
-            padding: 2rem 5%;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-            width: 100%;
-            flex: 1;
+            padding: 2rem 5%; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 2rem; max-width: 1400px; margin: 0 auto; width: 100%; flex: 1;
         }
         .card {
             background: var(--bg-card); border-radius: 16px; overflow: hidden;
             border: 1px solid var(--border); transition: all 0.3s ease;
-            display: flex; flex-direction: column; position: relative; cursor: pointer;
+            display: flex; flex-direction: column; cursor: pointer;
         }
         .card:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
 
-        .card-img-container { width: 100%; aspect-ratio: 1/1; background: #070a10; position: relative; overflow: hidden; }
+        .card-img-container { width: 100%; aspect-ratio: 1/1; background: #070a10; overflow: hidden; }
         .card-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
         .card:hover .card-img { transform: scale(1.05); }
 
-        .card-body { padding: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem; flex: 1; justify-content: space-between; }
+        .card-body { padding: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
         .card-tag { font-size: 0.7rem; color: var(--accent); text-transform: uppercase; font-weight: 800; letter-spacing: 1px; }
         .card-title { font-size: 1rem; font-weight: 600; color: var(--text-main); line-height: 1.4; }
 
-        footer {
-            text-align: center; padding: 2rem; border-top: 1px solid var(--border);
-            color: var(--text-muted); font-size: 0.85rem; margin-top: auto;
-        }
+        footer { text-align: center; padding: 2rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.85rem; margin-top: auto; }
 
-        .modal {
-            display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85);
-            z-index: 200; justify-content: center; align-items: center; padding: 1.5rem;
-            backdrop-filter: blur(8px);
-        }
+        /* MODAL */
+        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 200; justify-content: center; align-items: center; padding: 1.5rem; backdrop-filter: blur(8px); }
         .modal.open { display: flex; }
-        .modal-content {
-            background: var(--bg-card); border-radius: 20px; max-width: 500px; width: 100%;
-            overflow: hidden; border: 1px solid var(--border); position: relative;
-            animation: scaleUp 0.3s ease;
-        }
+        .modal-content { background: var(--bg-card); border-radius: 20px; max-width: 500px; width: 100%; overflow: hidden; border: 1px solid var(--border); position: relative; animation: scaleUp 0.3s ease; }
         @keyframes scaleUp { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-
-        .close-btn {
-            position: absolute; top: 1rem; right: 1rem; background: rgba(0,0,0,0.6); border: none;
-            color: white; width: 35px; height: 35px; border-radius: 50%; font-size: 1.2rem; cursor: pointer;
-            z-index: 10; display: flex; align-items: center; justify-content: center; transition: background 0.2s;
-        }
+        .close-btn { position: absolute; top: 1rem; right: 1rem; background: rgba(0,0,0,0.6); border: none; color: white; width: 35px; height: 35px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; }
         .close-btn:hover { background: var(--accent); color: #000; }
-
-        .modal-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; background: #000; }
+        .modal-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
         .modal-info { padding: 1.5rem; text-align: center; }
         .modal-title { font-size: 1.2rem; font-weight: 700; margin-top: 0.5rem; }
     </style>
@@ -121,26 +106,22 @@
 
     <header>
         <a href="#" class="brand">
-            <img src="imagenes/logo.jpg" alt="Logo El Armario del Gol">
+            <img src="imagenes/logo.jpg" alt="Logo">
             <div>EL ARMARIO DEL <span>GOL</span></div>
         </a>
+
+        <!-- MENÚ YUPOO -->
+        <ul class="nav-menu" id="yupooMenu">
+            <li class="nav-item">
+                <button class="nav-link" onclick="loadProducts('Todos')">Inicio</button>
+            </li>
+            <!-- Aquí JavaScript inyectará las categorías reales -->
+        </ul>
+
         <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="Buscar equipo, temporada...">
+            <input type="text" id="searchInput" placeholder="Buscar...">
         </div>
     </header>
-
-    <!-- Filtros adaptados a las categorías que extrae el robot -->
-    <div class="filters" id="categoryFilters">
-        <button class="filter-btn active" data-cat="Todos">Todos</button>
-        <button class="filter-btn" data-cat="Camisetas">Camisetas / Jerseys</button>
-        <button class="filter-btn" data-cat="Sudaderas">Sudaderas / Hoodies</button>
-        <button class="filter-btn" data-cat="Shorts">Shorts</button>
-        <button class="filter-btn" data-cat="Pantalones">Pantalones</button>
-        <button class="filter-btn" data-cat="Nike">Nike</button>
-        <button class="filter-btn" data-cat="Jordan">Jordan</button>
-        <button class="filter-btn" data-cat="Accesorios">Accesorios</button>
-        <button class="filter-btn" data-cat="Catálogo General">Otros</button>
-    </div>
 
     <main class="catalog" id="catalogGrid"></main>
 
@@ -148,9 +129,10 @@
         <p>© 2026 El Armario del Gol • Catálogo Exclusivo</p>
     </footer>
 
+    <!-- Modal -->
     <div class="modal" id="productModal">
         <div class="modal-content" onclick="event.stopPropagation()">
-            <button class="close-btn" type="button" aria-label="Cerrar">×</button>
+            <button class="close-btn" type="button" onclick="closeModal()">×</button>
             <img id="mImg" class="modal-img" src="" alt="" referrerpolicy="no-referrer">
             <div class="modal-info">
                 <span class="card-tag" id="mCat"></span>
@@ -160,98 +142,71 @@
     </div>
 
     <script>
-        let productos = [];
-        let currentCategory = "Todos";
+        let categoriasData = []; // El JSON de los menús
+        let productosData = [];  // Los productos que se cargan al hacer clic
 
-        const grid = document.getElementById("catalogGrid");
-        const searchInput = document.getElementById("searchInput");
-        const modal = document.getElementById("productModal");
-        const mImg = document.getElementById("mImg");
-        const mTitle = document.getElementById("mTitle");
-        const mCat = document.getElementById("mCat");
+        const esc = (s) => String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
 
-        const esc = (s) => String(s ?? "")
-            .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
-
+        // 1. Cargar los menús desde el scraper
         fetch('productos.json')
-            .then(r => {
-                if (!r.ok) throw new Error(`HTTP ${r.status}`);
-                return r.json();
-            })
+            .then(r => r.json())
             .then(data => {
-                productos = Array.isArray(data) ? data : [];
-                renderCatalog();
+                categoriasData = data;
+                renderMenu();
             })
             .catch(err => {
-                console.error("Error cargando el catálogo:", err);
-                grid.innerHTML = `<p style="grid-column:1/-1;text-align:center;color:var(--text-muted);padding:3rem;">No se pudo cargar el catálogo (productos.json).</p>`;
+                document.getElementById("catalogGrid").innerHTML = `<p style="grid-column: 1/-1; text-align:center;">Error cargando el menú. Ejecuta el robot primero.</p>`;
             });
 
-        function renderCatalog() {
-            const query = (searchInput.value || "").toLowerCase().trim();
-            grid.innerHTML = "";
-
-            const filtered = productos.filter(p => {
-                const cat = p.category || "Catálogo General";
-                const title = (p.title || "").toLowerCase();
-                const matchCat = currentCategory === "Todos" || cat === currentCategory;
-                const matchSearch = !query || title.includes(query);
-                return matchCat && matchSearch;
-            });
-
-            if (filtered.length === 0) {
-                grid.innerHTML = `<p style="grid-column: 1/-1; text-align:center; color:var(--text-muted); padding:3rem;">No se encontraron equipaciones en esta categoría.</p>`;
-                return;
-            }
-
-            const frag = document.createDocumentFragment();
-            filtered.forEach((p) => {
-                const card = document.createElement("div");
-                card.className = "card";
-                card.innerHTML = `
-                    <div class="card-img-container">
-                        <!-- referrerpolicy es CLAVE para que Yupoo no bloquee las fotos -->
-                        <img src="${esc(p.img)}" alt="${esc(p.title)}" class="card-img" loading="lazy" referrerpolicy="no-referrer">
+        // 2. Pintar el menú desplegable como Yupoo
+        function renderMenu() {
+            const menu = document.getElementById("yupooMenu");
+            categoriasData.forEach(cat => {
+                const li = document.createElement("li");
+                li.className = "nav-item";
+                
+                // Simulamos un menú desplegable con las mismas categorías
+                li.innerHTML = `
+                    <button class="nav-link">${esc(cat.title)} ▼</button>
+                    <div class="dropdown">
+                        <button onclick="loadProducts('${esc(cat.title)}')">Ver todo de ${esc(cat.title)}</button>
                     </div>
-                    <div class="card-body">
-                        <div>
-                            <span class="card-tag">${esc(p.category || "Otros")}</span>
-                            <h3 class="card-title">${esc(p.title)}</h3>
-                        </div>
-                    </div>`;
-                card.addEventListener("click", () => openModal(p.img, p.title, p.category));
-                frag.appendChild(card);
+                `;
+                menu.appendChild(li);
             });
-            grid.appendChild(frag);
         }
 
-        document.getElementById("categoryFilters").addEventListener("click", (e) => {
-            const btn = e.target.closest(".filter-btn");
-            if (!btn) return;
-            currentCategory = btn.dataset.cat;
-            document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
-            btn.classList.add("active");
-            renderCatalog();
-        });
-
-        searchInput.addEventListener("input", renderCatalog);
-
-        function openModal(img, title, category) {
-            mImg.src = img || "";
-            mImg.alt = title || "";
-            mTitle.textContent = title || "";
-            mCat.textContent = category || "";
-            modal.classList.add("open");
+        // 3. Simular la carga de productos (Yupoo cargaría las fotos reales de esa carpeta aquí)
+        function loadProducts(categoria) {
+            const grid = document.getElementById("catalogGrid");
+            grid.innerHTML = `<p style="grid-column: 1/-1; text-align:center; color:var(--accent);">Cargando productos de ${categoria}...</p>`;
+            
+            // --- AQUÍ IRÍA LA LLAMADA A LA API PARA SACAR LAS FOTOS DE ESTA CATEGORÍA ---
+            // Por ahora, para que veas cómo queda, simulamos unas tarjetas:
+            setTimeout(() => {
+                grid.innerHTML = "";
+                const fakeData = [
+                    { title: "Camiseta de " + categoria, img: "https://photo.yupoo.com/minkang/2f3e6c8c78/small.jpg" },
+                    { title: "Edición Especial " + categoria, img: "https://photo.yupoo.com/minkang/5cf2787d6a/small.jpg" }
+                ];
+                
+                fakeData.forEach(p => {
+                    const card = document.createElement("div");
+                    card.className = "card";
+                    card.innerHTML = `
+                        <div class="card-img-container">
+                            <img src="${esc(p.img)}" class="card-img" referrerpolicy="no-referrer">
+                        </div>
+                        <div class="card-body">
+                            <span class="card-tag">${esc(categoria)}</span>
+                            <h3 class="card-title">${esc(p.title)}</h3>
+                        </div>`;
+                    grid.appendChild(card);
+                });
+            }, 500);
         }
 
-        function closeModal() {
-            modal.classList.remove("open");
-        }
-
-        modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
-        document.querySelector(".close-btn").addEventListener("click", closeModal);
-        document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
+        function closeModal() { document.getElementById("productModal").classList.remove("open"); }
     </script>
 </body>
 </html>
